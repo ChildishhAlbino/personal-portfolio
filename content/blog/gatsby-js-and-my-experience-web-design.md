@@ -1,9 +1,9 @@
 ---
-title: "GatsbyJS:"
-date: "2018-11-02T02:17"
-latestEdit: "2019-01-30T00:19"
-thumbnail: images/uploads/10636670_783659268406269_6539500997738629640_o.jpg
-description: "and my experience with web develop. "
+title: 'GatsbyJS:'
+date: '2018-11-02T02:17'
+latestEdit: '2019-01-30T00:19'
+thumbnail: /images/uploads/gatsby-icon.png
+description: 'and my experience with web develop. '
 ---
 
 # _So let me paint the scene for you first:_
