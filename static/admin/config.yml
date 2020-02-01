@@ -13,6 +13,8 @@ collections:
       - { label: "Latest Update", name: "latestEdit", widget: "datetime" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Description", name: "description", widget: "string" }
+      -
 backend:
   name: git-gateway
   branch: master
