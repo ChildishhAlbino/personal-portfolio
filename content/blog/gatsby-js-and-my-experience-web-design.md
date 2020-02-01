@@ -3,6 +3,7 @@ title: "GatsbyJS:"
 latestEdit: "2019-01-30T00:19"
 date: "2018-11-02T02:17"
 description: "and my experience with web design / development."
+thumbnail: images/uploads/GlOARJJ.png
 ---
 
 # _So let me paint the scene for you first:_
