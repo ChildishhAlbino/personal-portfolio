@@ -38,9 +38,17 @@ class BlogPostTemplate extends React.Component {
               {post.frontmatter.date}
             </p>
           </header>
-          {/* {post.frontmatter.thumbnail != null && (
-            <Image fixed={post.frontmatter.thumbnail.childImageSharp.fixed} />
-          )} */}
+          {post.frontmatter.thumbnail != null && (
+            <Image
+              fluid={post.frontmatter.thumbnail.childImageSharp.fluid}
+              style={{
+                maxWidth:
+                  post.frontmatter.thumbnail.childImageSharp.fluid
+                    .presentationWidth,
+                margin: "0 auto",
+              }}
+            />
+          )}
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr
             style={{
@@ -100,7 +108,14 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        thumbnail
+        thumbnail {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+              presentationWidth
+            }
+          }
+        }
       }
     }
   }
