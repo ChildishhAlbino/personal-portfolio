@@ -1,7 +1,6 @@
 ---
 title: 'GatsbyJS:'
 date: '2018-11-02T02:17'
-description: and my experience with web design / development.
 latestEdit: '2019-01-30T00:19'
 thumbnail: images/uploads/GlOARJJ.png
 ---
@@ -19,8 +18,6 @@ really progressed since Year 10 IST in terms of Web Development. I could visuali
 
 I was at work one day; think it was a Wednesday, and we weren't very busy so I was checking my phone when a LinkedIn notification came up. A mentor from a bit of work experience I did; Ben, had posted about his personal experience moving his blog to something called GatsbyJS. The post went onto explain what he'd done previous, what GatsbyJS was and why he switched. This sounded perfect for my use and planned to look into it when I
 came back to my Website project.
-
-![GatsbyJS](https://i.imgur.com/GlOARJJ.png "GatsbyJS")
 
 ## _So what is GatsbyJS?_
 
