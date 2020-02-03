@@ -10,14 +10,16 @@ import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import { rhythm } from "../../utils/typography"
+import "./bio.scss"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 1000, maxHeight: 1000) {
+            ...GatsbyImageSharpFluid
+            presentationWidth
           }
         }
       }
@@ -35,24 +37,11 @@ const Bio = () => {
 
   const { author, description, social } = data.site.siteMetadata
   return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
+    <div className="bio-container">
       <Image
-        fixed={data.avatar.childImageSharp.fixed}
+        className="bio-gatsby-image"
+        fluid={data.avatar.childImageSharp.fluid}
         alt={author}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
       />
       <p>
         Hi - I'm <strong>{author}</strong>! I'm a junior backend developer

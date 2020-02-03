@@ -1,0 +1,47 @@
+.bio-container {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.bio-gatsby-image {
+  min-width: 150px;
+  border-radius: 100%;
+  margin: 0em 1em 0em 0em;
+}
+
+@media (max-width: 320px) {
+  .bio-container {
+    max-width: 300px;
+    margin: 0 auto;
+    p {
+      font-size: 0.75rem;
+    }
+  }
+
+  .bio-gatsby-image {
+    min-width: 100px;
+    border-radius: 100%;
+    margin: 0em 0em 1em 0em;
+  }
+}
+
+@media (max-width: 600px) {
+  .bio-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    p {
+      font-size: 0.8rem;
+    }
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .bio-gatsby-image {
+    min-width: 150px;
+    border-radius: 100%;
+    margin: 0em 0em 1em 0em;
+  }
+}

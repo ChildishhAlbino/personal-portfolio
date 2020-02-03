@@ -1,0 +1,23 @@
+footer {
+  margin: 1rem 0rem 0rem;
+}
+
+@media (max-width: 600px) {
+  .header {
+    h1 {
+      font-size: xx-large;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .header {
+    h1 {
+      font-size: large;
+    }
+  }
+}
+
+html {
+  background-color: lighten($color: lightgrey, $amount: 4);
+}

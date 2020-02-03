@@ -1,0 +1,23 @@
+.article-item-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  .article-item-wrapper {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .gatsby-image {
+    display: none;
+  }
+
+  * {
+    text-align: center;
+  }
+}
