@@ -57,6 +57,7 @@ module.exports = {
     },
     `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-sass`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-feed`,
     {

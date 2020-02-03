@@ -1,9 +1,9 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Bio from "../components/bio/bio"
+import Layout from "../components/layout/layout"
+import SEO from "../components/seo/seo"
 import { rhythm, scale } from "../utils/typography"
 
 class BlogPostTemplate extends React.Component {
@@ -59,7 +59,6 @@ class BlogPostTemplate extends React.Component {
             <Bio />
           </footer>
         </article>
-
         <nav>
           <ul
             style={{
