@@ -13,6 +13,7 @@
 
 @media (max-width: 320px) {
   .bio-container {
+    text-align: center;
     max-width: 300px;
     margin: 0 auto;
     p {
@@ -29,6 +30,7 @@
 
 @media (max-width: 600px) {
   .bio-container {
+    text-align: center;
     display: flex;
     flex-flow: column;
     align-items: center;

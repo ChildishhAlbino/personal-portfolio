@@ -21,3 +21,10 @@ footer {
 html {
   background-color: lighten($color: lightgrey, $amount: 4);
 }
+
+main {
+  background-color: lighten($color: lightgrey, $amount: 10);
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0.1em 0.1em;
+}
