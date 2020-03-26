@@ -1,6 +1,6 @@
 ---
 title: 'GatsbyJS:'
-description: 'and my experience with web develop. '
+description: and my experience with web development.
 date: '2018-11-02T02:17'
 latestEdit: '2019-01-30T00:19'
 thumbnail: /images/uploads/gatsby-icon.png
