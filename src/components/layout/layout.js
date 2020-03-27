@@ -1,5 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
+import { ThemeToggler } from "gatsby-plugin-dark-mode"
+
+import Switch from "react-switch"
 
 import "./layout.scss"
 
@@ -28,6 +31,14 @@ class Layout extends React.Component {
           <header className="header">
             <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
             {header}
+            <ThemeToggler>
+              {({ theme, toggleTheme }) => (
+                <Switch
+                  checked={theme === "dark"}
+                  onChange={checked => toggleTheme(checked ? "dark" : "light")}
+                />
+              )}
+            </ThemeToggler>
           </header>
           <main>{children}</main>
           <footer>

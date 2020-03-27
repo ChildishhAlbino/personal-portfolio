@@ -1,30 +1,85 @@
-footer {
-  margin: 1rem 0rem 0rem;
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+:root {
+  background-color: var(--bg-colour);
 }
 
+// PHONE VIEW SMALL
 @media (max-width: 600px) {
   .header {
     h1 {
       font-size: xx-large;
     }
   }
+
+  .layout-container {
+    width: 90vw;
+  }
 }
 
+// PHONE VIEW LARGE
 @media (max-width: 320px) {
   .header {
     h1 {
       font-size: large;
     }
   }
+
+  .layout-container {
+    width: 90vw;
+  }
 }
 
-html {
-  background-color: lighten($color: lightgrey, $amount: 4);
+// WIDE VIEW
+@media (min-width: 601px) {
+  .layout-container {
+    width: 65vw;
+  }
+}
+
+.layout-wrapper {
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-colour);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    color: #a0a5ff;
+  }
+}
+
+a {
+  text-decoration: none;
 }
 
 main {
-  background-color: lighten($color: lightgrey, $amount: 10);
-  padding: 1em;
+  background-color: var(--content-bg-colour);
+  padding: 1.45em;
   border-radius: 1em;
-  box-shadow: rgba(0, 0, 0, 0.35) 0.1em 0.1em;
+  color: var(--text-colour);
+}
+
+footer {
+  margin: 1rem 0rem 0rem;
+  color: var(--text-colour);
+}
+
+body.light {
+  --bg-colour: #dddddd;
+  --text-colour: #1b1b1b;
+  --content-bg-colour: #eeeeee;
+  background-color: var(--bg-colour);
+}
+
+body.dark {
+  --bg-colour: #1b1b1b;
+  --text-colour: white;
+  --content-bg-colour: #303030;
+  background-color: var(--bg-colour);
 }
