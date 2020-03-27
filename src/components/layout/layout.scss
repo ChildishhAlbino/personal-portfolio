@@ -83,3 +83,7 @@ body.dark {
   --content-bg-colour: #303030;
   background-color: var(--bg-colour);
 }
+
+body {
+  transition: all 1s;
+}
