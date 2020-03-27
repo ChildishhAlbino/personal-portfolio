@@ -5,6 +5,8 @@ import Bio from "../components/bio/bio"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
 
+import './style/blog-post.scss'
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
@@ -40,7 +42,7 @@ class BlogPostTemplate extends React.Component {
           </footer>
         </article>
         <nav>
-          <ul>
+          <ul className="blog-post-nav-wrapper">
             <li>
               {previous && (
                 <Link to={previous.fields.slug} rel="prev">
