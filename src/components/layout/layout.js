@@ -1,8 +1,8 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
-
 import Switch from "react-switch"
+
 
 import "./layout.scss"
 
@@ -11,7 +11,6 @@ class Layout extends React.Component {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
-
     if (location.pathname === rootPath) {
       header = (
         <h1>
@@ -36,20 +35,38 @@ class Layout extends React.Component {
                 <Switch
                   checked={theme === "dark"}
                   onChange={checked => toggleTheme(checked ? "dark" : "light")}
+                  checkedIcon={<span aria-label="moon" role="img" className="toggle-icon">🌑</span>}
+                  uncheckedIcon={<span aria-label="sun" role="img" className="toggle-icon">🌞</span>}
+                  offColor="#ff145a"
+                  onColor="#a0a5ff"
+                  height={28}
+                  width={56}
+                  handleDiameter={20}
                 />
               )}
             </ThemeToggler>
           </header>
           <main>{children}</main>
           <footer>
-            {new Date().getFullYear()}, Built with
-            {` `}
-            <b>
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </b>
+            <StaticQuery
+              query={graphql`
+                    query {
+                      site {
+                          buildTimeZone
+                      }
+                    }
+                  `}
+              render={data => (
+                <div>
+
+                  <p>Last built: <i>{data.site.buildTimeZone}</i> with <b><a href="https://www.gatsbyjs.org">Gatsby</a></b></p>
+                </div>
+              )}
+            />
+
           </footer>
         </div>
-      </div>
+      </div >
     )
   }
 }
