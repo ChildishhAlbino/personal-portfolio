@@ -10,6 +10,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-buildtime-timezone',
+      options: {
+        tz: 'Australia/Sydney',
+        format: 'dddd[,] MMMM Do[,] YYYY[,] h:mm:ss a'
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/static/images/uploads`,
