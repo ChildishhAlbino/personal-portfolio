@@ -2,7 +2,7 @@
   "name": "childishhalbino.com",
   "private": true,
   "description": "A blog for my ideas and a portfolio for the ones I make.",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "author": "Connor Williams <connorandrewwilliams.work@gmail.com>",
   "bugs": {
     "url": "https://github.com/childishhalbino.com/issues"
@@ -39,7 +39,7 @@
   "devDependencies": {
     "prettier": "^1.19.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/childishhalbino/chidishhalbino.com#readme",
   "keywords": [
     "gatsby"
   ],
@@ -47,7 +47,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/ChildishhAlbino/childishhalbino.com.git"
   },
   "scripts": {
     "build": "gatsby clean && gatsby build",
