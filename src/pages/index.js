@@ -24,6 +24,8 @@ class BlogIndex extends React.Component {
             <article key={node.fields.slug} className="article-item-wrapper">
               <section>
                 <header>
+                  <h3>
+                    <Link className="blog-post-title" to={node.fields.slug}>
                       {title}
                     </Link>
                   </h3>

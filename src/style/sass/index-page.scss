@@ -5,7 +5,15 @@
   justify-content: space-between;
 }
 
-@media (max-width: 600px) {
+.blog-post-title {
+  color: #ff145a;
+}
+
+a {
+  color: #ff668e;
+}
+
+@media (max-width: 800px) {
   .article-item-wrapper {
     display: flex;
     flex-flow: column wrap;
