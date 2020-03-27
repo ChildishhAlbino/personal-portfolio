@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "childishhalbino.com",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "A blog for my ideas and a portfolio for the ones I make.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Connor Williams <connorandrewwilliams.work@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/childishhalbino.com/issues"
   },
   "dependencies": {
     "gatsby": "^2.19.7",
