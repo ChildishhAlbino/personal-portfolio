@@ -90,8 +90,8 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "LLLL")
-            latestEdit(formatString: "LLLL")
+            date
+            latestEdit
             title
             description
             thumbnail {
