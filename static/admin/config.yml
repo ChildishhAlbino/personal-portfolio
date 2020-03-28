@@ -10,8 +10,22 @@ collections:
     fields: # The fields for each document, usually in front matter
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Latest Update", name: "latestEdit", widget: "datetime" }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          dateFormat: "DD.MM.YYYY",
+          timeFormat: "HH:mm",
+          format: "LLLL z",
+        }
+      - {
+          label: "Latest Update",
+          name: "latestEdit",
+          widget: "datetime",
+          dateFormat: "DD.MM.YYYY",
+          timeFormat: "HH:mm",
+          format: "LLLL z",
+        }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "blurb" # Used in routes, e.g., /admin/collections/blog
