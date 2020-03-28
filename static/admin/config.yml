@@ -14,6 +14,14 @@ collections:
       - { label: "Latest Update", name: "latestEdit", widget: "datetime" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: "blurb" # Used in routes, e.g., /admin/collections/blog
+    label: "Blurb" # Used in the UI
+    folder: "content/blurb" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
 backend:
   name: git-gateway
   branch: master
