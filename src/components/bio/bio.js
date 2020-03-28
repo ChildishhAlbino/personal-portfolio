@@ -13,32 +13,10 @@ import "./bio.scss"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
-    query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
-          fluid(maxWidth: 1000, maxHeight: 1000) {
-            ...GatsbyImageSharpFluid
-            presentationWidth
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          author
-          description
-          social {
-            twitter
-          }
-        }
-      }
-      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/blurb/"}} limit: 1) {
+  query {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/blurb/"}}) {
         edges {
           node {
-            html
-            fileAbsolutePath
-            fields {
-              slug
-            }
             frontmatter{
               title
                 thumbnail {
@@ -50,21 +28,22 @@ const Bio = () => {
                   }
                 }
             }
+            html
           }
     }
-      }
-    }
+  }
+}
   `)
+
   const { frontmatter, html } = data.allMarkdownRemark.edges[0].node
   console.log(frontmatter)
   console.log(html)
-  const { author, description, social } = data.site.siteMetadata
   return (
     <div className="bio-container">
       <Image
         className="bio-gatsby-image"
         fluid={frontmatter.thumbnail.childImageSharp.fluid}
-        alt={author}
+        alt="Me"
       />
       <p
         dangerouslySetInnerHTML={{
