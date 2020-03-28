@@ -45,7 +45,7 @@ const Bio = () => {
         fluid={frontmatter.thumbnail.childImageSharp.fluid}
         alt="Me"
       />
-      <p
+      <div
         dangerouslySetInnerHTML={{
           __html: html,
         }}
