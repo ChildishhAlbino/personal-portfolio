@@ -31,26 +31,46 @@ const Bio = () => {
           }
         }
       }
+      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/blurb/"}} limit: 1) {
+        edges {
+          node {
+            html
+            fileAbsolutePath
+            fields {
+              slug
+            }
+            frontmatter{
+              title
+                thumbnail {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, maxHeight: 1000) {
+                      ...GatsbyImageSharpFluid
+                      presentationWidth
+                    }
+                  }
+                }
+            }
+          }
+    }
+      }
     }
   `)
-
+  const { frontmatter, html } = data.allMarkdownRemark.edges[0].node
+  console.log(frontmatter)
+  console.log(html)
   const { author, description, social } = data.site.siteMetadata
   return (
     <div className="bio-container">
       <Image
         className="bio-gatsby-image"
-        fluid={data.avatar.childImageSharp.fluid}
+        fluid={frontmatter.thumbnail.childImageSharp.fluid}
         alt={author}
       />
-      <p>
-        Hi - I'm <strong>{author}</strong>! I'm a junior backend developer
-        currently working for GROW. {description}{" "}
-        <small>Currently a WIP.</small>
-        <br />
-        <a href={`https://twitter.com/${social.twitter}`}>
-          Feel free to follow my Twitter!
-        </a>
-      </p>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: html,
+        }}
+      />
     </div>
   )
 }
