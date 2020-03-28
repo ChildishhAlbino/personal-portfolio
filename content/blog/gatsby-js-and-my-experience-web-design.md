@@ -1,8 +1,8 @@
 ---
 title: 'GatsbyJS:'
 description: and my experience with web development.
-date: 2018-11-01T15:17:00.000Z
-latestEdit: 2019-01-29T13:19:00.000Z
+date: 'Friday, November 2, 2018 2:17 AM '
+latestEdit: 'Wednesday, January 30, 2019 12:19 AM '
 thumbnail: /images/uploads/gatsby-icon.png
 ---
 
