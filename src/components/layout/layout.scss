@@ -70,6 +70,24 @@ footer {
   color: var(--text-colour);
 }
 
+@media (prefers-color-scheme: light) {
+  body.light {
+    --bg-colour: #dddddd;
+    --text-colour: #1b1b1b;
+    --content-bg-colour: #eeeeee;
+    background-color: var(--bg-colour);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body.dark {
+    --bg-colour: #1b1b1b;
+    --text-colour: white;
+    --content-bg-colour: #303030;
+    background-color: var(--bg-colour);
+  }
+}
+
 body.light {
   --bg-colour: #dddddd;
   --text-colour: #1b1b1b;
