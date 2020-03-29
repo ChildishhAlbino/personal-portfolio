@@ -52,7 +52,7 @@ collections:
           widget: "datetime",
           dateFormat: "DD.MM.YYYY",
           timeFormat: false,
-          format: "LLLL",
+          format: "LL",
         }
       - {
           label: "End Date",
@@ -60,7 +60,7 @@ collections:
           widget: "datetime",
           dateFormat: "DD.MM.YYYY",
           timeFormat: false,
-          format: "LLLL",
+          format: "LL",
         }
       - { label: "Body", name: "body", widget: "markdown" }
 backend:
