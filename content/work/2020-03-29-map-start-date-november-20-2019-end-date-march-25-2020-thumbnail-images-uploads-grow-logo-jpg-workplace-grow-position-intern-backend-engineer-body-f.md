@@ -4,6 +4,13 @@ position: Intern Backend Engineer
 thumbnail: /images/uploads/grow-logo.jpg
 start-date: 'November 20, 2019'
 end-date: 'March 25, 2020'
+references:
+  - |-
+    # Ben Shi
+    _Head Of Engineering (Direct Manager)_
+  - |-
+    # Josh Wilson
+    Chief Executive Officer
 ---
 GROW is a FinTech startup working to build TINA - an administration platform for the Australian Superannuation market.
 
