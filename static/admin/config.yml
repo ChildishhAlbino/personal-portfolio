@@ -16,7 +16,7 @@ collections:
           widget: "datetime",
           dateFormat: "DD.MM.YYYY",
           timeFormat: "HH:mm",
-          format: "LLLL z",
+          format: "LLLL",
         }
       - {
           label: "Latest Update",
@@ -24,7 +24,7 @@ collections:
           widget: "datetime",
           dateFormat: "DD.MM.YYYY",
           timeFormat: "HH:mm",
-          format: "LLLL z",
+          format: "LLLL",
         }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -46,7 +46,22 @@ collections:
       - { label: "Workplace", name: "workplace", widget: "string" }
       - { label: "Position", name: "position", widget: "string" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
-      - { label: "Description", name: "description", widget: "string" }
+      - {
+          label: "Start Date",
+          name: "start-date",
+          widget: "datetime",
+          dateFormat: "DD.MM.YYYY",
+          timeFormat: "HH:mm",
+          format: "LLLL",
+        }
+      - {
+          label: "End Date",
+          name: "end-date",
+          widget: "datetime",
+          dateFormat: "DD.MM.YYYY",
+          timeFormat: "HH:mm",
+          format: "LLLL",
+        }
       - { label: "Body", name: "body", widget: "markdown" }
 backend:
   name: git-gateway
