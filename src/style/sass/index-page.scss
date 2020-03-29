@@ -3,6 +3,12 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
+  header {
+    h3,
+    p {
+      margin: 0.75rem 0em 0em;
+    }
+  }
 }
 
 .blog-post-title {
@@ -28,7 +34,7 @@ hr {
     }
   }
 
-  .gatsby-image {
+  .post-thumbnail {
     display: none;
   }
 }

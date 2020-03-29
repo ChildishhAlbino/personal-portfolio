@@ -28,19 +28,21 @@ class BlogIndex extends React.Component {
                       {title}
                     </Link>
                   </h3>
-                  {this.blogPostDate(node.frontmatter)}
-                </header>
-                <section>
                   <p
                     dangerouslySetInnerHTML={{
                       __html: node.frontmatter.description || node.excerpt,
                     }}
                   />
+                </header>
+                <section>
+                  <p>
+                    {this.blogPostDate(node.frontmatter)}
+                  </p>
                 </section>
               </section>
               <section>
                 <Image
-                  className="gatsby-image"
+                  className="post-thumbnail"
                   fluid={node.frontmatter.thumbnail.childImageSharp.fluid}
                   style={{
                     width:
