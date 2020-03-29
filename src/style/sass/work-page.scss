@@ -30,6 +30,10 @@
     flex-flow: row wrap;
   }
 
+  .references-container {
+    grid-template-columns: 1fr;
+  }
+
   .job-image {
     margin: 1em;
   }
