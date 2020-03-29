@@ -1,0 +1,36 @@
+.position-container {
+  width: 100%;
+  * {
+    margin: 1rem 0em 0em;
+  }
+}
+
+.job-image {
+  border-radius: 1em;
+  box-shadow: 0.2em 0.2em rgba(0, 0, 0, 0.3);
+}
+
+.position-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.references-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1.5em;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .position-wrapper {
+    flex-flow: row wrap;
+  }
+
+  .job-image {
+    margin: 1em;
+  }
+}
