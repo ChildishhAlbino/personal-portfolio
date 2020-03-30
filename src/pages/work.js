@@ -4,7 +4,6 @@ import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
 import Image from "gatsby-image"
 import Bio from "../components/bio/bio"
-import ReactMarkdown from "react-markdown"
 
 import '../style/sass/work-page.scss'
 
