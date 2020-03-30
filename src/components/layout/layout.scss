@@ -92,6 +92,7 @@ body.light {
   --bg-colour: #dddddd;
   --text-colour: #1b1b1b;
   --content-bg-colour: #eeeeee;
+  --dark-mode-display: none;
   background-color: var(--bg-colour);
 }
 
@@ -99,6 +100,7 @@ body.dark {
   --bg-colour: #1b1b1b;
   --text-colour: white;
   --content-bg-colour: #303030;
+  --light-mode-display: none;
   background-color: var(--bg-colour);
 }
 
@@ -114,4 +116,12 @@ body {
   font-size: 1em;
   width: 100%;
   height: 100%;
+}
+
+.dark-mode-exclusive {
+  display: var(--dark-mode-display);
+}
+
+.light-mode-exclusive {
+  display: var(--light-mode-display);
 }

@@ -15,10 +15,12 @@ class WorkPage extends React.Component {
         return (
             <Layout location={this.props.location} title={siteTitle}>
                 <SEO title="Work" />
-                <h1>WORK HISTORY</h1>
-                <hr />
+                <div className="page-header">
+                    <h1>WORK HISTORY</h1>
+                    <hr />
+                </div>
                 {jobs.map(({ node }, index) => {
-                    let refs = node.frontmatter.references
+                    console.log(node.frontmatter)
                     return (
                         <div className="job-container">
                             {/* Only puts the hr if we have more than 1 item */}
@@ -32,16 +34,24 @@ class WorkPage extends React.Component {
                                     <small><i>{node.frontmatter.start_date} - {node.frontmatter.end_date}</i></small>
                                 </div>
                                 <Image
-                                    className="job-image"
-                                    fluid={node.frontmatter.thumbnail.childImageSharp.fluid}
+                                    className="job-image light-mode-exclusive"
+                                    fluid={node.frontmatter.thumbnail_lm.childImageSharp.fluid}
                                     style={{
                                         width:
-                                            node.frontmatter.thumbnail.childImageSharp.fluid
+                                            node.frontmatter.thumbnail_lm.childImageSharp.fluid
+                                                .presentationWidth
+                                    }}
+                                />
+                                <Image
+                                    className="job-image dark-mode-exclusive"
+                                    fluid={node.frontmatter.thumbnail_dm.childImageSharp.fluid}
+                                    style={{
+                                        width:
+                                            node.frontmatter.thumbnail_dm.childImageSharp.fluid
                                                 .presentationWidth
                                     }}
                                 />
                             </div>
-                            <br></br>
                             <div
                                 dangerouslySetInnerHTML={{
                                     __html: node.html,
@@ -50,8 +60,8 @@ class WorkPage extends React.Component {
                         </div>
                     );
                 })}
-                <hr />
                 <footer>
+                    <hr />
                     <Bio />
                 </footer>
             </Layout>
@@ -78,16 +88,24 @@ query {
                 position
                 start_date
                 end_date
-                thumbnail {
+                thumbnail_dm {
                     childImageSharp {
-                    fluid (maxWidth: 500 maxHeight: 200) {
-                        ...GatsbyImageSharpFluid
-                        presentationWidth
-                                }
+                        fluid {
+                            ...GatsbyImageSharpFluid
+                            presentationWidth
+                            }
+                        }
+                    }
+                thumbnail_lm {
+                    childImageSharp {
+                        fluid {
+                            ...GatsbyImageSharpFluid
+                            presentationWidth
                             }
                         }
                     }
                 }
+            }
         }
     }
 }
