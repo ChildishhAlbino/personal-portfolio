@@ -17,21 +17,9 @@
   align-items: flex-end;
 }
 
-.references-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 1.5em;
-  text-align: center;
-}
-
 @media (max-width: 850px) {
   .position-wrapper {
     flex-flow: row wrap;
-  }
-
-  .references-container {
-    grid-template-columns: 1fr;
   }
 
   .job-image {
