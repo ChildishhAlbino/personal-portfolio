@@ -13,7 +13,7 @@ module.exports = {
       resolve: 'gatsby-plugin-buildtime-timezone',
       options: {
         tz: 'Australia/Sydney',
-        format: 'dddd[,] MMMM Do[,] YYYY[,] h:mm:ss a'
+        format: 'LLLL'
       }
     },
     {
