@@ -62,12 +62,6 @@ collections:
           timeFormat: false,
           format: "LL",
         }
-      - {
-          label: "References",
-          name: "references",
-          widget: "list",
-          field: { label: "Reference", name: "reference", widget: "markdown" },
-        }
       - { label: "Body", name: "body", widget: "markdown" }
 backend:
   name: git-gateway

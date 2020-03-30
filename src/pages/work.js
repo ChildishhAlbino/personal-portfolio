@@ -48,16 +48,6 @@ class WorkPage extends React.Component {
                                     __html: node.html,
                                 }}
                             />
-                            <div>
-                                <h3>References:</h3>
-                                <div className="references-container">
-                                    {refs.map((reference) => {
-                                        return (
-                                            <ReactMarkdown source={reference} />
-                                        )
-                                    })}
-                                </div>
-                            </div>
                         </div>
                     );
                 })}
@@ -85,7 +75,6 @@ query {
         node {
             html
             frontmatter {
-                references
                 workplace
                 position
                 start_date
