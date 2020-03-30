@@ -45,7 +45,16 @@ collections:
     fields: # The fields for each document, usually in front matter
       - { label: "Workplace", name: "workplace", widget: "string" }
       - { label: "Position", name: "position", widget: "string" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - {
+          label: "Featured Image (Light Mode)",
+          name: "thumbnail-lm",
+          widget: "image",
+        }
+      - {
+          label: "Featured Image (Dark Mode)",
+          name: "thumbnail-dm",
+          widget: "image",
+        }
       - {
           label: "Start Date",
           name: "start-date",
