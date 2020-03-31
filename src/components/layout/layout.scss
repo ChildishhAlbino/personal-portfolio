@@ -109,6 +109,9 @@ body {
   main {
     transition: background-color 1s, color 1s;
   }
+  footer {
+    transition: color 1s;
+  }
 }
 
 .toggle-icon {
