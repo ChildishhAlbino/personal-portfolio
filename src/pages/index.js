@@ -35,7 +35,6 @@ class BlogIndex extends React.Component {
                   />
                 </header>
                 <section>
-                  <p>
                     {this.blogPostDate(node.frontmatter)}
                   </p>
                 </section>
@@ -63,7 +62,9 @@ class BlogIndex extends React.Component {
     if (latestEdit) {
       return (
         <small>
-          {latestEdit} <small>(Originally posted: {date})</small>
+          {latestEdit}
+          <br />
+          <small>(Originally posted: {date})</small>
         </small>
       )
     } else {
