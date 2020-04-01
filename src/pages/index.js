@@ -35,6 +35,7 @@ class BlogIndex extends React.Component {
                   />
                 </header>
                 <section>
+                  <p>
                     {this.blogPostDate(node.frontmatter)}
                   </p>
                 </section>
