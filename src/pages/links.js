@@ -10,9 +10,11 @@ class LinksPage extends React.Component {
         const siteTitle = data.site.siteMetadata.title
         return (
             <Layout location={this.props.location} title={siteTitle}>
-                <SEO title="All posts" />
-                <Bio />
+                <SEO title="Links" />
+                <h1>Links</h1>
+                <small>Work in Progress...</small>
                 <hr />
+                <Bio />
             </Layout>
         )
     }
