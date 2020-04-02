@@ -22,7 +22,7 @@ class WorkPage extends React.Component {
                 {jobs.map(({ node }, index) => {
                     console.log(node.frontmatter)
                     return (
-                        <div className="job-container">
+                        <div key={node.frontmatter.workplace} className="job-container">
                             {/* Only puts the hr if we have more than 1 item */}
                             {index > 0 && (
                                 <hr></hr>
