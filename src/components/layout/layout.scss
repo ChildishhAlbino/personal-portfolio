@@ -147,3 +147,12 @@ body {
 .light-mode-exclusive {
   display: var(--light-mode-display);
 }
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
