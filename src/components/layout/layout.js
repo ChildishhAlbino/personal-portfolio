@@ -7,8 +7,6 @@ import "./layout.scss"
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
     return (
       <div className="layout-wrapper">
         <div className="layout-container">
