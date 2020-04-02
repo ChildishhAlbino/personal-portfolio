@@ -127,6 +127,14 @@ body {
   footer {
     transition: color 1s;
   }
+
+  /* Hide scrollbar for IE and Edge */
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .toggle-icon {
