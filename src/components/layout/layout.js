@@ -19,10 +19,10 @@ class Layout extends React.Component {
             </h1>
             <Navbar></Navbar>
             <ThemeToggler>
-              {({ toggleTheme }) => (
+              {({ theme, toggleTheme }) => (
                 <div className="toggle-container">
                   <Switch
-                    checked={window.__theme === "dark"}
+                    checked={theme === "dark"}
                     onChange={checked => toggleTheme(checked ? "dark" : "light")}
                     checkedIcon={<span aria-label="moon" role="img" className="toggle-icon">🌑</span>}
                     uncheckedIcon={<span aria-label="sun" role="img" className="toggle-icon">🌞</span>}
