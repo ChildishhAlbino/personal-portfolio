@@ -65,7 +65,8 @@
   }
   align-items: center;
   a {
-    color: #a0a5ff;
+    color: var(--accent-colour);
+    transition: color 1s;
   }
   grid-gap: 1em;
 }
@@ -108,6 +109,7 @@ body.light {
   --text-colour: #1b1b1b;
   --content-bg-colour: #eeeeee;
   --dark-mode-display: none;
+  --accent-colour: #7c83ff;
   background-color: var(--bg-colour);
 }
 
@@ -116,6 +118,7 @@ body.dark {
   --text-colour: white;
   --content-bg-colour: #303030;
   --light-mode-display: none;
+  --accent-colour: #a0a5ff;
   background-color: var(--bg-colour);
 }
 
