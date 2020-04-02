@@ -6,7 +6,9 @@ import Navbar from '../navbar/navbar'
 import "./layout.scss"
 
 class Layout extends React.Component {
+
   render() {
+    const { title, children } = this.props
     return (
       <div className="layout-wrapper">
         <div className="layout-container">
@@ -17,10 +19,10 @@ class Layout extends React.Component {
             </h1>
             <Navbar></Navbar>
             <ThemeToggler>
-              {({ theme, toggleTheme }) => (
+              {({ toggleTheme }) => (
                 <div className="toggle-container">
                   <Switch
-                    checked={theme === "dark"}
+                    checked={window.__theme === "dark"}
                     onChange={checked => toggleTheme(checked ? "dark" : "light")}
                     checkedIcon={<span aria-label="moon" role="img" className="toggle-icon">🌑</span>}
                     uncheckedIcon={<span aria-label="sun" role="img" className="toggle-icon">🌞</span>}
@@ -46,7 +48,6 @@ class Layout extends React.Component {
                   `}
               render={data => (
                 <div>
-
                   <p>Last built: <i>{data.site.buildTimeZone}</i> with <b><a href="https://www.gatsbyjs.org">Gatsby</a></b></p>
                 </div>
               )}
