@@ -1,14 +1,27 @@
 import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
-import { ThemeToggler } from "gatsby-plugin-dark-mode"
 import Switch from "react-switch"
 import Navbar from '../navbar/navbar'
 import "./layout.scss"
 
 class Layout extends React.Component {
+  state = {
+    theme: window.__theme,
+  };
+
+  componentDidMount() {
+    console.log(this.state)
+    this.setState({ theme: window.__theme });
+    window.__onThemeChange = () => {
+      console.log(window.__theme)
+      this.setState({ theme: window.__theme });
+    };
+  }
 
   render() {
+    console.log(this.state)
     const { title, children } = this.props
+    let checked = this.state.theme === "dark"
     return (
       <div className="layout-wrapper">
         <div className="layout-container">
@@ -18,23 +31,22 @@ class Layout extends React.Component {
               <Link to={`/`}>{title}</Link>
             </h1>
             <Navbar></Navbar>
-            <ThemeToggler>
-              {({ theme, toggleTheme }) => (
-                <div className="toggle-container">
-                  <Switch
-                    checked={theme === "dark"}
-                    onChange={checked => toggleTheme(checked ? "dark" : "light")}
-                    checkedIcon={<span aria-label="moon" role="img" className="toggle-icon">🌑</span>}
-                    uncheckedIcon={<span aria-label="sun" role="img" className="toggle-icon">🌞</span>}
-                    offColor="#ff145a"
-                    onColor="#a0a5ff"
-                    height={28}
-                    width={56}
-                    handleDiameter={20}
-                  />
-                </div>
-              )}
-            </ThemeToggler>
+            <div className="toggle-container">
+              <Switch
+                checked={checked}
+                onChange={checked => window.__setPreferredTheme(
+                  checked ? 'dark' : 'light'
+                )}
+                checkedIcon={<span aria-label="moon" role="img" className="toggle-icon">🌑</span>}
+                uncheckedIcon={<span aria-label="sun" role="img" className="toggle-icon">🌞</span>}
+                offColor="#ff145a"
+                onColor="#a0a5ff"
+                height={28}
+                width={56}
+                handleDiameter={20}
+              />
+            </div>
+
           </header>
           <main>{children}</main>
           <footer>
