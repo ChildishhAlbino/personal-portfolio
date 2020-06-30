@@ -70,12 +70,12 @@ class Layout extends React.Component {
               `}
               render={data => (
                 <div>
-                  <p>
+                  <small>
                     Last built: <i>{data.site.buildTimeZone}</i> with{" "}
                     <b>
                       <a href="https://www.gatsbyjs.org">Gatsby</a>
                     </b>
-                  </p>
+                  </small>
                 </div>
               )}
             />
