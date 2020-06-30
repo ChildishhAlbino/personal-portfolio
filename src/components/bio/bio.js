@@ -36,8 +36,6 @@ const Bio = () => {
   `)
 
   const { frontmatter, html } = data.allMarkdownRemark.edges[0].node
-  console.log(frontmatter)
-  console.log(html)
   return (
     <div className="bio-container">
       <Image

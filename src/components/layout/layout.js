@@ -12,7 +12,6 @@ class Layout extends React.Component {
   componentDidMount() {
     this.setState({ theme: window.__theme })
     window.__onThemeChange = () => {
-      console.log(window.__theme)
       this.setState({ theme: window.__theme })
     }
   }

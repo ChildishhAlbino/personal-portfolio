@@ -20,7 +20,6 @@ class WorkPage extends React.Component {
                     <hr />
                 </div>
                 {jobs.map(({ node }, index) => {
-                    console.log(node.frontmatter)
                     return (
                         <div key={node.frontmatter.workplace} className="job-container">
                             {/* Only puts the hr if we have more than 1 item */}
