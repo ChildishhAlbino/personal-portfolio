@@ -1,8 +1,8 @@
 ---
-title: 'GatsbyJS:'
+title: "GatsbyJS:"
 description: and my experience with web development.
-date: 'Friday, November 2, 2018 2:17 AM '
-latestEdit: 'Wednesday, January 30, 2019 12:19 AM '
+date: "Friday, November 2, 2018 2:17 AM"
+latestEdit: "Wednesday, January 30, 2019 12:19 AM"
 thumbnail: /images/uploads/gatsby-icon.png
 ---
 
