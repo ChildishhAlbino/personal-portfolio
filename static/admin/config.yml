@@ -70,6 +70,7 @@ collections:
           dateFormat: "DD.MM.YYYY",
           timeFormat: false,
           format: "LL",
+          required: false,
         }
       - { label: "Body", name: "body", widget: "markdown" }
 backend:
