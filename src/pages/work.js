@@ -83,7 +83,7 @@ query {
         title
         }
     }
-    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/work/"}} sort: { fields: [frontmatter___start_date], order: DESC }) {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/work/"}}, sort: {fields: frontmatter___start_date, order: DESC}) {
     edges {
         node {
             html
