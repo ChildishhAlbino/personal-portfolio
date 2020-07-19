@@ -20,9 +20,9 @@ class WorkPage extends React.Component {
                     <hr />
                 </div>
                 {jobs.map(({ node }, index) => {
-                    const rawEndDate = node.frontmatter.end_date
+                    const rawEndDate = node.frontmatter.endDate
                     let endDate = "Present"
-                    if (rawEndDate && rawEndDate !== node.frontmatter.start_date) {
+                    if (rawEndDate && rawEndDate !== node.frontmatter.startDate) {
                         endDate = rawEndDate
                     }
                     return (
@@ -35,7 +35,7 @@ class WorkPage extends React.Component {
                                 <div className="position-container">
                                     <h2>{node.frontmatter.workplace}</h2>
                                     <p>{node.frontmatter.position}</p>
-                                    <small><i>{node.frontmatter.start_date} - {endDate}</i></small>
+                                    <small><i>{node.frontmatter.startDate} - {endDate}</i></small>
                                 </div>
                                 <Image
                                     className="job-image light-mode-exclusive"
@@ -83,15 +83,15 @@ query {
         title
         }
     }
-    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/work/"}}, sort: {fields: frontmatter___start_date, order: DESC}) {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/work/"}}, sort: {fields: frontmatter___startDate, order: DESC}) {
     edges {
         node {
             html
             frontmatter {
                 workplace
                 position
-                start_date(formatString: "LL")
-                end_date(formatString: "LL")
+                startDate(formatString: "LL")
+                endDate(formatString: "LL")
                 thumbnail_dm {
                     childImageSharp {
                         fluid {

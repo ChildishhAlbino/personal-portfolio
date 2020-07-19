@@ -58,7 +58,7 @@ collections:
         }
       - {
           label: "Start Date",
-          name: "start-date",
+          name: "startDate",
           widget: "datetime",
           dateFormat: "DD.MM.YYYY",
           timeFormat: false,
@@ -66,7 +66,7 @@ collections:
         }
       - {
           label: "End Date",
-          name: "end-date",
+          name: "endDate",
           widget: "datetime",
           dateFormat: "DD.MM.YYYY",
           timeFormat: false,
