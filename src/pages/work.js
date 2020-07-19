@@ -22,7 +22,7 @@ class WorkPage extends React.Component {
                 {jobs.map(({ node }, index) => {
                     const rawEndDate = node.frontmatter.end_date
                     let endDate = "Present"
-                    if (rawEndDate && rawEndDate !== "") {
+                    if (rawEndDate && rawEndDate !== node.frontmatter.start_date) {
                         endDate = rawEndDate
                     }
                     return (
@@ -90,8 +90,8 @@ query {
             frontmatter {
                 workplace
                 position
-                start_date
-                end_date
+                start_date(formatString: "LL")
+                end_date(formatString: "LL")
                 thumbnail_dm {
                     childImageSharp {
                         fluid {
