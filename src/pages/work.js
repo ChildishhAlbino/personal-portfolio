@@ -20,6 +20,11 @@ class WorkPage extends React.Component {
                     <hr />
                 </div>
                 {jobs.map(({ node }, index) => {
+                    const rawEndDate = node.frontmatter.end_date
+                    let endDate = "Present"
+                    if (rawEndDate && rawEndDate !== "") {
+                        endDate = rawEndDate
+                    }
                     return (
                         <div key={node.frontmatter.workplace} className="job-container">
                             {/* Only puts the hr if we have more than 1 item */}
@@ -30,7 +35,7 @@ class WorkPage extends React.Component {
                                 <div className="position-container">
                                     <h2>{node.frontmatter.workplace}</h2>
                                     <p>{node.frontmatter.position}</p>
-                                    <small><i>{node.frontmatter.start_date} - {node.frontmatter.end_date}</i></small>
+                                    <small><i>{node.frontmatter.start_date} - {endDate}</i></small>
                                 </div>
                                 <Image
                                     className="job-image light-mode-exclusive"
