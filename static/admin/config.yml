@@ -62,7 +62,6 @@ collections:
           widget: "datetime",
           dateFormat: "DD.MM.YYYY",
           timeFormat: false,
-          pickerUtc: true,
         }
       - {
           label: "End Date",
@@ -70,7 +69,6 @@ collections:
           widget: "datetime",
           dateFormat: "DD.MM.YYYY",
           timeFormat: false,
-          pickerUtc: true,
         }
       - { label: "Body", name: "body", widget: "markdown" }
 backend:
