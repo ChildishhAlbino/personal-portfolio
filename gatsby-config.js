@@ -70,14 +70,12 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
         ],
       },
     },
-    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-dark-mode`,
+    `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-sharp`,
@@ -94,8 +92,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
