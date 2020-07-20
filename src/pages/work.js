@@ -26,7 +26,7 @@ class WorkPage extends React.Component {
                         endDate = rawEndDate
                     }
                     return (
-                        <div key={node.frontmatter.workplace} className="job-container">
+                        <div key={node.id} className="job-container">
                             {/* Only puts the hr if we have more than 1 item */}
                             {index > 0 && (
                                 <hr></hr>
@@ -86,6 +86,7 @@ query {
     allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/work/"}}, sort: {fields: frontmatter___startDate, order: DESC}) {
     edges {
         node {
+            id
             html
             frontmatter {
                 workplace
