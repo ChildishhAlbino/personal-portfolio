@@ -67,9 +67,7 @@ class BlogPostTemplate extends React.Component {
           </ul>
         </nav>
         <hr />
-        <footer>
-          <Bio />
-        </footer>
+        <Bio />
       </Layout>
     )
   }

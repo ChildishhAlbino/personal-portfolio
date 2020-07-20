@@ -87,8 +87,11 @@ main {
   line-height: 1.8;
 }
 
+.layout-container {
+  height: 100%;
+}
+
 footer {
-  margin: 1rem 0rem 0rem;
   color: var(--text-colour);
 }
 
@@ -131,7 +134,8 @@ body.dark {
 }
 
 body {
-  transition: all 1s;
+  margin: 0;
+  transition: background-color 1s;
   main {
     transition: background-color 1s, color 1s;
   }

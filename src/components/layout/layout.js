@@ -2,6 +2,7 @@ import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import Switch from "react-switch"
 import Navbar from "../navbar/navbar"
+import PageFooter from "../page-footer/page-footer"
 import "./layout.scss"
 
 class Layout extends React.Component {
@@ -58,24 +59,7 @@ class Layout extends React.Component {
             </div>
           </header>
           <main>{children}</main>
-          <footer>
-            <StaticQuery
-              query={graphql`
-                query {
-                  site {
-                    buildTimeZone
-                  }
-                }
-              `}
-              render={data => (
-                <div>
-                  <small>
-                    Last built: <i>{data.site.buildTimeZone}</i> with <b><a href="https://www.gatsbyjs.org">Gatsby</a></b>
-                  </small>
-                </div>
-              )}
-            />
-          </footer>
+          <PageFooter></PageFooter>
         </div>
       </div>
     )
