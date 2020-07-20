@@ -22,7 +22,6 @@ class Layout extends React.Component {
       <div className="layout-wrapper">
         <div className="layout-container">
           <header className="header">
-            <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
             <h1>
               <Link to={`/`}>{title}</Link>
             </h1>
