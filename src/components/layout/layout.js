@@ -53,7 +53,7 @@ class Layout extends React.Component {
                   />
                 )
                   : (
-                    <div style={{ height: "24px" }} />
+                    <div style={{ height: "28px" }} />
                   )}
             </div>
           </header>
@@ -70,10 +70,7 @@ class Layout extends React.Component {
               render={data => (
                 <div>
                   <small>
-                    Last built: <i>{data.site.buildTimeZone}</i> with{" "}
-                    <b>
-                      <a href="https://www.gatsbyjs.org">Gatsby</a>
-                    </b>
+                    Last built: <i>{data.site.buildTimeZone}</i> with <b><a href="https://www.gatsbyjs.org">Gatsby</a></b>
                   </small>
                 </div>
               )}
