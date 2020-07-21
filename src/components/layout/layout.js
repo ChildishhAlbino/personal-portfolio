@@ -39,7 +39,7 @@ class Layout extends React.Component {
                     checkedIcon={
                       <span aria-label="moon" role="img" className="toggle-icon">
                         🌑
-                    </span>
+                      </span>
                     }
                     uncheckedIcon={
                       <span aria-label="sun" role="img" className="toggle-icon">
@@ -51,6 +51,8 @@ class Layout extends React.Component {
                     height={28}
                     width={56}
                     handleDiameter={20}
+                    aria-label="dark-mode-toggle"
+                    role="dark mode toggle button"
                   />
                 )
                   : (
