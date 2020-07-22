@@ -14,10 +14,17 @@ const PageFooter = () => {
                 }
               `}
             render={data => (
-                <footer>
+                <footer className="page-footer">
                     <small>
                         Last built: <i>{data.site.buildTimeZone}</i> with <b><a href="https://www.gatsbyjs.org">Gatsby</a></b>
                     </small>
+                    <div className="link-wrapper">
+                        <a href="https://github.com/ChildishhAlbino">Github</a>
+                        <p>•</p>
+                        <a href="https://github.com/ChildishhAlbino/childishhalbino.com">Source</a>
+                        <p>•</p>
+                        <a href="https://twitter.com/ChildishhAlbino">Twitter</a>
+                    </div>
                 </footer>
             )}
         />
