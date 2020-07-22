@@ -89,6 +89,8 @@ main {
 
 .layout-container {
   height: 100%;
+  // this is a bad idea i think but works for now.
+  min-width: 290px;
 }
 
 footer {
