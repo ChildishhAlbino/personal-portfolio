@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 import Switch from "react-switch"
 import Navbar from "../navbar/navbar"
 import PageFooter from "../page-footer/page-footer"
