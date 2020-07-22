@@ -13,7 +13,6 @@
     grid-template-rows: 1fr 1fr;
     gap: 0.5em;
     .link-wrapper {
-      // width: 60%;
       grid-row: 1;
       justify-self: start;
     }
@@ -22,14 +21,13 @@
 
 @media (max-width: 425px) {
   .page-footer {
-    justify-content: start;
+    text-align: center;
     small {
       width: 100%;
     }
     p {
       display: none;
     }
-    // gap: 0.5em;
     .link-wrapper {
       width: 100%;
       justify-self: center;
@@ -41,8 +39,8 @@
 .page-footer {
   display: grid;
   small {
-    font-size: small;
     margin: 0;
+    font-size: small;
   }
   p {
     color: #ff668e;
