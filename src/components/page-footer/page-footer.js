@@ -19,7 +19,7 @@ const PageFooter = () => {
                         Last built: <i>{data.site.buildTimeZone}</i> with <b><a href="https://www.gatsbyjs.org">Gatsby</a></b>
                     </small>
                     <div className="link-wrapper">
-                        <a href="https://github.com/ChildishhAlbino">Github</a>
+                        <a href="https://github.com/ChildishhAlbino">GitHub</a>
                         <p>•</p>
                         <a href="https://github.com/ChildishhAlbino/childishhalbino.com">Source</a>
                         <p>•</p>
