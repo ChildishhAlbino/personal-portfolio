@@ -8,7 +8,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-
 import "./bio.scss"
 
 const Bio = () => {
@@ -43,12 +42,38 @@ const Bio = () => {
         fluid={frontmatter.thumbnail.childImageSharp.fluid}
         alt="Me"
       />
-      <div
+      <div className="not-print"
         dangerouslySetInnerHTML={{
           __html: html,
         }}
       />
-    </div>
+      <div className="print-only">
+        <div>
+          <h1>Connor Williams:</h1>
+          <hr></hr>
+          <p>Junior Software Engineer located in Sydney.</p>
+          <p>Young, eager, and motivated to learn.</p>
+        </div>
+        <div>
+          <p>
+            <span role="img" aria-label="resume-emoji">👦 21 years old</span>
+          </p>
+          <p><span role="img" aria-label="resume-emoji">👷‍♀️ Diligent worker</span></p>
+          <p><span role="img" aria-label="resume-emoji">⚡ Quick learner</span></p>
+          <p><span role="img" aria-label="resume-emoji">🦅 Eye for detail</span></p>
+        </div>
+        <div>
+          <h2>Contact:</h2>
+          <hr></hr>
+          <i>Email:</i>
+          <p>connorandrewwilliams.work@gmail.com</p>
+          <i>Mobile:</i>
+          <p>+61468323181</p>
+          <i>Twitter:</i>
+          <p>@childishhalbino</p>
+        </div>
+      </div>
+    </div >
   )
 }
 

@@ -60,7 +60,7 @@ class Layout extends React.Component {
                   )}
             </div>
           </header>
-          <main>{children}</main>
+          <main className="content-container">{children}</main>
           <PageFooter></PageFooter>
         </div>
       </div>

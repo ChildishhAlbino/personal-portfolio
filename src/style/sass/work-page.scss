@@ -26,3 +26,35 @@
     margin: 1em;
   }
 }
+
+.page-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.printer-container {
+  transition: background-color 1s;
+  padding: 1rem;
+  background-color: var(--clickable-default-colour);
+  border-radius: 1rem;
+  height: 100%;
+  display: flex;
+}
+
+.printer-container:hover {
+  background-color: var(--clickable-hover-colour);
+}
+
+.printer {
+  font-size: 2rem;
+}
+
+@media (max-width: 425px) {
+  .printer-container {
+    padding: 1rem;
+  }
+  .printer {
+    font-size: 1rem;
+  }
+}
