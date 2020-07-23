@@ -24,7 +24,7 @@ class Layout extends React.Component {
         <div className="layout-container">
           <header className="header">
             <h1>
-              <Link to={`/`}>{title}</Link>
+              <Link className="header-title" to={`/`}>{title}</Link>
             </h1>
             <Navbar></Navbar>
             <div className="toggle-container">
