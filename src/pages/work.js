@@ -18,11 +18,11 @@ class WorkPage extends React.Component {
                 <div className="page-header">
                     <div className="page-header-container">
                         <h1>Work History</h1>
-                        <div title="Click to print my quick resume." className="printer-container" onClick={() => {
+                        {/* <div title="Click to print my quick resume." className="printer-container" onClick={() => {
                             window.print()
                         }}>
                             <FiPrinter className="printer"></FiPrinter>
-                        </div>
+                        </div> */}
                     </div>
                     <hr />
                 </div>
