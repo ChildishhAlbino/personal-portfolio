@@ -4,10 +4,10 @@ import Image from "gatsby-image"
 import Bio from "../bio/bio"
 import Layout from "../layout/layout"
 import SEO from "../seo/seo"
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { formatDateToLocalTime } from "../../utils/date-utils"
 
-
-import './blog-post.scss'
+import "./blog-post.scss"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -15,37 +15,43 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
-    const { title, description, publicationDate, latestEdit, postThumbnail, body: { raw }, keywords } = post
+    const {
+      title,
+      description,
+      publicationDate,
+      latestEdit,
+      postThumbnail,
+      body: { raw },
+      keywords,
+    } = post
     let parsed = JSON.parse(raw)
 
-    let postDate = (
-      <p>{publicationDate}</p>
-    )
-    if (latestEdit && latestEdit !== "") {
+    let postDate = <p>{publicationDate}</p>
+    if (latestEdit !== publicationDate) {
       postDate = (
         <div className="blog-post-date-wrapper">
-          <p>{latestEdit}</p>
-          <small><i>Originally posted: {publicationDate}</i></small>
+          <p>{formatDateToLocalTime(latestEdit)}</p>
+          <small>
+            <i>Originally posted: {formatDateToLocalTime(publicationDate)}</i>
+          </small>
         </div>
       )
     }
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={title}
-          description={description || post.excerpt}
-        />
+        <SEO title={title} description={description || post.excerpt} />
         <article className="blog-post-container">
           <header className="blog-post-header-wrapper">
             <div>
               <h1>{title}</h1>
               {postDate}
             </div>
-            <Image className="blog-post-thumbnail"
-              fluid={postThumbnail.fluid}
-            />
+            <div className="blog-post-thumbnail">
+              <Image fluid={postThumbnail.fluid} />
+            </div>
           </header>
+          <hr></hr>
           <section>{documentToReactComponents(parsed)}</section>
         </article>
         <nav>
@@ -93,15 +99,15 @@ export const pageQuery = graphql`
       }
       keywords
       postThumbnail: thumbnail {
-          fluid (maxWidth: 2048) {
-            ...GatsbyContentfulFluid
-          }
+        fluid(maxWidth: 2048) {
+          ...GatsbyContentfulFluid
         }
+      }
       seoThumbnail: thumbnail {
-          fluid (maxWidth: 500) {
-            ...GatsbyContentfulFluid
-          }
+        fluid(maxWidth: 500) {
+          ...GatsbyContentfulFluid
         }
+      }
     }
   }
 `

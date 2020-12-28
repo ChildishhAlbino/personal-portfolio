@@ -1,0 +1,12 @@
+.blog-post-header-wrapper {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  grid-gap: 1em;
+  align-items: center;
+  .blog-post-thumbnail {
+    display: flex;
+    justify-content: flex-end;
+    max-height: 150px;
+  }
+  padding: 0.5em;
+}
