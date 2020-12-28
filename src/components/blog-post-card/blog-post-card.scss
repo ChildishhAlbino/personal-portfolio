@@ -1,0 +1,24 @@
+.blog-post-card-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  .blog-post-card-thumbnail {
+    display: none;
+  }
+  max-height: 200px;
+  padding: 0.5em;
+}
+
+@media (min-width: 768px) {
+  .blog-post-card-wrapper {
+    text-align: left;
+    grid-template-columns: 1fr 300px;
+    align-items: center;
+    .blog-post-card-thumbnail {
+      display: unset;
+      display: flex;
+      justify-content: flex-end;
+      max-height: 150px;
+    }
+  }
+}

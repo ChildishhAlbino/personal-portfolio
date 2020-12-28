@@ -1,0 +1,107 @@
+import React from "react"
+import { Link, graphql } from "gatsby"
+import Image from "gatsby-image"
+import Bio from "../bio/bio"
+import Layout from "../layout/layout"
+import SEO from "../seo/seo"
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+
+
+import './blog-post.scss'
+
+class BlogPostTemplate extends React.Component {
+  render() {
+    const post = this.props.data.contentfulPost
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const { previous, next } = this.props.pageContext
+
+    const { title, description, publicationDate, latestEdit, postThumbnail, body: { raw }, keywords } = post
+    let parsed = JSON.parse(raw)
+
+    let postDate = (
+      <p>{publicationDate}</p>
+    )
+    if (latestEdit && latestEdit !== "") {
+      postDate = (
+        <div className="blog-post-date-wrapper">
+          <p>{latestEdit}</p>
+          <small><i>Originally posted: {publicationDate}</i></small>
+        </div>
+      )
+    }
+
+    return (
+      <Layout location={this.props.location} title={siteTitle}>
+        <SEO
+          title={title}
+          description={description || post.excerpt}
+        />
+        <article className="blog-post-container">
+          <header className="blog-post-header-wrapper">
+            <div>
+              <h1>{title}</h1>
+              {postDate}
+            </div>
+            <Image className="blog-post-thumbnail"
+              fluid={postThumbnail.fluid}
+            />
+          </header>
+          <section>{documentToReactComponents(parsed)}</section>
+        </article>
+        <nav>
+          <ul className="blog-post-nav-wrapper">
+            <li>
+              {previous && (
+                <Link to={previous.slug} rel="prev">
+                  ← {previous.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link to={next.slug} rel="next">
+                  {next.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+        </nav>
+        <hr />
+        <Bio />
+      </Layout>
+    )
+  }
+}
+
+export default BlogPostTemplate
+
+export const pageQuery = graphql`
+  query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    contentfulPost(slug: { eq: $slug }) {
+      id
+      publicationDate
+      latestEdit
+      title
+      description
+      body {
+        raw
+      }
+      keywords
+      postThumbnail: thumbnail {
+          fluid (maxWidth: 2048) {
+            ...GatsbyContentfulFluid
+          }
+        }
+      seoThumbnail: thumbnail {
+          fluid (maxWidth: 500) {
+            ...GatsbyContentfulFluid
+          }
+        }
+    }
+  }
+`
