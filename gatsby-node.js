@@ -9,7 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allContentfulPost {
+        allContentfulPost(sort: { fields: latestEdit, order: DESC }) {
           edges {
             node {
               slug

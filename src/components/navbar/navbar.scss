@@ -37,7 +37,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .navbar-wrapper {
     grid-template-columns: 10fr 65fr 5fr;
 
@@ -48,7 +48,7 @@
     .navbar-container {
       grid-column: 2 / 3;
       grid-row: 1 / 2;
-      justify-content: space-evenly;
+      justify-content: space-around;
     }
     .toggle-container {
       grid-column: 3 / 4;

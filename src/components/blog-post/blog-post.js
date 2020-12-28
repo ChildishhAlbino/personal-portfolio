@@ -14,7 +14,6 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.contentfulPost
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-
     const {
       title,
       description,
@@ -26,7 +25,7 @@ class BlogPostTemplate extends React.Component {
     } = post
     let parsed = JSON.parse(raw)
 
-    let postDate = <p>{publicationDate}</p>
+    let postDate = <p>{formatDateToLocalTime(publicationDate)}</p>
     if (latestEdit !== publicationDate) {
       postDate = (
         <div className="blog-post-date-wrapper">
@@ -45,10 +44,17 @@ class BlogPostTemplate extends React.Component {
           <header className="blog-post-header-wrapper">
             <div>
               <h1>{title}</h1>
+              <i>{description}</i>
               {postDate}
             </div>
             <div className="blog-post-thumbnail">
-              <Image fluid={postThumbnail.fluid} />
+              <Image
+                fluid={postThumbnail.fluid}
+                imgStyle={{
+                  objectFit: "contain",
+                }}
+                className="post-thumbnail"
+              />
             </div>
           </header>
           <hr></hr>
@@ -58,14 +64,14 @@ class BlogPostTemplate extends React.Component {
           <ul className="blog-post-nav-wrapper">
             <li>
               {previous && (
-                <Link to={previous.slug} rel="prev">
+                <Link to={`/${previous.slug}`} rel="prev">
                   ← {previous.title}
                 </Link>
               )}
             </li>
             <li>
               {next && (
-                <Link to={next.slug} rel="next">
+                <Link to={`/${next.slug}`} rel="next">
                   {next.title} →
                 </Link>
               )}

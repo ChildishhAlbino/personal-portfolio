@@ -35,7 +35,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulPost(sort: { fields: publicationDate, order: ASC }) {
+    allContentfulPost(sort: { fields: latestEdit, order: DESC }) {
       edges {
         node {
           id
@@ -45,7 +45,7 @@ export const pageQuery = graphql`
           title
           description
           postThumbnail: thumbnail {
-            fluid(maxHeight: 150, toFormat: WEBP) {
+            fluid(maxWidth: 500, toFormat: WEBP) {
               ...GatsbyContentfulFluid
             }
           }

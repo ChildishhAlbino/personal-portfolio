@@ -64,7 +64,7 @@ class NavBar extends React.Component {
                   <FaSun></FaSun>
                 </div>
               }
-              offColor="#ff145a"
+              offColor="#296eb4"
               onColor="#a0a5ff"
               height={28}
               width={56}
