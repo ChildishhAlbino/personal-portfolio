@@ -1,76 +1,28 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Bio from "../components/bio/bio"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
-import Image from "gatsby-image"
+import BlogPostCard from "../components/blog-post-card/blog-post-card"
 
-import "../style/sass/index-page.scss"
+import "./index.scss"
 
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const posts = data.allContentfulPost.edges
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
         <hr />
         {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <article key={node.fields.slug} className="article-item-wrapper">
-              <section>
-                <header>
-                  <h3>
-                    <Link className="blog-post-title" to={node.fields.slug}>
-                      {title}
-                    </Link>
-                  </h3>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  />
-                </header>
-                <section>
-                  <p>
-                    {this.blogPostDate(node.frontmatter)}
-                  </p>
-                </section>
-              </section>
-              <section>
-                <Image
-                  className="post-thumbnail"
-                  fluid={node.frontmatter.thumbnail.childImageSharp.fluid}
-                  style={{
-                    width:
-                      node.frontmatter.thumbnail.childImageSharp.fluid
-                        .presentationWidth,
-                    margin: "0 auto",
-                  }}
-                />
-              </section>
-            </article>
-          )
+          console.log(node)
+          return <BlogPostCard key={node.id} post={node}></BlogPostCard>
         })}
       </Layout>
     )
-  }
-
-  blogPostDate({ latestEdit, date }) {
-    if (latestEdit) {
-      return (
-        <small>
-          {latestEdit}
-          <br />
-          <small>(Originally posted: {date})</small>
-        </small>
-      )
-    } else {
-      return <small>{date}</small>
-    }
   }
 }
 
@@ -83,28 +35,18 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { 
-      fields: [frontmatter___date], order: DESC } 
-      filter: {fileAbsolutePath: {regex: "/blog/"}}
-      limit: 10) {
+    allContentfulPost(sort: { fields: latestEdit, order: DESC }) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date
-            latestEdit
-            title
-            description
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 100) {
-                  ...GatsbyImageSharpFluid
-                  presentationWidth
-                }
-              }
+          id
+          slug
+          publicationDate
+          latestEdit
+          title
+          description
+          postThumbnail: thumbnail {
+            fluid(maxWidth: 500, toFormat: WEBP) {
+              ...GatsbyContentfulFluid
             }
           }
         }

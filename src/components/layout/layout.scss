@@ -1,171 +1,138 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
-
-:root {
-  background-color: var(--bg-colour);
-}
-// PHONE VIEW LARGE
-
-@media (max-width: 850px) {
-  .header {
-    .navbar-container {
-      grid-column: 1 / span 2;
-      grid-row: 2;
-    }
-
-    .toggle-container {
-      justify-self: center;
-      width: fit-content;
-    }
-
-    grid-template-columns: 99fr 1fr;
-  }
-
-  .layout-container {
-    width: 90vw;
-  }
-}
-
-// PHONE VIEW SMALL
-@media (max-width: 425px) {
-  .header {
-    h1 {
-      font-size: x-large;
-    }
-  }
-}
-
-// WIDE VIEW
-@media (min-width: 851px) {
-  .layout-container {
-    width: 65vw;
-  }
-
-  .header {
-    grid-template-columns: 25fr 70fr 10fr;
-  }
-}
-
-.layout-wrapper {
-  display: flex;
-  justify-content: center;
-  font-family: "Montserrat", sans-serif;
-  color: var(--text-colour);
-}
-
-.header {
-  display: grid;
-  .toggle-container {
-    justify-self: end;
-  }
-  .navbar-container {
-    justify-items: end;
-  }
-  align-items: center;
-  a {
-    color: var(--accent-colour);
-    transition: color 1s;
-  }
-  grid-gap: 1em;
-  h1 {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-}
-
-a {
-  text-decoration: none;
-}
-
-main {
-  background-color: var(--content-bg-colour);
-  padding: 1.45em;
-  color: var(--text-colour);
-  line-height: 1.8;
-}
-
-.layout-container {
-  height: 100%;
-  // this is a bad idea i think but works for now.
-  min-width: 290px;
-}
-
-footer {
-  color: var(--text-colour);
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @media (prefers-color-scheme: light) {
   body.light {
-    --clickable-default-colour: #ff668e;
-    --clickable-hover-colour: #ff145a;
+    --clickable-default-colour: #f91066;
+    --clickable-hover-colour: #ca054d;
     --bg-colour: #dddddd;
     --text-colour: #1b1b1b;
     --content-bg-colour: #eeeeee;
-    --accent-colour: #7c83ff;
+    --dark-mode-display: none;
+    --light-mode-display: block;
+    --accent-colour: #296eb4;
     background-color: var(--bg-colour);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   body.dark {
-    --clickable-default-colour: #a0a5ff;
-    --clickable-hover-colour: #7c83ff;
+    --clickable-default-colour: #ff668e;
+    --clickable-hover-colour: #ff145a;
     --bg-colour: #1b1b1b;
     --text-colour: white;
     --content-bg-colour: #303030;
     --accent-colour: #a0a5ff;
+    --light-mode-display: none;
+    --dark-mode-display: block;
     background-color: var(--bg-colour);
+    color: var(--text-colour);
   }
 }
 
 body.light {
-  --clickable-default-colour: #ff668e;
-  --clickable-hover-colour: #ff145a;
+  --clickable-default-colour: #f91066;
+  --clickable-hover-colour: #ca054d;
   --bg-colour: #dddddd;
   --text-colour: #1b1b1b;
   --content-bg-colour: #eeeeee;
   --dark-mode-display: none;
-  --accent-colour: #7c83ff;
+  --light-mode-display: block;
+  --accent-colour: #296eb4;
   background-color: var(--bg-colour);
 }
 
 body.dark {
-  --clickable-default-colour: #a0a5ff;
-  --clickable-hover-colour: #7c83ff;
+  --clickable-default-colour: #ff668e;
+  --clickable-hover-colour: #ff145a;
   --bg-colour: #1b1b1b;
   --text-colour: white;
   --content-bg-colour: #303030;
   --light-mode-display: none;
+  --dark-mode-display: block;
   --accent-colour: #a0a5ff;
   background-color: var(--bg-colour);
 }
 
-body {
-  --link-default-colour: #ff668e;
-  --link-hover-colour: #ff145a;
-  margin: 0;
-  transition: background-color 1s;
-  main {
-    transition: background-color 1s, color 1s;
+html {
+  box-sizing: border-box;
+  min-width: 320px;
+  body {
+    margin: 0;
+    color: var(--text-colour);
+    a {
+      color: var(--clickable-default-colour);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--clickable-hover-colour);
+      outline: none;
+    }
   }
-  footer {
-    transition: color 1s;
+  font-family: "Montserrat", sans-serif;
+  h1 {
+    font-size: 1.6em;
   }
-  /* Hide scrollbar for IE and Edge */
-  -ms-overflow-style: none;
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  h4 {
+    font-size: 1.3em;
+  }
+
+  h5 {
+    font-size: 1.2em;
+  }
+
+  h6 {
+    font-size: 1.1em;
+  }
+
+  p,
+  a,
+  b {
+    font-size: 1em;
+  }
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-  display: none;
-}
-
-.toggle-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.layout-wrapper {
   width: 100%;
-  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  justify-items: center;
+}
+
+.layout-container {
+  width: 90%;
+}
+
+@media (min-width: 768px) {
+  .layout-container {
+    width: 65%;
+  }
+}
+
+main {
+  // min-height: 40vh;
+  background-color: var(--content-bg-colour);
+  padding: 0.5em 1em 1em;
+  margin: 0;
+}
+
+header {
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 .dark-mode-exclusive {
@@ -174,98 +141,4 @@ body::-webkit-scrollbar {
 
 .light-mode-exclusive {
   display: var(--light-mode-display);
-}
-
-html {
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-a {
-  transition: color 1s;
-  color: var(--link-default-colour);
-}
-
-.header-title:hover {
-  color: var(--accent-colour);
-}
-
-a:hover {
-  color: var(--link-hover-colour);
-}
-
-@media print {
-  .header,
-  .page-footer,
-  .job-image,
-  .page-header {
-    display: none;
-  }
-
-  hr {
-    height: 2px;
-    color: black;
-    border-width: 1px;
-  }
-
-  * {
-    background-color: white;
-    color: black;
-    text-align: left;
-  }
-
-  body {
-    margin: 0em;
-    padding: 0em;
-  }
-
-  .print-only {
-    display: block;
-    word-break: break-word;
-  }
-
-  main {
-    margin: 0em;
-    padding: 0em;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 9fr;
-    grid-auto-rows: minmax(10px, auto);
-    column-gap: 2rem;
-  }
-
-  footer {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    border-right: 1px solid black;
-    padding-right: 1em;
-    font-size: 1rem;
-  }
-
-  .job-container {
-    height: 100%;
-    width: 100%;
-    padding: 0em;
-    margin: 0em;
-    grid-column: 2;
-    font-size: 0.8rem;
-  }
-
-  .not-print {
-    display: none;
-  }
-
-  .bio-gatsby-image {
-    margin: 0em;
-  }
-}
-
-@media not print {
-  .print-only {
-    display: none;
-  }
 }

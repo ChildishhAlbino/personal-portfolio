@@ -57,6 +57,7 @@ node_modules/
 # lock files
 yarn.lock
 package-lock.json
+.env
 
 # starters are special; we want to persist the lock files
 !starters/*/package-lock.json

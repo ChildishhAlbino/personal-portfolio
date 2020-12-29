@@ -2,127 +2,71 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
-import Image from "gatsby-image"
 import Bio from "../components/bio/bio"
-import { FiPrinter } from 'react-icons/fi'
-import '../style/sass/work-page.scss'
+import WorkCard from "../components/work-card/work-card"
+
+import "./work.scss"
 
 class WorkPage extends React.Component {
-    render() {
-        const { data } = this.props
-        const siteTitle = data.site.siteMetadata.title
-        const jobs = data.allMarkdownRemark.edges
-        return (
-            <Layout location={this.props.location} title={siteTitle}>
-                <SEO title="Work" />
-                <div className="page-header">
-                    <div className="page-header-container">
-                        <h1>Work History</h1>
-                        {/* <div title="Click to print my quick resume." className="printer-container" onClick={() => {
-                            window.print()
-                        }}>
-                            <FiPrinter className="printer"></FiPrinter>
-                        </div> */}
-                    </div>
-                    <hr />
-                </div>
-                <div className="job-wrapper">
-                    {
-                        jobs.map(({ node }, index) => {
-                            const rawEndDate = node.frontmatter.endDate
-                            let endDate = "Present"
-                            if (rawEndDate && rawEndDate !== node.frontmatter.startDate) {
-                                endDate = rawEndDate
-                            }
-                            return (
-                                <div key={node.id} className="job-container">
-                                    {/* Only puts the hr if we have more than 1 item */}
-                                    {index > 0 && (
-                                        <hr></hr>
-                                    )}
-                                    <div className="position-wrapper">
-                                        <div className="position-container">
-                                            <h2>{node.frontmatter.workplace}</h2>
-                                            <p>{node.frontmatter.position}</p>
-                                            <small><i>{node.frontmatter.startDate} - {endDate}</i></small>
-                                        </div>
-                                        <Image
-                                            className="job-image light-mode-exclusive"
-                                            fluid={node.frontmatter.thumbnail_lm.childImageSharp.fluid}
-                                            style={{
-                                                width:
-                                                    node.frontmatter.thumbnail_lm.childImageSharp.fluid
-                                                        .presentationWidth
-                                            }}
-                                        />
-                                        <Image
-                                            className="job-image dark-mode-exclusive"
-                                            fluid={node.frontmatter.thumbnail_dm.childImageSharp.fluid}
-                                            style={{
-                                                width:
-                                                    node.frontmatter.thumbnail_dm.childImageSharp.fluid
-                                                        .presentationWidth
-                                            }}
-                                        />
-                                    </div>
-                                    <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: node.html,
-                                        }}
-                                    />
-                                </div>
-                            );
-                        })
-                    }
-                </div>
-                <hr className="not-print" />
-                <footer>
-                    <Bio />
-                </footer>
-            </Layout >
-        )
-    }
+  render() {
+    const { data } = this.props
+    const siteTitle = data.site.siteMetadata.title
+    const jobs = data.allContentfulJob.edges
+    return (
+      <Layout location={this.props.location} title={siteTitle}>
+        <SEO title="Work" />
+        <div className="page-header">
+          <div className="page-header-container">
+            <h1>Work History</h1>
+          </div>
+          <hr />
+        </div>
+        <div className="job-wrapper">
+          {jobs.map(({ node }, index) => {
+            return <WorkCard key={node.id} data={node} />
+          })}
+        </div>
+        <hr className="not-print" />
+        <footer>
+          <Bio />
+        </footer>
+      </Layout>
+    )
+  }
 }
 
 export default WorkPage
 
-
 export const pageQuery = graphql`
-query {
+  query {
     site {
-        siteMetadata {
+      siteMetadata {
         title
-        }
+      }
     }
-    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/work/"}}, sort: {fields: frontmatter___startDate, order: DESC}) {
-    edges {
+    allContentfulJob {
+      edges {
         node {
-            id
-            html
-            frontmatter {
-                workplace
-                position
-                startDate(formatString: "LL")
-                endDate(formatString: "LL")
-                thumbnail_dm {
-                    childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid
-                            presentationWidth
-                            }
-                        }
-                    }
-                thumbnail_lm {
-                    childImageSharp {
-                        fluid {
-                            ...GatsbyImageSharpFluid
-                            presentationWidth
-                            }
-                        }
-                    }
-                }
+          id
+          workplace
+          role
+          startDate
+          endDate
+          thumbnailDarkMode {
+            fluid(maxWidth: 2048) {
+              ...GatsbyContentfulFluid
             }
+          }
+          thumbnailLightMode {
+            fluid(maxWidth: 2048) {
+              ...GatsbyContentfulFluid
+            }
+          }
+          body {
+            raw
+          }
         }
+      }
     }
-}
+  }
 `
