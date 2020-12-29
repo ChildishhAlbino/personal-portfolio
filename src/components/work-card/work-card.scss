@@ -1,0 +1,29 @@
+.position-wrapper {
+  --job-image-max-height: 150px;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-gap: 1em;
+  .job-image {
+    display: flex;
+    justify-content: center;
+    max-height: var(--job-image-max-height);
+    div {
+      width: 100%;
+      max-height: var(--job-image-max-height);
+    }
+  }
+  padding: 0.5em;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .position-wrapper {
+    grid-template-columns: minmax(min-content, 350px) 1fr;
+    text-align: left;
+    .job-image {
+      * {
+        object-position: right center !important;
+      }
+    }
+  }
+}
