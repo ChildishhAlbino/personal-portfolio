@@ -1,5 +1,17 @@
 require("dotenv").config()
 
+// HANDLE NETLIFY ENV
+let token = process.env.CONTENTFUL_ACCESS_TOKEN
+const context = process.env.CONTEXT
+if (context && (context == "branch-deploy" || context == "deploy-preview")) {
+  let branchName = process.env.HEAD
+  console.log(branchName)
+  switch (branchName) {
+    case "develop":
+      token = process.env.CONTENTFUL_DRAFT_ACCESS_TOKEN
+  }
+}
+
 module.exports = {
   siteMetadata: {
     title: `ChildishhAlbino`,
@@ -15,15 +27,15 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `jl3v3y1i6iha`,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        accessToken: token,
       },
     },
     {
-      resolve: 'gatsby-plugin-buildtime-timezone',
+      resolve: "gatsby-plugin-buildtime-timezone",
       options: {
-        tz: 'Australia/Sydney',
-        format: 'LLLL'
-      }
+        tz: "Australia/Sydney",
+        format: "LLLL",
+      },
     },
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-sass`,
