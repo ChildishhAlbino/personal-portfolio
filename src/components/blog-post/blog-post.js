@@ -6,6 +6,7 @@ import Layout from "../layout/layout"
 import SEO from "../seo/seo"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { formatDateToLocalTime } from "../../utils/date-utils"
+import { BLOCKS } from "@contentful/rich-text-types"
 
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa"
 
@@ -23,7 +24,7 @@ class BlogPostTemplate extends React.Component {
       publicationDate,
       latestEdit,
       postThumbnail,
-      body: { raw },
+      body: { raw, references },
       keywords,
     } = post
     let parsed = JSON.parse(raw)
@@ -61,7 +62,26 @@ class BlogPostTemplate extends React.Component {
             </div>
           </header>
           <hr></hr>
-          <section>{documentToReactComponents(parsed)}</section>
+          <section>
+            {documentToReactComponents(parsed, {
+              renderNode: {
+                [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+                  let asset = references.find(asset => {
+                    return asset.contentful_id === node.data.target.sys.id
+                  })
+                  return (
+                    <Image
+                      fluid={asset.fluid}
+                      imgStyle={{
+                        objectFit: "contain",
+                      }}
+                      className="embedded-image"
+                    />
+                  )
+                },
+              },
+            })}
+          </section>
         </article>
         <nav>
           <ul className="blog-post-nav-wrapper">
@@ -109,6 +129,12 @@ export const pageQuery = graphql`
       description
       body {
         raw
+        references {
+          fluid(maxHeight: 500) {
+            ...GatsbyContentfulFluid
+          }
+          contentful_id
+        }
       }
       keywords
       postThumbnail: thumbnail {
