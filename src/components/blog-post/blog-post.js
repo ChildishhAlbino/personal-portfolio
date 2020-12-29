@@ -69,7 +69,7 @@ class BlogPostTemplate extends React.Component {
               {previous && (
                 <Link to={`/${previous.slug}`} rel="prev">
                   <p>
-                    <FaArrowAltCircleLeft></FaArrowAltCircleLeft>
+                    <FaArrowAltCircleLeft /> {previous.title}
                   </p>
                 </Link>
               )}
@@ -78,7 +78,7 @@ class BlogPostTemplate extends React.Component {
               {next && (
                 <Link to={`/${next.slug}`} rel="next">
                   <p>
-                    <FaArrowAltCircleRight></FaArrowAltCircleRight>
+                    {next.title} <FaArrowAltCircleRight />
                   </p>
                 </Link>
               )}

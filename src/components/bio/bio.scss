@@ -4,9 +4,6 @@
   grid-template-rows: 150px min-content;
   justify-items: center;
   text-align: center;
-  .bio-gatsby-image {
-    border-radius: 100%;
-  }
 }
 
 @media (min-width: 768px) {
@@ -19,7 +16,6 @@
     justify-items: start;
     .bio-gatsby-image {
       max-height: 150px;
-      border-radius: 100%;
     }
   }
 }
