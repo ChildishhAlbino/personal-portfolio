@@ -10,9 +10,7 @@ class Layout extends React.Component {
       <div className="layout-wrapper">
         <div className="layout-container">
           <header className="header">
-
             <Navbar title={title}></Navbar>
-
           </header>
           <main className="content-container">{children}</main>
           <PageFooter></PageFooter>

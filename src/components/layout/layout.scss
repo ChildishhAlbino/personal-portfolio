@@ -49,6 +49,7 @@ body.dark {
 }
 
 html {
+  box-sizing: border-box;
   min-width: 320px;
   body {
     margin: 0;
@@ -125,4 +126,9 @@ header {
 
 .gatsby-image-wrapper {
   width: 150px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }

@@ -7,6 +7,8 @@ import SEO from "../seo/seo"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { formatDateToLocalTime } from "../../utils/date-utils"
 
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa"
+
 import "./blog-post.scss"
 
 class BlogPostTemplate extends React.Component {
@@ -14,6 +16,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.contentfulPost
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
+    console.log(previous)
     const {
       title,
       description,
@@ -65,14 +68,18 @@ class BlogPostTemplate extends React.Component {
             <li>
               {previous && (
                 <Link to={`/${previous.slug}`} rel="prev">
-                  ← {previous.title}
+                  <p>
+                    <FaArrowAltCircleLeft></FaArrowAltCircleLeft>
+                  </p>
                 </Link>
               )}
             </li>
             <li>
               {next && (
                 <Link to={`/${next.slug}`} rel="next">
-                  {next.title} →
+                  <p>
+                    <FaArrowAltCircleRight></FaArrowAltCircleRight>
+                  </p>
                 </Link>
               )}
             </li>
