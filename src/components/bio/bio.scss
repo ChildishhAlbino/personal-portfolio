@@ -4,6 +4,9 @@
   grid-template-rows: 150px min-content;
   justify-items: center;
   text-align: center;
+  .gatsby-image-wrapper {
+    width: 100%;
+  }
 }
 
 @media (min-width: 768px) {

@@ -38,7 +38,14 @@ const Bio = () => {
 
   return (
     <div className="bio-container">
-      <Image className="bio-gatsby-image" fluid={displayImage.fluid} alt="Me" />
+      <Image
+        className="bio-gatsby-image"
+        fluid={displayImage.fluid}
+        imgStyle={{
+          objectFit: "contain",
+        }}
+        alt="Me"
+      />
       <div>{documentToReactComponents(parsed)}</div>
     </div>
   )
