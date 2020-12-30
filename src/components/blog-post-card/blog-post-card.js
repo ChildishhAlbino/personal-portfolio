@@ -47,7 +47,7 @@ const BlogPostCard = ({ post }) => {
 export default BlogPostCard
 
 const blogPostDate = ({ latestEdit, publicationDate }) => {
-  if (latestEdit) {
+  if (latestEdit !== publicationDate) {
     return (
       <small>
         {formatDateToLocalTime(latestEdit)}
