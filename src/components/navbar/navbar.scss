@@ -62,7 +62,7 @@
 @media (min-width: 1024px) {
   .navbar-wrapper {
     grid-template-columns: 10fr 65fr 5fr;
-    min-height: 70px;
+    min-height: unset;
     .header-title {
       grid-column: 1 / 2;
       grid-row: 1 / 2;
