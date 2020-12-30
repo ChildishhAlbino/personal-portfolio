@@ -9,12 +9,18 @@ class NavBar extends React.Component {
     theme: null,
   }
 
+  constructor(props) {
+    super(props)
+    this.state = { ...this.props }
+  }
+
   componentDidMount() {
     this.setState({ theme: window.__theme, ...this.props })
     window.__onThemeChange = () => {
       this.setState({ theme: window.__theme })
     }
   }
+
   render() {
     return (
       <div className="navbar-wrapper">
@@ -73,12 +79,16 @@ class NavBar extends React.Component {
               role="dark mode toggle button"
             />
           ) : (
-            <div style={{ height: "28px" }} />
+            <div className="toggle-container" />
           )}
         </div>
       </div>
     )
   }
+}
+
+NavBar.defaultProps = {
+  title: "ChildishhAlbino",
 }
 
 export default NavBar
