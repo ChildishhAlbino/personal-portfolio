@@ -5,8 +5,6 @@ import SEO from "../components/seo/seo"
 import Bio from "../components/bio/bio"
 import WorkCard from "../components/work-card/work-card"
 
-import "./work.scss"
-
 class WorkPage extends React.Component {
   render() {
     const { data } = this.props

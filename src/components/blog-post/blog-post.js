@@ -17,7 +17,6 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.contentfulPost
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-    console.log(previous)
     const {
       title,
       description,

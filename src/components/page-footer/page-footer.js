@@ -1,5 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
+import { formatDateToLocalTime } from "../../utils/date-utils"
 
 import "./page-footer.scss"
 
@@ -16,7 +17,8 @@ const PageFooter = () => {
       render={data => (
         <footer className="page-footer">
           <small>
-            Last built: <i>{data.site.buildTimeZone}</i> with{" "}
+            Last built: <i>{formatDateToLocalTime(data.site.buildTimeZone)}</i>{" "}
+            with{" "}
             <b>
               <a href="https://www.gatsbyjs.org">Gatsby</a>
             </b>

@@ -5,9 +5,7 @@ import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
 import BlogPostCard from "../components/blog-post-card/blog-post-card"
 
-import "./index.scss"
-
-class BlogIndex extends React.Component {
+class IndexPage extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
@@ -18,7 +16,6 @@ class BlogIndex extends React.Component {
         <Bio />
         <hr />
         {posts.map(({ node }) => {
-          console.log(node)
           return <BlogPostCard key={node.id} post={node}></BlogPostCard>
         })}
       </Layout>
@@ -26,7 +23,7 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default IndexPage
 
 export const pageQuery = graphql`
   query {

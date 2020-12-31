@@ -35,7 +35,6 @@ module.exports = {
       resolve: "gatsby-plugin-buildtime-timezone",
       options: {
         tz: "Australia/Sydney",
-        format: "LLLL",
       },
     },
     `gatsby-plugin-dark-mode`,
