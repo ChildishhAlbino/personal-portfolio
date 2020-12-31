@@ -150,7 +150,7 @@ export const pageQuery = graphql`
         }
       }
       seoThumbnail: thumbnail {
-        fluid(maxWidth: 500, toFormat: WEBP) {
+        fluid(maxWidth: 1000, toFormat: WEBP) {
           ...GatsbyContentfulFluid
         }
       }

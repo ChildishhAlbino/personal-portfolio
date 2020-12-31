@@ -17,7 +17,7 @@ function SEO({ description, lang, meta, title, imageUrl, path, keywords }) {
         }
         seoIcon: contentfulAsset(title: { eq: "SEO_ICON" }) {
           contentful_id
-          fluid(maxWidth: 500, toFormat: WEBP) {
+          fluid(maxWidth: 1000, toFormat: WEBP) {
             src
           }
         }
