@@ -13,7 +13,6 @@ const BlogPostCard = ({ post }) => {
     publicationDate,
     latestEdit,
     postThumbnail,
-    keywords,
   } = post
   const pageTitle = title || slug
   return (

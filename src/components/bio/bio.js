@@ -30,7 +30,6 @@ const Bio = () => {
   `)
 
   const {
-    title,
     displayImage,
     body: { raw },
   } = data.contentfulBlurb
