@@ -129,7 +129,7 @@ export const pageQuery = graphql`
       body {
         raw
         references {
-          fluid(maxHeight: 500) {
+          fluid(maxHeight: 50, toFormat: WEBP) {
             ...GatsbyContentfulFluid
           }
           contentful_id
@@ -137,12 +137,12 @@ export const pageQuery = graphql`
       }
       keywords
       postThumbnail: thumbnail {
-        fluid(maxWidth: 2048) {
+        fluid(maxWidth: 2048, toFormat: WEBP) {
           ...GatsbyContentfulFluid
         }
       }
       seoThumbnail: thumbnail {
-        fluid(maxWidth: 500) {
+        fluid(maxWidth: 500, toFormat: WEBP) {
           ...GatsbyContentfulFluid
         }
       }

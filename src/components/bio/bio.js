@@ -18,7 +18,7 @@ const Bio = () => {
       contentfulBlurb {
         title
         displayImage {
-          fluid(maxWidth: 150, quality: 100) {
+          fluid(maxWidth: 150, quality: 100, toFormat: WEBP) {
             ...GatsbyContentfulFluid
           }
         }

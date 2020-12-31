@@ -51,12 +51,12 @@ export const pageQuery = graphql`
           startDate
           endDate
           thumbnailDarkMode {
-            fluid(maxWidth: 2048) {
+            fluid(maxWidth: 2048, toFormat: WEBP) {
               ...GatsbyContentfulFluid
             }
           }
           thumbnailLightMode {
-            fluid(maxWidth: 2048) {
+            fluid(maxWidth: 2048, toFormat: WEBP) {
               ...GatsbyContentfulFluid
             }
           }
