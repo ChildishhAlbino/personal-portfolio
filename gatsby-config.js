@@ -1,5 +1,16 @@
 require("dotenv").config()
 
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = "https://www.childishhalbino.com",
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV,
+} = process.env
+const isNetlifyProduction = NETLIFY_ENV === "production"
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
+
+console.log(siteUrl)
+
 // HANDLE NETLIFY ENV VARS FOR DRAFT CONTENT
 let options = {
   spaceId: `jl3v3y1i6iha`,
@@ -21,7 +32,7 @@ module.exports = {
     title: `ChildishhAlbino`,
     author: `Connor Williams`,
     description: `This is a blog for my ideas and a portfolio for the ones I make!`,
-    siteUrl: `https://www.childishhalbino.com`,
+    siteUrl: siteUrl,
     social: {
       twitter: `childishhalbino`,
     },

@@ -23,10 +23,12 @@ class BlogPostTemplate extends React.Component {
       publicationDate,
       latestEdit,
       postThumbnail,
+      seoThumbnail,
       body: { raw, references },
       keywords,
     } = post
     let parsed = JSON.parse(raw)
+    let seoImageUrl = seoThumbnail ? `http:${seoThumbnail.fluid.src}` : null
 
     let postDate = <p>{formatDateToLocalTime(publicationDate)}</p>
     if (latestEdit !== publicationDate) {
@@ -42,7 +44,13 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={title} description={description || post.excerpt} />
+        <SEO
+          title={title}
+          description={description}
+          keywords={keywords}
+          imageUrl={seoImageUrl}
+          path={this.props.path}
+        />
         <article className="blog-post-container">
           <header className="blog-post-header-wrapper">
             <div>
@@ -129,7 +137,7 @@ export const pageQuery = graphql`
       body {
         raw
         references {
-          fluid(maxHeight: 50, toFormat: WEBP) {
+          fluid(maxHeight: 500, toFormat: WEBP) {
             ...GatsbyContentfulFluid
           }
           contentful_id
