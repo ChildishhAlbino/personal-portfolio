@@ -5,13 +5,9 @@ import { FaMoon, FaSun } from "react-icons/fa"
 import "./navbar.scss"
 
 class NavBar extends React.Component {
-  state = {
-    theme: null,
-  }
-
   constructor(props) {
     super(props)
-    this.state = { ...this.props }
+    this.state = { theme: null, ...this.props }
   }
 
   componentDidMount() {
