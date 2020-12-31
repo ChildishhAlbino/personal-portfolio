@@ -18,7 +18,7 @@ const Bio = () => {
       contentfulBlurb {
         title
         displayImage {
-          fluid {
+          fluid(maxWidth: 150, quality: 100) {
             ...GatsbyContentfulFluid
           }
         }
