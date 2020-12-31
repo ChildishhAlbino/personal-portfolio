@@ -1,28 +1,21 @@
 require("dotenv").config()
+const config = require("./config.json")
 
-const {
-  NODE_ENV,
-  URL: NETLIFY_SITE_URL = "https://www.childishhalbino.com",
-  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
-  CONTEXT: NETLIFY_ENV = NODE_ENV,
-} = process.env
-const isNetlifyProduction = NETLIFY_ENV === "production"
-const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
-console.log(NETLIFY_SITE_URL)
-console.log(siteUrl)
+const { NODE_ENV, CONTEXT, HEAD } = process.env
 
+let siteUrl = config.productionUrl
 // HANDLE NETLIFY ENV VARS FOR DRAFT CONTENT
 let options = {
   spaceId: `jl3v3y1i6iha`,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 }
-const context = process.env.CONTEXT
-if (context && (context == "branch-deploy" || context == "deploy-preview")) {
-  let branchName = process.env.HEAD
-  switch (branchName) {
+if (CONTEXT && (CONTEXT == "branch-deploy" || CONTEXT == "deploy-preview")) {
+  // git branch name
+  switch (HEAD) {
     case "develop":
       options.accessToken = process.env.CONTENTFUL_DRAFT_ACCESS_TOKEN
       options.host = `preview.contentful.com`
+      siteUrl = config.previewUrl
   }
 }
 //
@@ -50,6 +43,27 @@ module.exports = {
     },
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-sass`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        resolveEnv: () => (CONTEXT ? CONTEXT : NODE_ENV),
+        env: {
+          production: {
+            policy: [{ userAgent: "*" }],
+          },
+          "branch-deploy": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+            sitemap: null,
+            host: null,
+          },
+          "deploy-preview": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+            sitemap: null,
+            host: null,
+          },
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
