@@ -1,6 +1,7 @@
 .blog-post-container {
+  overflow-wrap: anywhere;
   .embedded-image {
-    max-height: 500px;
+    margin: 0 auto;
     outline: 1px solid var(--text-colour);
   }
 }

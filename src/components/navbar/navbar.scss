@@ -1,4 +1,9 @@
 .navbar-wrapper {
+  h1 {
+    a {
+      font-size: 25px;
+    }
+  }
   --navbar-item-colour: var(--accent-colour);
   display: grid;
   grid-template-columns: 95fr 5fr;

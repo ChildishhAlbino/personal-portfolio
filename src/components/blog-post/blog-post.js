@@ -7,6 +7,7 @@ import SEO from "../seo/seo"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { formatDateToLocalTime } from "../../utils/date-utils"
 import { BLOCKS } from "@contentful/rich-text-types"
+import ImageWrapper from "../image-wrapper/image-wrapper"
 
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa"
 
@@ -53,7 +54,7 @@ class BlogPostTemplate extends React.Component {
         />
         <article className="blog-post-container">
           <header className="blog-post-header-wrapper">
-            <div>
+            <div className="blog-post-title">
               <h1>{title}</h1>
               <i>{description}</i>
               {postDate}
@@ -77,13 +78,10 @@ class BlogPostTemplate extends React.Component {
                     return asset.contentful_id === node.data.target.sys.id
                   })
                   return (
-                    <Image
-                      fluid={asset.fluid}
-                      imgStyle={{
-                        objectFit: "contain",
-                      }}
+                    <ImageWrapper
                       className="embedded-image"
-                    />
+                      image={asset}
+                    ></ImageWrapper>
                   )
                 },
               },
@@ -137,7 +135,7 @@ export const pageQuery = graphql`
       body {
         raw
         references {
-          fluid(maxHeight: 500, toFormat: WEBP) {
+          fluid(maxHeight: 500, toFormat: WEBP, quality: 100) {
             ...GatsbyContentfulFluid
           }
           contentful_id

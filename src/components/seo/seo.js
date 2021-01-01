@@ -90,7 +90,7 @@ function SEO({ description, lang, meta, title, imageUrl, path, keywords }) {
         {
           name: `keywords`,
           property: `keywords`,
-          content: keywords.join(", "),
+          content: keywords?.join(", "),
         },
       ].concat(meta)}
     />
