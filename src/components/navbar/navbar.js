@@ -73,6 +73,7 @@ class NavBar extends React.Component {
               handleDiameter={20}
               aria-label="dark-mode-toggle"
               role="dark mode toggle button"
+              activeBoxShadow={"0 0 2px 4px var(--clickable-hover-colour)"}
             />
           ) : (
             <div className="toggle-container" />
