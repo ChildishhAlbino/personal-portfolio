@@ -83,5 +83,11 @@ module.exports = {
         sitemapSize: 5000,
       },
     },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: siteUrl,
+      },
+    },
   ],
 }
