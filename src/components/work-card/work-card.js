@@ -1,7 +1,7 @@
 import React from "react"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { formatDateToLocalTime } from "../../utils/date-utils"
-import Image from "gatsby-image"
+import ImageWrapper from "../image-wrapper/image-wrapper"
 
 import "./work-card.scss"
 
@@ -34,22 +34,14 @@ const WorkCard = ({
             </i>
           </small>
         </div>
-        <div className="job-image">
-          <Image
-            className="light-mode-exclusive"
-            fluid={thumbnailLightMode.fluid}
-            imgStyle={{
-              objectFit: "contain",
-            }}
-          />
-          <Image
-            className="dark-mode-exclusive"
-            fluid={thumbnailDarkMode.fluid}
-            imgStyle={{
-              objectFit: "contain",
-            }}
-          />
-        </div>
+        <ImageWrapper
+          className="light-mode-exclusive job-image"
+          image={thumbnailLightMode}
+        />
+        <ImageWrapper
+          className="dark-mode-exclusive job-image"
+          image={thumbnailDarkMode}
+        />
       </div>
       <div>{documentToReactComponents(parsed)}</div>
     </div>

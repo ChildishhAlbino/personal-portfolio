@@ -1,29 +1,30 @@
 .position-wrapper {
-  --job-image-max-height: 150px;
+  width: 100%;
+  .job-image {
+    width: 100%;
+  }
   display: grid;
   grid-template-rows: min-content 1fr;
-  grid-gap: 1em;
-  .job-image {
-    display: flex;
-    justify-content: center;
-    max-height: var(--job-image-max-height);
-    div {
-      width: 100%;
-      max-height: var(--job-image-max-height);
-    }
-  }
+  grid-template-columns: 100%;
   padding: 0.5em;
+  row-gap: 1em;
   text-align: center;
+  justify-items: center;
+  // this is how you fix the images getting cropped
+  align-items: end;
 }
 
 @media (min-width: 1024px) {
   .position-wrapper {
+    column-gap: 1em;
+    row-gap: unset;
     grid-template-columns: minmax(min-content, 350px) 1fr;
     text-align: left;
     .job-image {
-      * {
-        object-position: right center !important;
-      }
+      justify-self: end;
+    }
+    .position-container {
+      justify-self: start;
     }
   }
 }
