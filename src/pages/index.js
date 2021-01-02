@@ -42,7 +42,7 @@ export const pageQuery = graphql`
           title
           description
           postThumbnail: thumbnail {
-            fluid(maxWidth: 500, toFormat: WEBP) {
+            fluid(maxHeight: 200, toFormat: WEBP, quality: 100) {
               ...GatsbyContentfulFluid
             }
           }

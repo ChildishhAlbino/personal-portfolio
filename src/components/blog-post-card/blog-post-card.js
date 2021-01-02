@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import Image from "gatsby-image"
 import { formatDateToLocalTime } from "../../utils/date-utils"
+import ImageWrapper from "../image-wrapper/image-wrapper"
 
 import "./blog-post-card.scss"
 
@@ -17,12 +17,10 @@ const BlogPostCard = ({ post }) => {
   const pageTitle = title || slug
   return (
     <div className="blog-post-card-wrapper">
-      <div>
+      <div className="blog-post-title">
         <div>
           <h3>
-            <Link className="blog-post-title" to={slug}>
-              {pageTitle}
-            </Link>
+            <Link to={slug}>{pageTitle}</Link>
           </h3>
           <p>{description}</p>
         </div>
@@ -30,14 +28,7 @@ const BlogPostCard = ({ post }) => {
           <p>{blogPostDate({ latestEdit, publicationDate })}</p>
         </div>
       </div>
-      <div className="blog-post-card-thumbnail">
-        <Image
-          className="post-thumbnail"
-          fluid={postThumbnail?.fluid}
-          imgStyle={{ objectFit: "contain", objectPosition: "right center" }}
-          objectPosition="right center"
-        />
-      </div>
+      <ImageWrapper className="post-thumbnail" image={postThumbnail} />
     </div>
   )
 }
