@@ -59,15 +59,9 @@ class BlogPostTemplate extends React.Component {
               <i>{description}</i>
               {postDate}
             </div>
-            <div className="blog-post-thumbnail">
-              <Image
-                fluid={postThumbnail.fluid}
-                imgStyle={{
-                  objectFit: "contain",
-                }}
-                className="post-thumbnail"
-              />
-            </div>
+            {/* <div className="blog-post-thumbnail"> */}
+            <ImageWrapper image={postThumbnail} className="post-thumbnail" />
+            {/* </div> */}
           </header>
           <hr></hr>
           <section>
@@ -143,7 +137,7 @@ export const pageQuery = graphql`
       }
       keywords
       postThumbnail: thumbnail {
-        fluid(maxWidth: 2048, toFormat: WEBP) {
+        fluid(maxHeight: 350, toFormat: WEBP, quality: 100) {
           ...GatsbyContentfulFluid
         }
       }
