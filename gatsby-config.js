@@ -41,6 +41,7 @@ module.exports = {
         tz: "Australia/Sydney",
       },
     },
+    `gatsby-plugin-force-trailing-slashes`,
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-sass`,
     {
