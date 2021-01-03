@@ -63,7 +63,7 @@ class BlogPostTemplate extends React.Component {
             {/* </div> */}
           </header>
           <hr></hr>
-          <section>
+          <section className="blog-post-content">
             {documentToReactComponents(parsed, {
               renderNode: {
                 [BLOCKS.EMBEDDED_ASSET]: (node, children) => {

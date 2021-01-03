@@ -15,12 +15,19 @@
 @media (min-width: 1024px) {
   .blog-post-card-wrapper {
     text-align: left;
-    grid-template-columns: 1fr minmax(min-content, 350px);
+    grid-template-columns: minmax(min-content, 350px) 1fr;
     align-items: center;
     .post-thumbnail {
       width: 100%;
       display: unset;
       justify-self: end;
     }
+  }
+}
+
+@media (min-width: 1280px) {
+  .blog-post-card-wrapper {
+    text-align: left;
+    grid-template-columns: minmax(min-content, 500px) 1fr;
   }
 }
