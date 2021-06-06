@@ -4,7 +4,7 @@
   grid-template-rows: 150px min-content;
   justify-items: center;
   text-align: center;
-  .gatsby-image-wrapper {
+  .bio-gatsby-image {
     width: 100%;
   }
 }
@@ -17,8 +17,5 @@
     grid-gap: 1em;
     align-items: center;
     justify-items: start;
-    .bio-gatsby-image {
-      max-height: 150px;
-    }
   }
 }

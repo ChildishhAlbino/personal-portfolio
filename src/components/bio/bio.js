@@ -7,7 +7,7 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import ImageWrapper from "../image-wrapper/image-wrapper"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import "./bio.scss"
@@ -37,12 +37,9 @@ const Bio = () => {
 
   return (
     <div className="bio-container">
-      <Image
+      <ImageWrapper
         className="bio-gatsby-image"
-        fluid={displayImage.fluid}
-        imgStyle={{
-          objectFit: "contain",
-        }}
+        image={displayImage}
         alt="Me"
       />
       <div>{documentToReactComponents(parsed)}</div>
