@@ -35,10 +35,33 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: options,
     },
+    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-plugin-buildtime-timezone",
       options: {
         tz: "Australia/Sydney",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 590,
+              linkImagesToOriginal: false,
+              showCaptions: true,
+              withWebp: true
+            },
+          },
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              classPrefix: 'language-',
+            },
+          },
+        ],
       },
     },
     `gatsby-plugin-force-trailing-slashes`,
