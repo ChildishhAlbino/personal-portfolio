@@ -138,6 +138,14 @@ header {
 *:after {
   box-sizing: inherit;
 }
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}
 
 .dark-mode-exclusive {
   display: var(--dark-mode-display);
