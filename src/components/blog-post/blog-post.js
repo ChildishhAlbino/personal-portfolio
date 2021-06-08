@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Bio from "../bio/bio"
+import { Bio } from "../bio/bio"
 import Layout from "../layout/layout"
 import SEO from "../seo/seo"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"

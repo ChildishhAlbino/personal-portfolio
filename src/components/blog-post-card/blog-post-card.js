@@ -15,12 +15,13 @@ const BlogPostCard = ({ post }) => {
     postThumbnail,
   } = post
   const pageTitle = title || slug
+  console.log("slug", slug)
   return (
     <div className="blog-post-card-wrapper">
       <div className="blog-post-title">
         <div>
           <h3>
-            <Link to={slug}>{pageTitle}</Link>
+            <Link to={`/${slug}`}>{pageTitle}</Link>
           </h3>
           <p>{description}</p>
         </div>

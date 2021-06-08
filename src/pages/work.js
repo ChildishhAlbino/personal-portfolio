@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
-import Bio from "../components/bio/bio"
+import { Bio } from "../components/bio/bio"
 import WorkCard from "../components/work-card/work-card"
 
 class WorkPage extends React.Component {

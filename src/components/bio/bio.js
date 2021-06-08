@@ -47,4 +47,6 @@ const Bio = () => {
   )
 }
 
-export default Bio
+export { Bio }
+
+export default { Bio }

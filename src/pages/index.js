@@ -1,23 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Bio from "../components/bio/bio"
+import { Bio } from "../components/bio/bio"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
-import BlogPostCard from "../components/blog-post-card/blog-post-card"
+import { BlogPostList } from "../components/blog-post-list/blog-post-list"
+
 
 class IndexPage extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allContentfulPost.edges
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
         <hr />
-        {posts.map(({ node }) => {
-          return <BlogPostCard key={node.id} post={node}></BlogPostCard>
-        })}
+        <BlogPostList></BlogPostList>
       </Layout>
     )
   }
@@ -30,23 +28,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-      }
-    }
-    allContentfulPost(sort: { fields: latestEdit, order: DESC }) {
-      edges {
-        node {
-          id
-          slug
-          publicationDate
-          latestEdit
-          title
-          description
-          postThumbnail: thumbnail {
-            fluid(maxHeight: 200, toFormat: WEBP, quality: 100) {
-              ...GatsbyContentfulFluid
-            }
-          }
-        }
       }
     }
   }
