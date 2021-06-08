@@ -34,7 +34,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  console.log(pages)
   if (result.errors) {
     throw result.errors
   }
@@ -67,8 +66,9 @@ function createPageFromContentfulPosts(posts, createPage, blogPostTemplate) {
 function createPageFromContentfulPages(pages, createPage, template) {
   pages.forEach(({ node }, index) => {
     const { slug, title } = node
+    const actualSlug = slug === "index" ? "" : slug
     createPage({
-      path: `/${slug}`,
+      path: `/${actualSlug}`,
       component: template,
       context: {
         title

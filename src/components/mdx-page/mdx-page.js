@@ -18,13 +18,9 @@ class MdxPageTemplate extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={contentfulPage.title} />
-        <div className="markdown-content">
-          <MDXProvider components={Components} >
-            <MDXRenderer>{contentfulPage.mdx.childMdx.body}</MDXRenderer>
-          </MDXProvider>
-        </div>
-        <hr />
-        <Bio />
+        <MDXProvider components={Components} >
+          <MDXRenderer>{contentfulPage.mdx.childMdx.body}</MDXRenderer>
+        </MDXProvider>
       </Layout>
     )
   }

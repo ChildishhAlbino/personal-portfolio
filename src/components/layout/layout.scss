@@ -38,6 +38,8 @@ body.light {
   --dark-mode-display: none;
   --light-mode-display: block;
   --accent-colour: #296eb4;
+  --code-string-colour: #5c9975;
+  --code-comment-color: #3489df;
   background-color: var(--bg-colour);
 }
 
@@ -50,6 +52,8 @@ body.dark {
   --light-mode-display: none;
   --dark-mode-display: block;
   --accent-colour: #a0a5ff;
+  --code-string-colour: #73ab8a;
+  --code-comment-color: #ffa4fa;
   background-color: var(--bg-colour);
 }
 
