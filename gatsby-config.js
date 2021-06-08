@@ -1,9 +1,8 @@
 require("dotenv").config()
-const config = require("./config.json")
 
-const { NODE_ENV, CONTEXT, HEAD } = process.env
+const { NODE_ENV, CONTEXT, HEAD, PRODUCTION_URL, PREVIEW_SITE_URL } = process.env
 
-let siteUrl = config.productionUrl
+let siteUrl = PRODUCTION_URL
 // HANDLE NETLIFY ENV VARS FOR DRAFT CONTENT
 let options = {
   spaceId: `jl3v3y1i6iha`,
@@ -15,7 +14,7 @@ if (CONTEXT && (CONTEXT == "branch-deploy" || CONTEXT == "deploy-preview")) {
     case "develop":
       options.accessToken = process.env.CONTENTFUL_DRAFT_ACCESS_TOKEN
       options.host = `preview.contentful.com`
-      siteUrl = config.previewUrl
+      siteUrl = PREVIEW_SITE_URL
   }
 }
 //
@@ -46,13 +45,15 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
+          "gatsby-remark-unwrap-images",
           {
             resolve: `gatsby-remark-images-contentful`,
             options: {
-              maxWidth: 590,
+              maxWidth: 700,
               linkImagesToOriginal: false,
               showCaptions: true,
-              withWebp: true
+              withWebp: true,
+              backgroundColor: null
             },
           },
           {
@@ -113,5 +114,6 @@ module.exports = {
         siteUrl: siteUrl,
       },
     },
+    `gatsby-plugin-styled-components`
   ],
 }

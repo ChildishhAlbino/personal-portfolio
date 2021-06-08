@@ -1,5 +1,5 @@
 .page-footer {
-  padding: 0.2em 0em 0.5em;
+  padding: 0.2em 1em 0.5em;
   display: grid;
   grid-template-columns: 100%;
   text-align: center;
@@ -9,7 +9,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     // for the lines
     p {
       color: var(--clickable-default-colour);
@@ -22,10 +22,8 @@
 
 @media (min-width: 768px) {
   .page-footer {
+    padding: 0.2em 0em 0.5em;
     text-align: left;
     grid-template-columns: 2fr 1fr;
-    .link-wrapper {
-      justify-content: space-between;
-    }
   }
 }

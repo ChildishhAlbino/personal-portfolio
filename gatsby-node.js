@@ -66,7 +66,7 @@ function createPageFromContentfulPosts(posts, createPage, blogPostTemplate) {
 function createPageFromContentfulPages(pages, createPage, template) {
   pages.forEach(({ node }, index) => {
     const { slug, title } = node
-    const actualSlug = slug === "index" ? "" : slug
+    const actualSlug = slug === "index" ? "" : `${slug}/`
     createPage({
       path: `/${actualSlug}`,
       component: template,

@@ -13,12 +13,8 @@ class WorkPage extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Work" />
-        <div className="page-header">
-          <div className="page-header-container">
-            <h1>Work History</h1>
-          </div>
-          <hr />
-        </div>
+        <h1>Work History</h1>
+        <hr />
         <div className="job-wrapper">
           {jobs.map(({ node }, index) => {
             return <WorkCard key={node.id} data={node} />

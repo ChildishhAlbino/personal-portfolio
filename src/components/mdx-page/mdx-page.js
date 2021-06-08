@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Bio } from "../bio/bio"
 import Layout from "../layout/layout"
 import SEO from "../seo/seo"
 
