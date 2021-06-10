@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../layout/layout"
 import SEO from "../seo/seo"
-
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 
@@ -14,11 +13,15 @@ class MdxPageTemplate extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const { contentfulPage } = data
+    const { title, mdx, styling } = contentfulPage
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={contentfulPage.title} />
+        <SEO title={title} />
         <MDXProvider components={Components} >
-          <MDXRenderer>{contentfulPage.mdx.childMdx.body}</MDXRenderer>
+          {styling.styling !== "NULL" && (<style>
+            {styling.styling}
+          </style>)}
+          <MDXRenderer>{mdx.childMdx.body}</MDXRenderer>
         </MDXProvider>
       </Layout>
     )
@@ -41,6 +44,9 @@ export const pageQuery = graphql`
         childMdx {
           body
         }
+      }
+      styling {
+        styling
       }
     }
   }
