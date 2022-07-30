@@ -1,10 +1,10 @@
 // src/server/router/index.ts
 import { t } from '../utils'
 
-import { exampleRouter } from './example'
+import { contentfulRouter } from './contentful'
 
 export const appRouter = t.router({
-  example: exampleRouter,
+  contentful: contentfulRouter,
 })
 
 // export type definition of API
