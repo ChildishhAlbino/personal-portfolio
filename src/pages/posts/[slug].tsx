@@ -3,48 +3,44 @@ import { GetStaticPathsResult, GetStaticPropsContext } from 'next'
 import { createSSGHelpers } from '@trpc/react/ssg'
 import superjson from 'superjson'
 import { appRouter } from '../../server/trpc/router'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 
 export default function Post({ slug }: PostPageProps) {
-  const res = trpc.proxy.contentful.getPostBySlug.useQuery({ slug })
-  // documentToReactComponents
-  const { body } = res.data
-  const { json, links } = body
-  const parsed = json
-  const renderedBody = documentToReactComponents(parsed, {
-    renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
-        const assetId = node.data.target.sys.id
-        // const sizeArray = links.assets.block.map((item) => item.size).sort()
-        let asset = links.assets.block.find((asset) => {
-          return asset.sys.id === node.data.target.sys.id
-        })
-        const { url, width, height, size } = asset
-        const props = {
-          src: url,
-          height,
-          width,
-        }
-        return (
-          <Image
-            className={''}
-            placeholder={'blur'}
-            blurDataURL={`${url}?w=150&q=20`}
-            {...props}
-          />
-        )
-      },
-    },
-  })
-  return (
-    <>
-      {/*<pre>{JSON.stringify(res.data, null, 2)}</pre>*/}
-      <div>This is a test</div>
-      <section>{renderedBody}</section>
-    </>
+  const { data } = trpc.proxy.contentful.getPostBySlug.useQuery(
+    { slug },
+    {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      refetchInterval: false,
+      cacheTime: 200,
+    }
   )
+  const { body, serializedMdx } = data
+  const components = {
+    img: (props: { src: string; alt: string }) => {
+      const src = props.src
+      const blurSrc = `${src}?w=20&q=10`
+      return (
+        <div className={'max-w-prose'}>
+          <Image
+            {...props}
+            placeholder={'blur'}
+            blurDataURL={blurSrc}
+            layout='responsive'
+          />
+        </div>
+      )
+    },
+  }
+  const mdx = serializedMdx ? (
+    <div className={'prose'}>
+      <MDXRemote {...serializedMdx} components={components} lazy />
+    </div>
+  ) : (
+    <></>
+  )
+  return <>{mdx}</>
 }
 
 export async function getStaticProps({
@@ -71,7 +67,7 @@ export async function getStaticPaths(): Promise<
 > {
   return {
     paths: [
-      { params: { slug: 'cyberpunk-2077-its-like-skyrim-with-guns' } }, // See the "paths" section below
+      { params: { slug: 'test-mdx-post' } }, // See the "paths" section below
     ],
     fallback: 'blocking',
   }

@@ -10,6 +10,7 @@ export async function contentQuery<K, T>({
   variables,
 }: contentQueryInput<T>): Promise<K> {
   console.log({
+    timestamp: new Date(),
     CONTENTFUL_PREVIEW_ENABLED,
     foo: typeof CONTENTFUL_PREVIEW_ENABLED,
   })
@@ -30,10 +31,7 @@ export async function contentQuery<K, T>({
       }),
     }
   )
-  console.log(res.ok, res.status)
-
   const json = await res.json()
-  console.log(json)
   if (!!json.errors) {
     throw Error(`Error with query... ${json.errors[0].message}`)
   }

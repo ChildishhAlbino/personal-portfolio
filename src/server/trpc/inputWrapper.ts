@@ -1,3 +1,3 @@
-interface inputWrapper<T> {
+export interface inputWrapper<T> {
   input: T
 }

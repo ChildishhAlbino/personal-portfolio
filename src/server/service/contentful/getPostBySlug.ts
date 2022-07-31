@@ -1,10 +1,16 @@
 import { contentQuery } from './contentQuery'
+import { serialize } from 'next-mdx-remote/serialize'
+// @ts-ignore
+import rehypeExternalImageSize from 'rehype-external-img-size'
+import remarkUnwrapImages from 'remark-unwrap-images'
+import { Pluggable } from 'unified'
+import { inputWrapper } from '../../trpc/inputWrapper'
 
 export async function getPostBySlug({
   input: { slug },
 }: inputWrapper<getPostBySlugInput>) {
   const query = `query GetPosts($preview: Boolean, $slug: String!) {
-    postCollection(where: { slug: $slug }, preview: $preview, limit: 1) {
+    postMdxCollection(where: { slug: $slug }, preview: $preview, limit: 1) {
       items {
         title
         description
@@ -13,22 +19,7 @@ export async function getPostBySlug({
         thumbnail {
           url
         }
-        body {
-          json
-          links {
-            assets {
-              block {
-                url
-                width
-                size
-                height
-                sys {
-                  id
-                }
-              }
-            }
-          }
-        }
+        body
         keywords
         slug
       }
@@ -36,6 +27,7 @@ export async function getPostBySlug({
   }`
 
   const variables: getPostBySlugInput = { slug }
+
   try {
     const queryRes = await contentQuery<
       getPostBySlugQueryResponse,
@@ -45,7 +37,23 @@ export async function getPostBySlug({
       variables,
     })
     console.log({ queryRes })
-    const [post] = queryRes.postCollection.items
+
+    const [post] = queryRes.postMdxCollection.items
+
+    const rehypePlugins = [
+      [rehypeExternalImageSize, { baseUrl: 'https:' }],
+    ] as Pluggable[]
+
+    const remarkPlugins = [remarkUnwrapImages]
+
+    post.serializedMdx = await serialize(post.body, {
+      mdxOptions: {
+        rehypePlugins,
+        remarkPlugins,
+        format: 'mdx',
+      },
+    })
+
     return {
       ...post,
     }
@@ -62,7 +70,7 @@ interface getPostBySlugInput {
 }
 
 type getPostBySlugQueryResponse = {
-  postCollection: {
+  postMdxCollection: {
     items: Array<any>
   }
 }
