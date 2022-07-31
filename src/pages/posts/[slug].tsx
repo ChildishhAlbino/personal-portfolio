@@ -22,7 +22,7 @@ export default function Post({ slug }: PostPageProps) {
       const src = props.src
       const blurSrc = `${src}?w=20&q=10`
       return (
-        <div className={'max-w-prose'}>
+        <div className={'tablet:max-w-prose'}>
           <Image
             {...props}
             placeholder={'blur'}
