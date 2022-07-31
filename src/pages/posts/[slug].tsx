@@ -16,7 +16,7 @@ export default function Post({ slug }: PostPageProps) {
       cacheTime: 200,
     }
   )
-  const { body, serializedMdx } = data
+  const { serializedMdx } = data
   const components = {
     img: (props: { src: string; alt: string }) => {
       const src = props.src
