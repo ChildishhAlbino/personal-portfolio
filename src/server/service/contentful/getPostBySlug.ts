@@ -10,7 +10,7 @@ export async function getPostBySlug({
   input: { slug },
 }: inputWrapper<getPostBySlugInput>) {
   const query = `query GetPosts($preview: Boolean, $slug: String!) {
-    postMdxCollection(where: { slug: $slug }, preview: $preview, limit: 1) {
+    postCollection(where: { slug: $slug }, preview: $preview, limit: 1) {
       items {
         title
         description
@@ -38,7 +38,7 @@ export async function getPostBySlug({
     })
     console.log({ queryRes })
 
-    const [post] = queryRes.postMdxCollection.items
+    const [post] = queryRes.postCollection.items
 
     const rehypePlugins = [
       [rehypeExternalImageSize, { baseUrl: 'https:' }],
@@ -70,7 +70,7 @@ interface getPostBySlugInput {
 }
 
 type getPostBySlugQueryResponse = {
-  postMdxCollection: {
+  postCollection: {
     items: Array<any>
   }
 }

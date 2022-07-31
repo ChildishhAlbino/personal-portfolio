@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { trpc } from '../utils/trpc'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   const res = trpc.proxy.contentful.getPosts.useQuery({})
@@ -8,7 +9,7 @@ const Home: NextPage = () => {
   const { posts } = data || { posts: [] }
   const [post1, post2, post3] = posts as Post[]
   const TestList = (
-    <div className={'flex mobile:flex-col laptop:flex-row'}>
+    <div className={'flex mobile:flex-col laptop:flex-row gap-4'}>
       <Card item={post1} />
       <Card item={post2} />
       <Card item={post3} />
@@ -24,10 +25,10 @@ const Home: NextPage = () => {
         <h2>My Recent Posts: </h2>
         <hr className={'border-black'} />
         {TestList}
-        <h2>My Recent Posts: </h2>
+        <h2>Current Projects: </h2>
         <hr className={'border-black'} />
         {TestList}
-        <h2>My Recent Posts: </h2>
+        <h2>Technology and Trinkets: </h2>
         <hr className={'border-black'} />
         {TestList}
       </main>
@@ -40,11 +41,10 @@ export default Home
 function Card({ item }: { item: Post | undefined }) {
   return (
     <>
-      <div
-        className={'prose break-words border-black border-2 p-1'}
-        key={item?.slug}
-      >
-        <h3>{item?.title}</h3>
+      <div className={'prose break-words p-4'} key={item?.slug}>
+        <Link href={`/posts/${item?.slug}`}>
+          <h3>{item?.title}</h3>
+        </Link>
         <p>{item?.description}</p>
       </div>
     </>

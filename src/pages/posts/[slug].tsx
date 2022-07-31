@@ -16,13 +16,20 @@ export default function Post({ slug }: PostPageProps) {
       cacheTime: 200,
     }
   )
+  if (!data) {
+    return (
+      <>
+        <p>Loading..</p>
+      </>
+    )
+  }
   const { serializedMdx } = data
   const components = {
     img: (props: { src: string; alt: string }) => {
       const src = props.src
       const blurSrc = `${src}?w=20&q=10`
       return (
-        <div className={'tablet:max-w-prose'}>
+        <div className={'mobile:max-w-prose'}>
           <Image
             {...props}
             placeholder={'blur'}
@@ -34,13 +41,17 @@ export default function Post({ slug }: PostPageProps) {
     },
   }
   const mdx = serializedMdx ? (
-    <div className={'prose'}>
+    <div className={'prose prose-lg min-w-full'}>
       <MDXRemote {...serializedMdx} components={components} lazy />
     </div>
   ) : (
     <></>
   )
-  return <>{mdx}</>
+  return (
+    <>
+      <div className={'w-full grid grid-cols-1 justify-items-start'}>{mdx}</div>
+    </>
+  )
 }
 
 export async function getStaticProps({
@@ -67,7 +78,7 @@ export async function getStaticPaths(): Promise<
 > {
   return {
     paths: [
-      { params: { slug: 'test-mdx-post' } }, // See the "paths" section below
+      { params: { slug: 'the-evolution-of-my-website' } }, // See the "paths" section below
     ],
     fallback: 'blocking',
   }

@@ -24,6 +24,7 @@
     "react-query": "^3.39.2",
     "rehype-external-img-size": "^0.1.0",
     "remark-unwrap-images": "^3.0.1",
+    "sharp": "^0.30.7",
     "superjson": "^1.9.1",
     "zod": "^3.17.3"
   },
