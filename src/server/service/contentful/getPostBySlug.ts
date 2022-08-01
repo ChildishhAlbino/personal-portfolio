@@ -46,6 +46,8 @@ export async function getPostBySlug({
 
     const remarkPlugins = [remarkUnwrapImages]
 
+    console.time(`Serializing ${slug} took`)
+
     post.serializedMdx = await serialize(post.body, {
       mdxOptions: {
         rehypePlugins,
@@ -53,6 +55,8 @@ export async function getPostBySlug({
         format: 'mdx',
       },
     })
+
+    console.timeEnd(`Serializing ${slug} took`)
 
     return {
       ...post,
