@@ -80,7 +80,7 @@ export async function getStaticPaths(): Promise<
     paths: [
       { params: { slug: 'the-evolution-of-my-website' } }, // See the "paths" section below
     ],
-    fallback: 'blocking',
+    fallback: true,
   }
 }
 
