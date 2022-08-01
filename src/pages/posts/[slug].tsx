@@ -14,6 +14,7 @@ export default function Post({ slug }: PostPageProps) {
       refetchOnReconnect: false,
       refetchInterval: false,
       cacheTime: 200,
+      refetchOnMount: false,
     }
   )
   if (!data) {
