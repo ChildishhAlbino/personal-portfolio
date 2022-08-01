@@ -1,10 +1,15 @@
 import { trpc } from '../../utils/trpc'
-import { GetStaticPathsResult, GetStaticPropsContext } from 'next'
+import {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from 'next'
 import { createSSGHelpers } from '@trpc/react/ssg'
 import superjson from 'superjson'
 import { appRouter } from '../../server/trpc/router'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
+import { DehydratedState } from 'react-query'
 
 export default function Post({ slug }: PostPageProps) {
   const { data } = trpc.proxy.contentful.getPostBySlug.useQuery(
@@ -57,20 +62,23 @@ export default function Post({ slug }: PostPageProps) {
 
 export async function getStaticProps({
   params,
-}: GetStaticPropsContext<PostPageProps>) {
+}: GetStaticPropsContext<PostPageProps>): Promise<
+  GetStaticPropsResult<PageStaticProps>
+> {
   const ssg = createSSGHelpers({
     router: appRouter,
     ctx: {},
     transformer: superjson, // optional - adds superjson serialization
   })
 
-  const slug = params?.slug
-  await ssg.fetchQuery('contentful.getPostBySlug', { slug: slug as string })
+  const slug = params?.slug as string
+  await ssg.fetchQuery('contentful.getPostBySlug', { slug })
   return {
     props: {
       trpcState: ssg.dehydrate(),
       slug,
     },
+    revalidate: 60,
   }
 }
 
@@ -86,5 +94,10 @@ export async function getStaticPaths(): Promise<
 }
 
 type PostPageProps = {
+  slug: string
+}
+
+interface PageStaticProps {
+  trpcState: DehydratedState
   slug: string
 }
