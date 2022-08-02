@@ -88,6 +88,7 @@ const PostHeader: FC<{
         {...thumbnail}
         priority={true}
         layout='responsive'
+        alt={'Thumbnail for this post'}
       />
     </div>
   ) : (
