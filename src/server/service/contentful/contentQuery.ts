@@ -9,11 +9,6 @@ export async function contentQuery<K, T>({
   query,
   variables,
 }: contentQueryInput<T>): Promise<K> {
-  console.log({
-    timestamp: new Date(),
-    CONTENTFUL_PREVIEW_ENABLED,
-    foo: typeof CONTENTFUL_PREVIEW_ENABLED,
-  })
   const isPreviewEnabled = !!CONTENTFUL_PREVIEW_ENABLED
   const res = await fetch(
     `${CONTENTFUL_BASE_ENDPOINT}content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/master`,

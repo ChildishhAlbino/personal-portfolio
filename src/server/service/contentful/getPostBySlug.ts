@@ -18,6 +18,8 @@ export async function getPostBySlug({
         latestEdit
         thumbnail {
           url
+          width
+          height
         }
         body
         keywords
