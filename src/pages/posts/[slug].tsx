@@ -1,35 +1,28 @@
-import { trpc } from '../../utils/trpc'
-import {
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from 'next'
-import { createSSGHelpers } from '@trpc/react/ssg'
+import { api } from '../../utils/api'
+import { GetStaticPathsResult, GetStaticPropsContext } from 'next'
+import { createProxySSGHelpers } from '@trpc/react-query/ssg'
 import superjson from 'superjson'
-import { appRouter } from '../../server/trpc/router'
+import { appRouter } from '../../server/api/root'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
-import { DehydratedState } from 'react-query'
-import { UseTRPCQueryOptions } from '@trpc/react/dist/createReactQueryHooks'
-import { DefaultErrorShape } from '@trpc/server/dist'
 import { FC } from 'react'
 
-const reactQueryOptions: UseTRPCQueryOptions<
-  'contentful.getPostBySlug',
-  { slug: string },
-  any,
-  any,
-  DefaultErrorShape
-> = {
-  refetchOnWindowFocus: false,
-  refetchOnReconnect: false,
-  refetchInterval: false,
-  refetchOnMount: false,
-}
+// const reactQueryOptions: UseTRPCQueryOptions<
+//   'contentful.getPostBySlug',
+//   { slug: string },
+//   any,
+//   any,
+//   DefaultErrorShape
+// > = {
+//   refetchOnWindowFocus: false,
+//   refetchOnReconnect: false,
+//   refetchInterval: false,
+//   refetchOnMount: false,
+// }
 
 export default function Post({ slug }: PostPageProps) {
   const { data, error, isLoading, isStale } =
-    trpc.proxy.contentful.getPostBySlug.useQuery({ slug }, reactQueryOptions)
+    api.contentful.getPostBySlug.useQuery({ slug })
   if (!data) {
     return (
       <>
@@ -50,7 +43,7 @@ export default function Post({ slug }: PostPageProps) {
     <>
       <div
         className={
-          'w-full grid grid-cols-1 laptop:justify-items-start mobile:justify-items-center'
+          'grid w-full grid-cols-1 mobile:justify-items-center laptop:justify-items-start'
         }
       >
         <PostHeader
@@ -100,12 +93,12 @@ const PostHeader: FC<{
     <>
       <span
         className={
-          'prose w-full relative mobile:prose-sm laptop:prose-xl mobile:text-center laptop:text-left'
+          'prose relative w-full mobile:prose-sm mobile:text-center laptop:prose-xl laptop:text-left'
         }
       >
         <div
           className={
-            'absolute z-[999] top-0 py-0 w-full h-full bg-black bg-opacity-25 px-3 pb-3'
+            'absolute top-0 z-[999] h-full w-full bg-black bg-opacity-25 py-0 px-3 pb-3'
           }
         >
           <div className={'absolute bottom-[1rem] w-full'}>
@@ -116,7 +109,7 @@ const PostHeader: FC<{
         {image}
       </span>
       <br />
-      <hr className={'border-black w-full'} />
+      <hr className={'w-full border-black'} />
     </>
   )
 }
@@ -131,7 +124,7 @@ const PostBody: FC<{ serializedMdx: any }> = ({ serializedMdx }: any) => {
         return `${src}?h=${720}&q=${100}`
       }
       return (
-        <div className={'laptop:max-w-prose drop-shadow-md h-[300px] relative'}>
+        <div className={'relative h-[300px] drop-shadow-md laptop:max-w-prose'}>
           <Image
             src={props.src}
             loader={loader}
@@ -150,7 +143,7 @@ const PostBody: FC<{ serializedMdx: any }> = ({ serializedMdx }: any) => {
   const mdx = serializedMdx ? (
     <div
       className={
-        'prose laptop:prose-lg min-w-prose w-[100%] laptop:max-w-[50ch] desktop:max-w-[75ch]'
+        'min-w-prose prose w-[100%] laptop:max-w-[50ch] laptop:prose-lg desktop:max-w-[75ch]'
       }
     >
       <MDXRemote {...serializedMdx} components={components} />
@@ -165,23 +158,21 @@ const PostBody: FC<{ serializedMdx: any }> = ({ serializedMdx }: any) => {
 
 export async function getStaticProps({
   params,
-}: GetStaticPropsContext<PostPageProps>): Promise<
-  GetStaticPropsResult<PageStaticProps>
-> {
-  const ssg = createSSGHelpers({
+}: GetStaticPropsContext<PostPageProps>) {
+  const ssg = await createProxySSGHelpers({
     router: appRouter,
     ctx: {},
     transformer: superjson, // optional - adds superjson serialization
   })
 
   const slug = params?.slug as string
-  await ssg.fetchQuery('contentful.getPostBySlug', { slug })
+  await ssg.contentful.getPostBySlug.prefetch({ slug })
   return {
     props: {
       trpcState: ssg.dehydrate(),
       slug,
     },
-    revalidate: 60,
+    revalidate: 1,
   }
 }
 
@@ -197,10 +188,5 @@ export async function getStaticPaths(): Promise<
 }
 
 type PostPageProps = {
-  slug: string
-}
-
-interface PageStaticProps {
-  trpcState: DehydratedState
   slug: string
 }

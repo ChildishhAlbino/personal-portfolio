@@ -4,7 +4,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import rehypeExternalImageSize from 'rehype-external-img-size'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import { Pluggable } from 'unified'
-import { inputWrapper } from '../../trpc/inputWrapper'
+import { inputWrapper } from '../../api/inputWrapper'
 
 export async function getPostBySlug({
   input: { slug },

@@ -1,5 +1,5 @@
 import { contentQuery } from './contentQuery'
-import { inputWrapper } from '../../trpc/inputWrapper'
+import { inputWrapper } from '../../api/inputWrapper'
 
 export async function getPosts({ input: {} }: inputWrapper<getPostsInput>) {
   const query = `query GetPosts($preview: Boolean){
