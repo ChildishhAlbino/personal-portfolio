@@ -6,20 +6,7 @@ import { appRouter } from '../../server/api/root'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 import { FC } from 'react'
-
-// const reactQueryOptions: UseTRPCQueryOptions<
-//   'contentful.getPostBySlug',
-//   { slug: string },
-//   any,
-//   any,
-//   DefaultErrorShape
-// > = {
-//   refetchOnWindowFocus: false,
-//   refetchOnReconnect: false,
-//   refetchInterval: false,
-//   refetchOnMount: false,
-// }
-
+import Portal from '../../components/portal/portal'
 export default function Post({ slug }: PostPageProps) {
   const { data, error, isLoading, isStale } =
     api.contentful.getPostBySlug.useQuery({ slug })
@@ -55,6 +42,11 @@ export default function Post({ slug }: PostPageProps) {
         />
         <PostBody serializedMdx={serializedMdx} />
       </div>
+      <Portal selector='#content-portal'>
+        <>
+          <h1>Blog page secondary content</h1>
+        </>
+      </Portal>
     </>
   )
 }
@@ -75,17 +67,18 @@ const PostHeader: FC<{
   const { url } = thumbnail || { url: '' }
   const blurSrc = `${url}?w=200&q=1`
   const image = thumbnail ? (
-    <div className={'laptop:prose-xl'}>
-      <Image
-        src={url}
-        {...thumbnail}
-        blurDataURL={blurSrc}
-        placeholder='blur'
-        priority={true}
-        layout='responsive'
-        alt={'Thumbnail for this post'}
-      />
-    </div>
+    <Image
+      src={url}
+      {...thumbnail}
+      style={{
+        // fixes the spacing inconsistencies
+        margin: 0,
+      }}
+      blurDataURL={blurSrc}
+      placeholder='blur'
+      priority={true}
+      alt={'Thumbnail for this post'}
+    />
   ) : (
     <></>
   )
@@ -93,15 +86,19 @@ const PostHeader: FC<{
     <>
       <span
         className={
-          'prose relative w-full mobile:prose-sm mobile:text-center laptop:prose-xl laptop:text-left'
+          'prose relative w-full mobile:prose-sm mobile:text-clip mobile:text-center laptop:prose-xl laptop:text-left'
         }
       >
         <div
           className={
-            'absolute top-0 z-[999] h-full w-full bg-black bg-opacity-25 py-0 px-3 pb-3'
+            'absolute top-0 z-[999] h-full max-h-[900px] w-full bg-black bg-opacity-50 py-0 px-3 pb-1'
           }
         >
-          <div className={'absolute bottom-[1rem] w-full'}>
+          <div
+            className={
+              'prose-l prose absolute bottom-[1rem] w-full text-left mobile:prose-sm mobile:text-[1ch] mobile-lg:text-base'
+            }
+          >
             <h1 className={'text-white drop-shadow-lg'}>{title}</h1>
             <h3 className={'text-white drop-shadow-lg'}>{description}</h3>
           </div>
@@ -118,25 +115,28 @@ const PostBody: FC<{ serializedMdx: any }> = ({ serializedMdx }: any) => {
   const components = {
     img: (props: { src: string; alt: string }) => {
       const src = props.src
-      const blurSrc = `${src}?h=300&q=1`
-      console.log({ props })
+      const blurSrc = `${src}?h=900&q=1`
       const loader = ({ src, width, quality }: any) => {
-        return `${src}?h=${720}&q=${100}`
+        return `${src}?h=${900}&q=${quality}`
       }
+
       return (
-        <div className={'relative h-[300px] drop-shadow-md laptop:max-w-prose'}>
-          <Image
-            src={props.src}
-            loader={loader}
-            blurDataURL={blurSrc}
-            layout='fill'
-            loading={'lazy'}
-            objectFit='contain'
-            objectPosition={'left center'}
-            alt={props.alt}
-            placeholder='blur'
-          />
-        </div>
+        <Image
+          className='drop-shadow-md laptop:max-w-prose'
+          width={1600}
+          height={900}
+          style={{
+            // fixes the spacing inconsistencies
+            margin: 0,
+          }}
+          src={props.src}
+          loader={loader}
+          blurDataURL={blurSrc}
+          loading={'lazy'}
+          alt={props.alt}
+          placeholder='blur'
+          quality='100'
+        />
       )
     },
   }

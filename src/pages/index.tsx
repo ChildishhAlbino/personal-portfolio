@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { api } from '../utils/api'
 import Link from 'next/link'
 import { Loader } from '../components/loader/loader'
+import Portal from '../components/portal/portal'
 const Home: NextPage = () => {
   const { data, isLoading, error, isStale } = api.contentful.getPosts.useQuery(
     {}
@@ -15,9 +16,8 @@ const Home: NextPage = () => {
       <Card item={post3} />
     </div>
   )
-  // return <Loader />
   if (!data) {
-    return <Loader />
+    return <Loader size={100} />
   }
 
   return (
@@ -28,15 +28,18 @@ const Home: NextPage = () => {
         }
       >
         <h2>My Recent Posts: </h2>
-        <hr className={'w-full border-black'} />
         {TestList}
         <h2>Current Projects: </h2>
-        <hr className={'w-full border-black'} />
         {TestList}
         <h2>Technology and Trinkets: </h2>
-        <hr className={'w-full border-black'} />
         {TestList}
       </main>
+      <Portal selector='#content-portal'>
+        <>
+          <h2>Index page secondary content</h2>
+        </>
+        This will include featured posts, and recently viewed posts.
+      </Portal>
     </>
   )
 }

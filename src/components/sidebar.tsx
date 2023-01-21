@@ -2,7 +2,7 @@ export default function Sidebar() {
   return (
     <section
       className={
-        'bg-secondary laptop:border-r-black border-r-2 p-5 prose max-w-none mobile:row-start-3 laptop:col-start-1 laptop:row-start-1 laptop:row-span-4'
+        'prose max-w-none border-r-2 bg-secondary p-5 mobile:row-start-3 laptop:col-start-1 laptop:row-span-4 laptop:row-start-1 laptop:border-r-black'
       }
     >
       <h1>Hi! I&apos;m Connor</h1>

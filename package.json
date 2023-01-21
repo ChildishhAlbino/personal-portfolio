@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "devnet": "next dev -H 192.168.0.117",
+    "devnet": "next dev -H 192.168.0.136",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -22,7 +22,7 @@
     "next-mdx-remote": "^4.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rehype-external-img-size": "^0.1.0",
+    "react-spinners": "^0.13.8",
     "remark-unwrap-images": "^3.0.1",
     "sharp": "^0.30.7",
     "superjson": "^1.9.1",

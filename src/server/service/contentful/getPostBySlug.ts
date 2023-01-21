@@ -42,10 +42,6 @@ export async function getPostBySlug({
 
     const [post] = queryRes.postCollection.items
 
-    const rehypePlugins = [
-      [rehypeExternalImageSize, { baseUrl: 'https:' }],
-    ] as Pluggable[]
-
     const remarkPlugins = [remarkUnwrapImages]
 
     console.time(`Serializing ${slug} took`)
