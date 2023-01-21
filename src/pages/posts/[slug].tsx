@@ -25,8 +25,6 @@ const reactQueryOptions: UseTRPCQueryOptions<
   refetchOnReconnect: false,
   refetchInterval: false,
   refetchOnMount: false,
-  keepPreviousData: true,
-  cacheTime: 200000,
 }
 
 export default function Post({ slug }: PostPageProps) {
@@ -81,11 +79,15 @@ const PostHeader: FC<{
   latestEdit?: string
   thumbnail?: ThumbnailProps
 }> = ({ title, description, thumbnail }) => {
+  const { url } = thumbnail || { url: '' }
+  const blurSrc = `${url}?w=200&q=1`
   const image = thumbnail ? (
     <div className={'laptop:prose-xl'}>
       <Image
-        src={thumbnail.url}
+        src={url}
         {...thumbnail}
+        blurDataURL={blurSrc}
+        placeholder='blur'
         priority={true}
         layout='responsive'
         alt={'Thumbnail for this post'}
@@ -123,14 +125,23 @@ const PostBody: FC<{ serializedMdx: any }> = ({ serializedMdx }: any) => {
   const components = {
     img: (props: { src: string; alt: string }) => {
       const src = props.src
-      const blurSrc = `${src}?w=20&q=1`
+      const blurSrc = `${src}?h=300&q=1`
+      console.log({ props })
+      const loader = ({ src, width, quality }: any) => {
+        return `${src}?h=${720}&q=${100}`
+      }
       return (
-        <div className={'laptop:max-w-prose drop-shadow-md'}>
+        <div className={'laptop:max-w-prose drop-shadow-md h-[300px] relative'}>
           <Image
-            {...props}
+            src={props.src}
+            loader={loader}
             blurDataURL={blurSrc}
-            layout='responsive'
+            layout='fill'
             loading={'lazy'}
+            objectFit='contain'
+            objectPosition={'left center'}
+            alt={props.alt}
+            placeholder='blur'
           />
         </div>
       )
@@ -170,7 +181,7 @@ export async function getStaticProps({
       trpcState: ssg.dehydrate(),
       slug,
     },
-    revalidate: 60 * 5,
+    revalidate: 60,
   }
 }
 

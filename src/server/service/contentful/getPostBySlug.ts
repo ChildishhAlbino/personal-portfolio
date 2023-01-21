@@ -52,7 +52,6 @@ export async function getPostBySlug({
 
     post.serializedMdx = await serialize(post.body, {
       mdxOptions: {
-        rehypePlugins,
         remarkPlugins,
         format: 'mdx',
       },
