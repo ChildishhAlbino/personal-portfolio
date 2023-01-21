@@ -16,11 +16,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        "primary": "#F6FFF8",
-        "secondary": "#EAF4F4",
-        "tertiary": "#CCE3DE",
-        "accent": "#A4C3B2",
-        "highlight": "#6B9080"
+        "primary": "#F5EFFF",
+        "secondary": "#E5D9F2",
+        "tertiary": "#CDC1FF",
+        "accent": "#A594F9",
+        "highlight": "#483ED5"
       }
     }
   },

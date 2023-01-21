@@ -15,7 +15,7 @@ export default function Navbar() {
     <>
       <div
         className={
-          'grid h-full grid-cols-4 px-4 mobile:items-center mobile:text-center laptop:max-w-[500px] laptop:items-end laptop:text-left'
+          'grid h-full grid-cols-4 px-4 mobile:items-center mobile:text-center laptop:max-w-full laptop:items-end'
         }
       >
         <NavBarItem location={'/'} text={'Home'} />
@@ -23,7 +23,7 @@ export default function Navbar() {
         <NavBarItem location={'/links'} text={'Links'} />
         <NavBarItem location={'/work'} text={'Work'} />
       </div>
-      <hr className='m-3 border-black laptop:max-w-[500px]' />
+      <hr className='m-3 border-black laptop:max-w-full' />
     </>
   )
 }

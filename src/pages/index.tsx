@@ -49,15 +49,24 @@ export default Home
 function Card({ item }: { item: Post | undefined }) {
   return (
     <>
-      <div
-        className={'prose min-w-[32%] break-words bg-accent p-4'}
-        key={item?.slug}
+      <span
+        className={
+          'min-w-[32%] break-words rounded-sm bg-accent text-black hover:bg-highlight hover:text-white '
+        }
       >
-        <Link href={`/posts/${item?.slug}`}>
-          <h3>{item?.title}</h3>
+        <Link
+          className='text-inherit no-underline'
+          href={`/posts/${item?.slug}`}
+        >
+          <div
+            className={'prose h-full w-full p-3 text-inherit'}
+            key={item?.slug}
+          >
+            <h3 className='text-inherit'>{item?.title}</h3>
+            <i className='font-normal'>{item?.description}</i>
+          </div>
         </Link>
-        <p>{item?.description}</p>
-      </div>
+      </span>
     </>
   )
 }
