@@ -153,7 +153,7 @@ const PostBody: FC<{ serializedMdx: any }> = ({ serializedMdx }: any) => {
         'prose laptop:prose-lg min-w-prose w-[100%] laptop:max-w-[50ch] desktop:max-w-[75ch]'
       }
     >
-      <MDXRemote {...serializedMdx} components={components} lazy={true} />
+      <MDXRemote {...serializedMdx} components={components} />
     </div>
   ) : (
     <>

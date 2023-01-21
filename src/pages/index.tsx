@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { trpc } from '../utils/trpc'
 import Link from 'next/link'
-
+import { Loader } from '../components/loader/loader'
 const Home: NextPage = () => {
   const { data, isLoading, error, isStale } =
     trpc.proxy.contentful.getPosts.useQuery({})
@@ -14,8 +14,9 @@ const Home: NextPage = () => {
       <Card item={post3} />
     </div>
   )
+  // return <Loader />
   if (!data) {
-    return <p>Loading..</p>
+    return <Loader />
   }
 
   return (
