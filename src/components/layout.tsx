@@ -18,7 +18,7 @@ export default function Layout({ children }: LayoutProps) {
         </main>
         <section
           id='content-portal'
-          className='prose col-start-3 row-span-4 row-start-1 bg-secondary p-5 mobile:hidden laptop:block'
+          className='prose col-start-3 row-span-4 row-start-1 border-l-[1px] bg-secondary p-5 empty:hidden mobile:hidden laptop:block laptop:border-l-black'
         />
         <PageFooter />
       </div>
