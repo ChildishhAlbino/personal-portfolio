@@ -21,6 +21,10 @@ module.exports = {
         "tertiary": "#CDC1FF",
         "accent": "#A594F9",
         "highlight": "#483ED5"
+      },
+      backgroundImage: {
+        "lm-page-curve": "url('/layered-waves-haikei.svg')",
+        "header-curve": "url('/header-curve.svg')"
       }
     }
   },

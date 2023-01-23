@@ -16,8 +16,15 @@ const Home: NextPage = () => {
       <Card item={post3} />
     </div>
   )
-  if (!data) {
-    return <Loader size={100} />
+  if (isLoading) {
+    return (
+      <>
+        <Loader size={200} />
+        <Portal selector='#content-portal'>
+          <Loader size={100} />
+        </Portal>
+      </>
+    )
   }
 
   return (
@@ -51,7 +58,7 @@ function Card({ item }: { item: Post | undefined }) {
     <>
       <span
         className={
-          'min-w-[32%] break-words rounded-sm bg-accent text-black hover:bg-highlight hover:text-white '
+          'min-w-[32%] break-words rounded-sm border-b-[1px] border-b-black text-black hover:bg-highlight hover:text-white '
         }
       >
         <Link

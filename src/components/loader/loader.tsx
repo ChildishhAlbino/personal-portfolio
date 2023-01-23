@@ -6,8 +6,8 @@ export const Loader = ({ size }: { size: number }) => {
   console.log('test')
   return (
     <>
-      <div className='flex h-full w-full mobile:justify-center laptop:justify-start'>
-        <LoaderElement size={200} className='self-center laptop:self-start	' />
+      <div className='flex h-full w-full mobile:justify-center'>
+        <LoaderElement size={size} className='self-center laptop:self-start	' />
       </div>
     </>
   )

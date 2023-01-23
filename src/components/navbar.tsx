@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 function NavBarItem({ location, text }: { location: string; text: string }) {
   return (
-    <span className={''}>
+    <span className={'prose-xl'}>
       <Link href={location}>
-        <b className={'hover:text-highlight'}>{text}</b>
+        <b className={'hover:border-b-2 hover:text-primary'}>{text}</b>
       </Link>
     </span>
   )
@@ -23,7 +23,7 @@ export default function Navbar() {
         <NavBarItem location={'/links'} text={'Links'} />
         <NavBarItem location={'/work'} text={'Work'} />
       </div>
-      <hr className='m-3 border-black laptop:max-w-full' />
+      {/* <hr className='m-3 border-black laptop:max-w-full' /> */}
     </>
   )
 }

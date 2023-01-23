@@ -6,3 +6,16 @@
 .blog-post-title-shadow {
   text-shadow: 2px 2px #483ed5;
 }
+
+body::-webkit-scrollbar {
+  width: 0.35rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: theme('colors.primary'); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: theme('colors.highlight'); /* color of the scroll thumb */
+  max-height: 10px;
+}
