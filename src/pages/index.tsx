@@ -31,15 +31,21 @@ const Home: NextPage = () => {
     <>
       <main
         className={
-          'prose grid max-w-none grid-cols-1 justify-items-center text-center laptop:justify-items-start laptop:text-left'
+          'prose grid max-w-none grid-cols-1 justify-items-center gap-20 text-center laptop:justify-items-start laptop:text-left'
         }
       >
-        <h2>My Recent Posts: </h2>
-        {TestList}
-        <h2>Current Projects: </h2>
-        {TestList}
-        <h2>Technology and Trinkets: </h2>
-        {TestList}
+        <span>
+          <h2>My Recent Posts: </h2>
+          {TestList}
+        </span>
+        <span>
+          <h2>Current Projects: </h2>
+          {TestList}
+        </span>
+        <span>
+          <h2>Technology and Trinkets: </h2>
+          {TestList}
+        </span>
       </main>
       <Portal selector='#content-portal'>
         <>
