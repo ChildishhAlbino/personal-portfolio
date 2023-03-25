@@ -29,5 +29,4 @@ html {
 
 * {
   color: theme('colors.text');
-  /* outline: 1px solid #f00 !important; */
 }

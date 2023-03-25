@@ -13,6 +13,9 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
     },
     extend: {
+      gridTemplateColumns: {
+        "blog-post-template": "1fr clamp(600px, 60vw, 1200px) 1fr"
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

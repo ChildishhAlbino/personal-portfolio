@@ -7,6 +7,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 import { FC } from 'react'
 import Portal from '../../components/portal/portal'
+import ContentLayout from '@/components/content-layout'
 
 export default function Post({ slug }: PostPageProps) {
   const { data, error, isLoading, isStale } =
@@ -29,16 +30,18 @@ export default function Post({ slug }: PostPageProps) {
   } = data
   return (
     <>
-      <span className={'grid w-full grid-cols-1 mobile:justify-items-center'}>
-        <PostHeader
-          title={title}
-          publicationDate={publicationDate}
-          description={description}
-          thumbnail={thumbnail}
-          latestEdit={latestEdit}
-        />
-        <PostBody serializedMdx={serializedMdx} />
-      </span>
+      <ContentLayout>
+        <div className={'grid w-full grid-cols-1 mobile:justify-items-center'}>
+          <PostHeader
+            title={title}
+            publicationDate={publicationDate}
+            description={description}
+            thumbnail={thumbnail}
+            latestEdit={latestEdit}
+          />
+          <PostBody serializedMdx={serializedMdx} />
+        </div>
+      </ContentLayout>
     </>
   )
 }
@@ -65,6 +68,7 @@ const PostHeader: FC<{
       style={{
         // fixes the spacing inconsistencies
         margin: 0,
+        filter: 'brightness(0.5)',
       }}
       blurDataURL={blurSrc}
       placeholder='blur'
@@ -81,19 +85,13 @@ const PostHeader: FC<{
           'laptop:prose-md prose relative w-full mobile:prose-sm mobile:text-clip mobile:text-center'
         }
       >
-        <div
-          className={
-            'absolute top-0 z-[999] h-full max-h-[900px] w-full bg-black bg-opacity-50'
-          }
-        >
+        <div className={'absolute top-0 z-[999] h-full max-h-[900px] w-full'}>
           <div
             className={
               'prose-sm absolute bottom-[1rem] m-0 w-full text-center mobile:prose-sm mobile:text-[1ch] mobile-lg:text-base'
             }
           >
-            <h1 className={'blog-post-title-shadow text-white drop-shadow'}>
-              {title}
-            </h1>
+            <h1 className={'text-white drop-shadow'}>{title}</h1>
             <h3 className={'text-white drop-shadow-lg'}>{description}</h3>
           </div>
         </div>
@@ -101,6 +99,7 @@ const PostHeader: FC<{
       </span>
       <br />
       <hr className={'w-full border-text'} />
+      <br />
     </>
   )
 }

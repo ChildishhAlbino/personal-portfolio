@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Loader } from '@/components/loader/loader'
 import Portal from '@/components/portal/portal'
 import { Post } from '@/types/post'
+import ContentLayout from '@/components/content-layout'
 
 const PostsAggregationPage: NextPage = () => {
   const { data, isLoading, error, isStale } = api.contentful.getPosts.useQuery(
@@ -13,9 +14,9 @@ const PostsAggregationPage: NextPage = () => {
 
   console.log(data)
   return (
-    <main className='text-space grid h-full w-full grid-cols-1 grid-rows-[150px_1fr]'>
+    <ContentLayout>
       <div className='row-1 flex h-full w-full items-center bg-base px-[1rem] font-space'>
-        <p className='text-[clamp(2rem,_8vw,_96px)] font-bold uppercase underline'>
+        <p className='text-[clamp(2rem,_6vw,_4rem)] font-bold uppercase underline'>
           Posts:
         </p>
       </div>
@@ -23,7 +24,7 @@ const PostsAggregationPage: NextPage = () => {
         {isLoading && <Loader size={150} />}
         {!isLoading && <ListOfPosts posts={posts} />}
       </span>
-    </main>
+    </ContentLayout>
   )
 }
 
@@ -43,7 +44,7 @@ function ListOfPosts({ posts }: { posts: Post[] }) {
 function Card({ item }: { item: Post }) {
   return (
     <>
-      <div className='min-h-[150px] w-full text-[clamp(1rem,_6vw,_32px)]'>
+      <div className='min-h-[150px] w-full text-[clamp(1rem,_6vw,_2rem)]'>
         <Link href={`/posts/${item?.slug}`} className='underline'>
           <h1>{item?.title}</h1>
         </Link>
