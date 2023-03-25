@@ -38,13 +38,11 @@ export async function getPostBySlug({
       query,
       variables,
     })
-    console.log({ queryRes })
-
     const [post] = queryRes.postCollection.items
 
     const remarkPlugins = [remarkUnwrapImages]
 
-    console.time(`Serializing ${slug} took`)
+    console.time(`Serializing "${slug}" took`)
 
     post.serializedMdx = await serialize(post.body, {
       mdxOptions: {

@@ -65,10 +65,12 @@ module.exports = {
         "base": "#240090",
         "light": "#3500D3",
         "neutral-dark": "#282828",
-        "text": "#F5EFFF"
+        "text": "#F5EFFF",
+        "text-darker": "#C2CAD0"
+
       },
       backgroundImage: {
-        "dots": "radial-gradient(rgba(25, 0, 97, 0.6) 8%, transparent 8%)"
+        "dots": "radial-gradient(rgba(25, 0, 97, 0.7) 8%, transparent 2%)"
       }
     }
   },

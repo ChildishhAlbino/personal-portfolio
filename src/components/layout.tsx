@@ -1,7 +1,4 @@
 import { ReactNode } from 'react'
-import Sidebar from './sidebar'
-import PageFooter from './pageFooter'
-import PageHeader from './pageHeader'
 
 export default function Layout({ children }: LayoutProps) {
   return (

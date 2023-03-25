@@ -1,11 +1,30 @@
+import Link from 'next/link'
+
 export default function PageFooter() {
   return (
     <footer
-      className={
-        'laptop:col-start-0 border-t-[1px] border-t-black bg-tertiary p-2 laptop:col-span-full laptop:row-start-4'
-      }
+      id='content-footer'
+      className='fixed bottom-0 z-20 flex w-[100%] max-w-[clamp(600px,_60vw,_1200px)] bg-darker px-[2rem] mobile:h-[50px]'
     >
-      <b>This is a work in progress...</b> <i>built with T3 stack.</i>
+      <Nav />
     </footer>
+  )
+}
+
+function Nav() {
+  const navItems = ['posts', 'about', 'resume']
+
+  return (
+    <div className='flex w-full items-center justify-between'>
+      {navItems.map((navItem, index) => {
+        return (
+          <i key={index} className='text-l lowercase'>
+            <Link href={`/${navItem}`} className='underline'>
+              {navItem}
+            </Link>
+          </i>
+        )
+      })}
+    </div>
   )
 }

@@ -6,7 +6,6 @@ import { appRouter } from '../../server/api/root'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 import { FC } from 'react'
-import Portal from '../../components/portal/portal'
 import ContentLayout from '@/components/content-layout'
 
 export default function Post({ slug }: PostPageProps) {

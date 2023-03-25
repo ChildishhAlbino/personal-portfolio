@@ -10,6 +10,7 @@ export const PostShape = z.object({
   thumbnail: z.object({
     url: z.string(),
   }),
+  thumbnailAspectRatio: z.string(),
 })
 
 export type Post = z.infer<typeof PostShape>

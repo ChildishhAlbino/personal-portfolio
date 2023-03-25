@@ -8,7 +8,7 @@ export async function getPosts({
   posts: any[]
 }> {
   const query = `query GetPosts($preview: Boolean){
-    postCollection(preview: $preview) {
+    postCollection(preview: $preview, order:latestEdit_DESC) {
       items {
         title
         description
@@ -17,6 +17,7 @@ export async function getPosts({
         thumbnail {
           url
         }
+        thumbnailAspectRatio
         keywords
         slug
       }
