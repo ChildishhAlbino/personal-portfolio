@@ -8,11 +8,11 @@ export default function Layout({ children }: LayoutProps) {
     <>
       <div
         id='layout-container'
-        className={`h-max-scr absolute top-0 left-0 z-10 h-screen w-screen min-w-[320px] max-w-[100%] font-space`}
+        className={`absolute top-0 left-0 z-10 h-screen w-screen min-w-[320px] max-w-[100%] font-space`}
       >
         {children}
       </div>
-      <div className='absolute top-0 left-0 z-0 h-[100%] w-screen max-w-[100%] animate-pulse bg-dots bg-[length:5vmin_5vmin]' />
+      <div className='fixed z-0 h-screen w-screen max-w-full animate-pulse bg-dots bg-[length:5vmin_5vmin]' />
     </>
   )
 }
