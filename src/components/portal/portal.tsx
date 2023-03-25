@@ -16,9 +16,10 @@ const Portal = ({
     return () => setMounted(false)
   }, [])
 
-  return mounted
-    ? createPortal(children, document.querySelector(selector) as Element)
-    : null
+  // return mounted
+  //   ? createPortal(children, document.querySelector(selector) as Element)
+  //   : null
+  return null
 }
 
 export default Portal

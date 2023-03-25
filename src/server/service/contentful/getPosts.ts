@@ -1,7 +1,12 @@
 import { contentQuery } from './contentQuery'
 import { inputWrapper } from '../../api/inputWrapper'
+import { Post } from '@/types/post'
 
-export async function getPosts({ input: {} }: inputWrapper<getPostsInput>) {
+export async function getPosts({
+  input: {},
+}: inputWrapper<getPostsInput>): Promise<{
+  posts: any[]
+}> {
   const query = `query GetPosts($preview: Boolean){
     postCollection(preview: $preview) {
       items {
@@ -25,16 +30,12 @@ export async function getPosts({ input: {} }: inputWrapper<getPostsInput>) {
     >({
       query,
     })
-    console.log({ queryRes })
     const posts = queryRes.postCollection.items
     return {
       posts,
     }
   } catch (e: any) {
-    console.error(e)
-    return {
-      error: e.message,
-    }
+    throw e
   }
 }
 
@@ -44,6 +45,6 @@ interface getPostsQueryVariables {}
 
 type getPostsQueryResponse = {
   postCollection: {
-    items: Array<any>
+    items: Array<Post>
   }
 }

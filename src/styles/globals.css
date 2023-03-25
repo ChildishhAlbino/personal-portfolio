@@ -2,20 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind screens;
-
-.blog-post-title-shadow {
-  text-shadow: 2px 2px #483ed5;
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body::-webkit-scrollbar {
-  width: 0.35rem;
+  width: 0.4rem;
+  height: 0.4rem;
 }
 
 body::-webkit-scrollbar-track {
-  background: theme('colors.primary'); /* color of the tracking area */
+  background: theme('colors.light');
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: theme('colors.highlight'); /* color of the scroll thumb */
-  max-height: 10px;
+  background: theme('colors.base');
+  padding: 1px;
+}
+
+:root {
+  background-color: theme('colors.darkest');
+  /* overflow-x: hidden; */
+}
+
+html {
+  background-color: theme('colors.darkest');
+}
+
+* {
+  color: theme('colors.text');
+  /* outline: 1px solid #f00 !important; */
 }
