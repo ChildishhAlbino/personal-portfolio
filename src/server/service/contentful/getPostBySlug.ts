@@ -51,7 +51,7 @@ export async function getPostBySlug({
       },
     })
 
-    console.timeEnd(`Serializing ${slug} took`)
+    console.timeEnd(`Serializing "${slug}" took`)
 
     return {
       ...post,
