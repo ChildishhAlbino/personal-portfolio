@@ -15,7 +15,7 @@ function Nav() {
   const navItems = ['posts', 'about', 'resume']
 
   return (
-    <div className='flex w-full items-center justify-between'>
+    <div className='flex w-full items-center justify-around'>
       {navItems.map((navItem, index) => {
         return (
           <i key={index} className='text-l lowercase'>
