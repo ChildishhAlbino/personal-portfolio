@@ -46,7 +46,7 @@ export default PostsAggregationPage
 
 function ListOfPosts({ posts }: { posts: Post[] }) {
   return (
-    <div className='flex flex-col gap-20 pb-[4rem]'>
+    <div className='flex flex-col gap-y-10 pb-[4rem]'>
       {posts &&
         posts.map((item) => {
           return <Card item={item} key={item.slug} />
@@ -61,7 +61,7 @@ function Card({ item }: { item: Post }) {
   console.log({ item })
   return (
     <>
-      <div className='grid min-h-[150px] w-full border-spacing-2 border-b-2 border-light border-opacity-20 pb-[1rem] mobile:grid-cols-1 mobile:gap-y-6 mobile:text-center desktop:grid-cols-[2fr,_4fr] desktop:gap-x-[2rem] desktop:text-left'>
+      <div className='grid min-h-[250px] w-full border-spacing-2 border-b-2 border-light border-opacity-20 pb-[1rem] mobile:grid-cols-1 mobile:gap-y-6 mobile:text-center desktop:grid-cols-[2fr,_4fr] desktop:gap-x-[2rem] desktop:text-left'>
         <FlexibleImage
           src={item.thumbnail.url}
           alt={''}

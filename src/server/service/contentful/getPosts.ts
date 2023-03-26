@@ -16,6 +16,8 @@ export async function getPosts({
         latestEdit
         thumbnail {
           url
+          width
+          height
         }
         thumbnailAspectRatio
         keywords

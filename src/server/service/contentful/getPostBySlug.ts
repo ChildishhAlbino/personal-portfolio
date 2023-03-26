@@ -5,6 +5,7 @@ import rehypeExternalImageSize from 'rehype-external-img-size'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import { Pluggable } from 'unified'
 import { inputWrapper } from '../../api/inputWrapper'
+import { getPlaiceholder } from 'plaiceholder'
 
 export async function getPostBySlug({
   input: { slug },
@@ -44,17 +45,24 @@ export async function getPostBySlug({
 
     console.time(`Serializing "${slug}" took`)
 
-    post.serializedMdx = await serialize(post.body, {
-      mdxOptions: {
-        remarkPlugins,
-        format: 'mdx',
-      },
-    })
+    const promises = [
+      findEmbeddedImages(post.body),
+      await serialize(post.body, {
+        mdxOptions: {
+          remarkPlugins,
+          format: 'mdx',
+        },
+      }),
+    ]
 
+    const [imageDetails, serializedMdx] = await Promise.all(promises)
+
+    post.serializedMdx = serializedMdx
     console.timeEnd(`Serializing "${slug}" took`)
 
     return {
-      ...post,
+      post,
+      imageDetails,
     }
   } catch (e: any) {
     console.error(e)
@@ -62,6 +70,25 @@ export async function getPostBySlug({
       error: e.message,
     }
   }
+}
+
+async function findEmbeddedImages(rawMdx: string) {
+  const regex = /!\[.*\]\((.*?)\)/g
+  const urls: string[] = []
+  let match
+
+  while ((match = regex.exec(rawMdx)) !== null) {
+    urls.push(match[1] as string)
+  }
+
+  const imageDetails = await Promise.all(
+    urls.map(async (url) => {
+      const normalized = url.includes('https:') ? url : `https:${url}`
+
+      return [url, await getPlaiceholder(normalized)]
+    })
+  )
+  return Object.fromEntries(imageDetails)
 }
 
 interface getPostBySlugInput {

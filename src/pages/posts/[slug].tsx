@@ -26,11 +26,15 @@ export default function Post({ slug }: PostPageProps) {
     latestEdit,
     thumbnail,
     keywords,
-  } = data
+  } = data.post
   return (
     <>
       <ContentLayout>
-        <div className={'grid w-full grid-cols-1 mobile:justify-items-center'}>
+        <span
+          className={
+            'grid h-full w-full grid-cols-1 pb-[5rem] mobile:justify-items-center'
+          }
+        >
           <PostHeader
             title={title}
             publicationDate={publicationDate}
@@ -38,8 +42,11 @@ export default function Post({ slug }: PostPageProps) {
             thumbnail={thumbnail}
             latestEdit={latestEdit}
           />
-          <PostBody serializedMdx={serializedMdx} />
-        </div>
+          <PostBody
+            serializedMdx={serializedMdx}
+            imageDetails={data.imageDetails}
+          />
+        </span>
       </ContentLayout>
     </>
   )
@@ -103,27 +110,33 @@ const PostHeader: FC<{
   )
 }
 
-const PostBody: FC<{ serializedMdx: any }> = ({ serializedMdx }: any) => {
+const PostBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
+  serializedMdx,
+  imageDetails,
+}: any) => {
   const components = {
     img: (props: { src: string; alt: string }) => {
-      const src = props.src
-      const blurSrc = `${src}?h=900&q=1`
-      const loader = ({ src, width, quality }: any) => {
-        return `${src}?h=${900}&q=${quality}`
+      const specificDetails = imageDetails[props.src]
+      console.log({ specificDetails })
+      const blurSrc = specificDetails.base64
+
+      const { width, height, src } = specificDetails.img
+
+      const loader = () => {
+        return src
       }
 
       return (
         <Image
           className='drop-shadow-md'
-          width={1600}
-          height={900}
+          width={width}
+          height={height}
           style={{
             margin: 0,
           }}
           src={props.src}
           loader={loader}
           blurDataURL={blurSrc}
-          loading={'lazy'}
           alt={props.alt}
           placeholder='blur'
           quality='100'
@@ -132,13 +145,13 @@ const PostBody: FC<{ serializedMdx: any }> = ({ serializedMdx }: any) => {
     },
   }
   const mdx = serializedMdx ? (
-    <div
+    <span
       className={
         'min-w-prose prose w-[100%] px-[1rem] laptop:max-w-[70ch] laptop:prose-lg desktop:max-w-[75ch]'
       }
     >
       <MDXRemote {...serializedMdx} components={components} />
-    </div>
+    </span>
   ) : (
     <>
       <p>Loading...</p>
