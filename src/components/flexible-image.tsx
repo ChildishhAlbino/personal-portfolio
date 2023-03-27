@@ -24,8 +24,6 @@ export function FlexibleImage({
   const loader = ({ src, width, quality }: any) => {
     return `${src}?h=${height || 900}&q=${quality}`
   }
-  console.log({ aspectRatio })
-
   const width = height
     ? aspectRatioFunctions[aspectRatio || 'RECTANGLE'](height)
     : null

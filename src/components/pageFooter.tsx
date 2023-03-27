@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import { useState } from 'react'
 import { FaGripLines } from 'react-icons/fa'
 export default function PageFooter() {
   return (
     <>
+      {/* moves pages up by a fixed amount so page has a bit of constant extra space */}
       <footer
         id='pseudo-footer'
         className='mt-12 w-full max-w-[clamp(600px,_60vw,_1200px)] mobile:h-[50px]'
@@ -13,8 +15,15 @@ export default function PageFooter() {
 }
 
 function RealFooter() {
+  const slots = {
+    LEFT: ['-translate-x-32', 'translate-y-0'],
+    LEFT_CENTER: ['translate-x-[5.5rem]', '-translate-y-[5.25]'],
+    CENTER: ['translate-x-0', '-translate-y-32'],
+    RIGHT_CENTER: ['-translate-x-[5.5rem]', '-translate-y-[5.25]'],
+    RIGHT: ['-translate-x-32', 'translate-y-0'],
+  }
   const navItemClassNames =
-    'col-start-1 row-start-1 scale-0 transition-transform peer-checked:scale-100'
+    'col-start-1 row-start-1 scale-0 transition-transform peer-checked:scale-100 ease-[cubic-bezier(0,.98,.28,1.12)] duration-[500ms]'
   return (
     <footer
       id='real-footer'
@@ -31,23 +40,23 @@ function RealFooter() {
         </div>
         <NavItem
           name='about'
-          className={`peer-checked:-translate-y-32 ${navItemClassNames}`}
+          className={`delay-100 peer-checked:${slots['CENTER'][1]} ${navItemClassNames}`}
         />
         <NavItem
           name='posts'
-          className={`peer-checked:-translate-y-[5.25rem] peer-checked:-translate-x-[5.5rem] ${navItemClassNames}`}
+          className={`delay-75 peer-checked:-translate-y-[5.25rem] peer-checked:-translate-x-[5.5rem] ${navItemClassNames}`}
         />
         <NavItem
           name='resume'
-          className={`peer-checked:-translate-y-[5.25rem] peer-checked:translate-x-[5.5rem] ${navItemClassNames}`}
+          className={`delay-75 peer-checked:-translate-y-[5.25rem] peer-checked:translate-x-[5.5rem] ${navItemClassNames}`}
         />
         <section
           id='left-extra-nav'
-          className={`${navItemClassNames} empty:hidden peer-checked:translate-x-32`}
+          className={`${navItemClassNames} delay-[50ms] empty:hidden peer-checked:translate-x-32`}
         />
         <section
           id='right-extra-nav'
-          className={`${navItemClassNames} empty:hidden  peer-checked:-translate-x-32 `}
+          className={`${navItemClassNames} delay-[50ms] empty:hidden  peer-checked:-translate-x-32 `}
         />
         <span className='group col-start-1 row-start-1 grid'></span>
       </span>
@@ -64,43 +73,17 @@ interface NavItem {
 
 export function NavItem({ name, path, className, icon }: NavItem) {
   const actualClassName = className || ''
+  const actualPath = `${path || name}`
+  const href = actualPath[0] == '/' ? actualPath : `/${actualPath}`
   return (
     <div
-      className={`${actualClassName} flex h-16 w-16 items-center justify-center rounded-full bg-light`}
+      className={`${actualClassName} flex h-16 w-16 items-center justify-center rounded-full bg-light drop-shadow-md`}
     >
       <i className='text-l text-center lowercase'>
-        <Link href={`/${path || name}`} className='underline'>
+        <Link href={href} className='underline'>
           {icon || <i>{name}</i>}
         </Link>
       </i>
-
-      {/* 🍔 */}
-    </div>
-  )
-}
-
-function FooterNavBar() {
-  return (
-    <div className='absolute flex h-full min-h-[50px] w-4/5 origin-bottom -translate-y-8 scale-0 rounded-xl bg-base transition-transform hover:scale-100 peer-hover:scale-100'>
-      <Nav />
-    </div>
-  )
-}
-
-function Nav() {
-  const navItems = ['posts', 'about', 'resume']
-
-  return (
-    <div className='row-start-1 flex w-full items-center justify-around'>
-      {navItems.map((navItem, index) => {
-        return (
-          <i key={index} className='text-l lowercase'>
-            <Link href={`/${navItem}`} className='underline'>
-              {navItem}
-            </Link>
-          </i>
-        )
-      })}
     </div>
   )
 }

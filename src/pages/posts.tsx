@@ -13,7 +13,6 @@ const PostsAggregationPage: NextPage = () => {
   )
   const { posts: rawPosts } = data || { posts: [] }
 
-  console.log(data)
   const posts = rawPosts.map((post) => {
     const { publicationDate } = post
     const newPublicationDate = DateTime.fromISO(publicationDate).toLocaleString(
@@ -58,7 +57,6 @@ function ListOfPosts({ posts }: { posts: Post[] }) {
 function Card({ item }: { item: Post }) {
   const topKeywords = item.keywords.slice(0, 5)
   const totalKeywords = topKeywords.length
-  console.log({ item })
   return (
     <>
       <div className='grid min-h-[250px] w-full border-spacing-2 border-b-2 border-light border-opacity-20 pb-[1rem] mobile:grid-cols-1 mobile:gap-y-6 mobile:text-center desktop:grid-cols-[2fr,_4fr] desktop:gap-x-[2rem] desktop:text-left'>
@@ -83,7 +81,7 @@ function Card({ item }: { item: Post }) {
             <br />
             <pre className='text-sm'>{item?.publicationDate}</pre>
             <span className='flex flex-wrap gap-4 text-sm mobile:mx-8 mobile:justify-center mobile:self-center laptop:mx-0 desktop:self-start'>
-              {item.keywords.slice(0, 5).map((keyword, index) => {
+              {topKeywords.map((keyword, index) => {
                 const suffix = index < totalKeywords - 1 ? ',' : ''
                 return (
                   <i

@@ -9,6 +9,7 @@ import { FC } from 'react'
 import ContentLayout from '@/components/content-layout'
 import Portal from '@/components/portal/portal'
 import { NavItem } from '@/components/pageFooter'
+import { getPosts } from '@/server/service/contentful'
 
 export default function Post({ slug }: PostPageProps) {
   const { data, error, isLoading, isStale } =
@@ -50,7 +51,7 @@ export default function Post({ slug }: PostPageProps) {
           />
         </section>
         <Portal selector='#left-extra-nav'>
-          <NavItem name='next' path='/' />
+          <NavItem name='next' path='' />
         </Portal>
         <Portal selector='#right-extra-nav'>
           <NavItem name='prev' path='/' />
@@ -75,7 +76,6 @@ const PostHeader: FC<{
   thumbnail: ThumbnailProps
 }> = ({ title, description, thumbnail }) => {
   const { url, width, height, details } = thumbnail
-  console.log({ details })
   const fixedHeight = 300
   const aspectRatio = width / height
   const actualWidth = fixedHeight * aspectRatio
@@ -206,10 +206,12 @@ export async function getStaticProps({
 export async function getStaticPaths(): Promise<
   GetStaticPathsResult<PostPageProps>
 > {
+  const data = await getPosts({ input: {} })
+  const paths = data.posts.map((post) => {
+    return { params: { slug: post.slug } }
+  })
   return {
-    paths: [
-      { params: { slug: 'the-evolution-of-my-website' } }, // See the "paths" section below
-    ],
+    paths,
     fallback: 'blocking',
   }
 }

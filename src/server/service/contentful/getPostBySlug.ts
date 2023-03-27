@@ -54,7 +54,6 @@ export async function getPostBySlug({
 
     const [imageDetails, serializedMdx] = await Promise.all(promises)
 
-    post.serializedMdx = serializedMdx
     console.timeEnd(`Serializing "${slug}" took`)
     const thumbnailWithDetails = {
       ...post.thumbnail,
@@ -63,6 +62,7 @@ export async function getPostBySlug({
     return {
       post: {
         ...post,
+        serializedMdx,
         thumbnail: thumbnailWithDetails,
       },
       imageDetails,
