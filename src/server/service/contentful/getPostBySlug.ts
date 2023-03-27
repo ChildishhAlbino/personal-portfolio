@@ -40,7 +40,8 @@ export async function getPostBySlug({
 
     const remarkPlugins = [remarkUnwrapImages]
 
-    console.time(`Serializing "${slug}" took`)
+    const timeKey = `${new Date().getTime()}: Serializing "${slug}" took`
+    console.time(timeKey)
 
     const promises = [
       findEmbeddedImages(post.body),
@@ -54,7 +55,7 @@ export async function getPostBySlug({
 
     const [imageDetails, serializedMdx] = await Promise.all(promises)
 
-    console.timeEnd(`Serializing "${slug}" took`)
+    console.timeEnd(timeKey)
     const thumbnailWithDetails = {
       ...post.thumbnail,
       details: await getImageDetails(post.thumbnail.url),

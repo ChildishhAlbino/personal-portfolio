@@ -22,6 +22,11 @@ function RealFooter() {
     RIGHT_CENTER: ['-translate-x-[5.5rem]', '-translate-y-[5.25]'],
     RIGHT: ['-translate-x-32', 'translate-y-0'],
   }
+
+  const VERTICAL_SLOTS = {
+    CENTER: 'peer-checked:-translate-y-32',
+  }
+
   const navItemClassNames =
     'col-start-1 row-start-1 scale-0 transition-transform peer-checked:scale-100 ease-[cubic-bezier(0,.98,.28,1.12)] duration-[500ms]'
   return (
@@ -40,7 +45,7 @@ function RealFooter() {
         </div>
         <NavItem
           name='about'
-          className={`delay-100 peer-checked:${slots['CENTER'][1]} ${navItemClassNames}`}
+          className={`delay-100 ${VERTICAL_SLOTS['CENTER']} ${navItemClassNames}`}
         />
         <NavItem
           name='posts'
