@@ -5,9 +5,7 @@ import { Loader } from '@/components/loader/loader'
 import { Post } from '@/types/post'
 import ContentLayout from '@/components/content-layout'
 import { DateTime } from 'luxon'
-import Image from 'next/image'
 import { FlexibleImage } from '@/components/flexible-image'
-import PageFooter from '@/components/pageFooter'
 
 const PostsAggregationPage: NextPage = () => {
   const { data, isLoading, error, isStale } = api.contentful.getPosts.useQuery(
@@ -29,14 +27,16 @@ const PostsAggregationPage: NextPage = () => {
   })
   return (
     <ContentLayout>
-      <div className='row-1 flex h-full max-h-[100px] w-full items-center bg-base px-[1rem] font-space'>
-        <p className='text-[clamp(2rem,_6vw,_4rem)] font-bold uppercase underline'>
-          Posts:
-        </p>
-      </div>
-      <span className='min-h-[60vh] p-[1rem]'>
-        {isLoading && <Loader size={150} />}
-        {!isLoading && <ListOfPosts posts={posts} />}
+      <span>
+        <div className='flex h-full max-h-[100px] w-full items-center bg-base px-[1rem] font-space'>
+          <p className='text-[clamp(2rem,_6vw,_4rem)] font-bold uppercase underline'>
+            Posts:
+          </p>
+        </div>
+        <span className='min-h-[60vh] p-[1rem]'>
+          {isLoading && <Loader size={150} />}
+          {!isLoading && <ListOfPosts posts={posts} />}
+        </span>
       </span>
     </ContentLayout>
   )
@@ -46,7 +46,7 @@ export default PostsAggregationPage
 
 function ListOfPosts({ posts }: { posts: Post[] }) {
   return (
-    <div className='flex flex-col gap-y-10 pb-[4rem]'>
+    <div className='flex flex-col gap-y-10'>
       {posts &&
         posts.map((item) => {
           return <Card item={item} key={item.slug} />
@@ -77,12 +77,12 @@ function Card({ item }: { item: Post }) {
             <h1>{item?.title}</h1>
           </Link>
           <div className='flex flex-col gap-1'>
-            <i className='break-all text-[clamp(12px,_1vw,_1rem)]'>
+            <i className='break-words text-[clamp(12px,_1vw,_1rem)]'>
               {item?.description}
             </i>
             <br />
             <pre className='text-sm'>{item?.publicationDate}</pre>
-            <span className='flex gap-4 text-sm mobile:self-center desktop:self-start'>
+            <span className='flex flex-wrap gap-4 text-sm mobile:mx-8 mobile:justify-center mobile:self-center laptop:mx-0 desktop:self-start'>
               {item.keywords.slice(0, 5).map((keyword, index) => {
                 const suffix = index < totalKeywords - 1 ? ',' : ''
                 return (

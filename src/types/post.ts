@@ -9,6 +9,8 @@ export const PostShape = z.object({
   keywords: z.string().array(),
   thumbnail: z.object({
     url: z.string(),
+    width: z.number(),
+    height: z.number(),
   }),
   thumbnailAspectRatio: z.string(),
 })

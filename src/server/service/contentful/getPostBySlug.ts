@@ -1,9 +1,6 @@
 import { contentQuery } from './contentQuery'
 import { serialize } from 'next-mdx-remote/serialize'
-// @ts-ignore
-import rehypeExternalImageSize from 'rehype-external-img-size'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import { Pluggable } from 'unified'
 import { inputWrapper } from '../../api/inputWrapper'
 import { getPlaiceholder } from 'plaiceholder'
 
@@ -59,9 +56,15 @@ export async function getPostBySlug({
 
     post.serializedMdx = serializedMdx
     console.timeEnd(`Serializing "${slug}" took`)
-
+    const thumbnailWithDetails = {
+      ...post.thumbnail,
+      details: await getImageDetails(post.thumbnail.url),
+    }
     return {
-      post,
+      post: {
+        ...post,
+        thumbnail: thumbnailWithDetails,
+      },
       imageDetails,
     }
   } catch (e: any) {
@@ -83,9 +86,8 @@ async function findEmbeddedImages(rawMdx: string) {
 
   const imageDetails = await Promise.all(
     urls.map(async (url) => {
-      const normalized = url.includes('https:') ? url : `https:${url}`
-
-      return [url, await getPlaiceholder(normalized)]
+      const details = await getImageDetails(url)
+      return [url, details]
     })
   )
   return Object.fromEntries(imageDetails)
@@ -99,4 +101,9 @@ type getPostBySlugQueryResponse = {
   postCollection: {
     items: Array<any>
   }
+}
+
+async function getImageDetails(url: string) {
+  const normalized = url.includes('https:') ? url : `https:${url}`
+  return await getPlaiceholder(normalized)
 }
