@@ -82,7 +82,7 @@ const PostHeader: FC<{
 
   const image = thumbnail ? (
     <Image
-      src={`${url}`}
+      src={url}
       width={actualWidth}
       height={fixedHeight}
       style={{
@@ -92,7 +92,7 @@ const PostHeader: FC<{
       }}
       blurDataURL={details.base64}
       placeholder='blur'
-      // priority={true}
+      priority={true}
       alt={'Thumbnail for this post'}
     />
   ) : (
@@ -103,7 +103,7 @@ const PostHeader: FC<{
       <span className={'relative max-h-[300px] w-full text-center'}>
         <div
           className={
-            'absolute top-0 z-[999] h-full max-h-[900px] w-full text-[clamp(1rem,_3vw,_3.5rem)]'
+            'absolute top-0 z-[999] h-full max-h-[900px] w-full text-[clamp(1rem,5vw,2.55rem)]'
           }
         >
           <div
