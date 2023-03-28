@@ -1,19 +1,18 @@
-import { ReactNode, useState } from 'react'
+import { MouseEvent, ReactNode, useState } from 'react'
 import PageFooter from './pageFooter'
-import { NavOptions } from '@/types/nav'
 import { useRouter } from 'next/router'
 
 export default function Layout({ children, className }: LayoutProps) {
     const router = useRouter()
     const [checked, setChecked] = useState(false)
     const { route } = router
-
+    const onClick = () => {
+        setChecked(false)
+    }
     return (
         <>
             <span
-                onClick={() => {
-                    setChecked(false)
-                }}
+                onClick={onClick}
                 className={`${className || ''} flex justify-center font-sans`}
             >
                 <div

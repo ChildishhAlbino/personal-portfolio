@@ -205,25 +205,27 @@ export function OrbitalNav({
         ? DEFAULT_PATH_PAGE_MAPPING[currentPath]
         : undefined
 
-    const navOrder = currentPage
-        ? getNavOption(currentPage)
-        : NAV_DEFAULT_POSITION
-
-    const navElements = generateNavFromNavOrder(navOrder, currentPage)
-
+    const navElements = generateNavFromNavOrder(
+        NAV_DEFAULT_POSITION,
+        currentPage
+    )
+    const eventHandler = (event: any) => {
+        console.log({ event })
+        event.stopPropagation()
+        setChecked(!checked)
+    }
     return (
         <span
             id='orbital-nav'
             className='group grid grid-cols-1 grid-rows-1 items-end justify-items-center'
         >
             <input
-                onChange={() => {
-                    setChecked(!checked)
-                }}
+                onChange={() => {}}
+                onClick={eventHandler}
                 checked={checked}
                 id='nav-bubble-check'
                 type='checkbox'
-                className='peer absolute z-30 col-start-1 row-start-1 h-16 w-16 opacity-0'
+                className='peer absolute z-30 col-start-1 row-start-1 h-16 w-16 cursor-pointer opacity-0'
             />
             <div
                 className={`absolute z-[29] ${ANIMATION_TIMING} col-start-1 row-start-1 flex h-16 w-16 items-center justify-center rounded-full bg-base transition-transform duration-500 peer-checked:rotate-90 peer-checked:scale-75`}
