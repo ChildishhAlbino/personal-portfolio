@@ -129,7 +129,6 @@ function generateNavFromNavOrder(
         const delay = DELAYS[position] as string
         const lowerCaseOption = option.toLocaleLowerCase()
         const highlight = currentPage == option
-        console.log({ option, highlight, currentPage })
 
         const className = `${navItemClassNames} ${verticalConfig} ${horizontalConfig} ${origin} ${delay}`
         if (!data) {
