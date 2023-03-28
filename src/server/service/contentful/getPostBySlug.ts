@@ -3,6 +3,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import { inputWrapper } from '../../api/inputWrapper'
 import { getPlaiceholder } from 'plaiceholder'
+import { TRPCError } from '@trpc/server'
 
 export async function getPostBySlug({
   input: { slug },
@@ -37,7 +38,9 @@ export async function getPostBySlug({
       variables,
     })
     const [post] = queryRes.postCollection.items
-
+    if(!post){
+      throw Error(`No post for slug '${slug} was found...`)
+    }
     const remarkPlugins = [remarkUnwrapImages]
 
     const timeKey = `${new Date().getTime()}: Serializing "${slug}" took`
@@ -70,9 +73,12 @@ export async function getPostBySlug({
     }
   } catch (e: any) {
     console.error(e)
-    return {
-      error: e.message,
-    }
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: 'An unexpected error occurred, please try again later.',
+      // optional: pass the original error to retain stack trace
+      cause: e,
+    });
   }
 }
 

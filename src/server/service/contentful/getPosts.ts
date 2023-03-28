@@ -1,6 +1,6 @@
 import { contentQuery } from './contentQuery'
 import { inputWrapper } from '../../api/inputWrapper'
-import { Post } from '@/types/post'
+import { PostAggregation } from '@/types/post'
 
 export async function getPosts({
   input: {},
@@ -48,6 +48,6 @@ interface getPostsQueryVariables {}
 
 type getPostsQueryResponse = {
   postCollection: {
-    items: Array<Post>
+    items: Array<PostAggregation>
   }
 }

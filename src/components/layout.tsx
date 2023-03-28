@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, className }: LayoutProps) {
   return (
     <>
       <div
         id='layout-container'
-        className={`absolute top-0 left-0 z-10 h-screen w-screen min-w-[320px] max-w-[100%] font-space`}
+        className={`absolute top-0 left-0 z-10 h-screen w-screen min-w-[320px] max-w-[100%] ${className || ""} font-sans`}
       >
         {children}
       </div>
@@ -15,5 +15,6 @@ export default function Layout({ children }: LayoutProps) {
 }
 
 export interface LayoutProps {
-  children: ReactNode
+  children: ReactNode,
+  className?: string
 }

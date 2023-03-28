@@ -10,17 +10,20 @@ import ContentLayout from '@/components/content-layout'
 import Portal from '@/components/portal/portal'
 import { NavItem } from '@/components/pageFooter'
 import { getPosts } from '@/server/service/contentful'
+import { Loader } from '@/components/loader/loader'
 
 export default function Post({ slug }: PostPageProps) {
   const { data, error, isLoading, isStale } =
     api.contentful.getPostBySlug.useQuery({ slug })
+
   if (!data) {
     return (
       <>
-        <p>Loading..</p>
+        <Loader size={150} />
       </>
     )
   }
+
   const {
     serializedMdx,
     title,
@@ -42,7 +45,7 @@ export default function Post({ slug }: PostPageProps) {
             title={title}
             publicationDate={publicationDate}
             description={description}
-            thumbnail={thumbnail}
+            thumbnail={thumbnail as ThumbnailProps}
             latestEdit={latestEdit}
           />
           <PostBody
@@ -193,7 +196,18 @@ export async function getStaticProps({
   })
 
   const slug = params?.slug as string
-  await ssg.contentful.getPostBySlug.prefetch({ slug })
+  try{
+    await ssg.contentful.getPostBySlug.fetch({ slug })
+  } catch(e: any) {
+    const cause = e.cause
+    if(cause.message.includes("No post for slug")){
+      return {
+        notFound: true
+      }  
+    }
+    
+    throw e
+  }
   return {
     props: {
       trpcState: ssg.dehydrate(),
@@ -207,9 +221,10 @@ export async function getStaticPaths(): Promise<
   GetStaticPathsResult<PostPageProps>
 > {
   const data = await getPosts({ input: {} })
-  const paths = data.posts.map((post) => {
+  const paths = data.posts.map((post) => {        
     return { params: { slug: post.slug } }
   })
+  
   return {
     paths,
     fallback: 'blocking',

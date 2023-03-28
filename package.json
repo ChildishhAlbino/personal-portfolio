@@ -13,6 +13,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.12.1",
     "@contentful/rich-text-types": "^15.12.1",
+    "@next/font": "13.1.2",
     "@tanstack/react-query": "^4.20.0",
     "@trpc/client": "^10.8.1",
     "@trpc/next": "^10.8.1",

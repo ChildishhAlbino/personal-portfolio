@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { api } from '@/utils/api'
 import Link from 'next/link'
 import { Loader } from '@/components/loader/loader'
-import { Post } from '@/types/post'
+import { PostAggregation } from '@/types/post'
 import ContentLayout from '@/components/content-layout'
 import { DateTime } from 'luxon'
 import { FlexibleImage } from '@/components/flexible-image'
@@ -43,7 +43,7 @@ const PostsAggregationPage: NextPage = () => {
 
 export default PostsAggregationPage
 
-function ListOfPosts({ posts }: { posts: Post[] }) {
+function ListOfPosts({ posts }: { posts: PostAggregation[] }) {
   return (
     <div className='flex flex-col gap-y-10'>
       {posts &&
@@ -54,7 +54,7 @@ function ListOfPosts({ posts }: { posts: Post[] }) {
   )
 }
 
-function Card({ item }: { item: Post }) {
+function Card({ item }: { item: PostAggregation }) {
   const topKeywords = item.keywords.slice(0, 5)
   const totalKeywords = topKeywords.length
   return (
