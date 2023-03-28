@@ -34,7 +34,7 @@ function RealFooter() {
       id='real-footer'
       className='fixed bottom-0 z-20 mb-2 flex w-full max-w-[clamp(600px,_60vw,_1200px)] items-end justify-center mobile:h-[50px]'
     >
-      <span className='group grid h-[150px] w-[25%] grid-cols-1 grid-rows-1 items-end justify-items-center'>
+      <span className='group grid grid-cols-1 grid-rows-1 items-end justify-items-center'>
         <input
           id='nav-bubble-check'
           type='checkbox'
