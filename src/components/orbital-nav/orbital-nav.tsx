@@ -225,7 +225,7 @@ export function OrbitalNav({
                 checked={checked}
                 id='nav-bubble-check'
                 type='checkbox'
-                className='peer absolute z-30 col-start-1 row-start-1 h-16 w-16 cursor-pointer opacity-0'
+                className='peer absolute z-30 col-start-1 row-start-1 h-16 w-16 opacity-0 laptop:cursor-pointer'
             />
             <div
                 className={`absolute z-[29] ${ANIMATION_TIMING} col-start-1 row-start-1 flex h-16 w-16 items-center justify-center rounded-full bg-base transition-transform duration-500 peer-checked:rotate-90 peer-checked:scale-75`}
