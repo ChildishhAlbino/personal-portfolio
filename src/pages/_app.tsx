@@ -10,6 +10,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <Layout>
       <Head>
+        <title>ChildishhAlbino</title>
         <link rel="shortcut icon" href="favicon-32x32.png" />
       </Head>
       <Component {...pageProps} />
