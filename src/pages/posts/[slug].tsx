@@ -51,10 +51,10 @@ export default function Post({ slug }: PostPageProps) {
           />
         </section>
         <Portal selector='#left-extra-nav'>
-          <NavItem name='next' path='' />
+          <NavItem name='prev' path='/' />
         </Portal>
         <Portal selector='#right-extra-nav'>
-          <NavItem name='prev' path='/' />
+          <NavItem name='next' path='/' />
         </Portal>
       </ContentLayout>
     </>

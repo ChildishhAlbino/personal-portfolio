@@ -56,11 +56,11 @@ function RealFooter() {
           className={`delay-75 peer-checked:-translate-y-[5.25rem] peer-checked:translate-x-[5.5rem] ${navItemClassNames}`}
         />
         <section
-          id='left-extra-nav'
+          id='right-extra-nav'
           className={`${navItemClassNames} delay-[50ms] empty:hidden peer-checked:translate-x-32`}
         />
         <section
-          id='right-extra-nav'
+          id='left-extra-nav'
           className={`${navItemClassNames} delay-[50ms] empty:hidden  peer-checked:-translate-x-32 `}
         />
         <span className='group col-start-1 row-start-1 grid'></span>
