@@ -58,7 +58,7 @@ module.exports = {
         },
       }),
       fontFamily: {
-        "sans": ['var(--next-google-font-space)', ...fontFamily.sans]
+        "sans": ['var(--next-google-font-space)']
       },
       colors: {
         "darkest": "#0C0032",

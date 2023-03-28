@@ -11,6 +11,8 @@ const space_mono = Space_Mono({
     weight: ['400', '700'],
     variable: '--next-google-font-space',
     subsets: ['latin'],
+    fallback: ['Courier'],
+    display: 'block',
 })
 
 const MyApp: AppType = ({ Component, pageProps }) => {
