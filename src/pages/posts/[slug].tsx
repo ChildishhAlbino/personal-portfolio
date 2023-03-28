@@ -196,16 +196,16 @@ export async function getStaticProps({
   })
 
   const slug = params?.slug as string
-  try{
+  try {
     await ssg.contentful.getPostBySlug.fetch({ slug })
-  } catch(e: any) {
+  } catch (e: any) {
     const cause = e.cause
-    if(cause.message.includes("No post for slug")){
+    if (cause.message.includes('No post for slug')) {
       return {
-        notFound: true
-      }  
+        notFound: true,
+      }
     }
-    
+
     throw e
   }
   return {
@@ -221,13 +221,13 @@ export async function getStaticPaths(): Promise<
   GetStaticPathsResult<PostPageProps>
 > {
   const data = await getPosts({ input: {} })
-  const paths = data.posts.map((post) => {        
+  const paths = data.posts.map((post) => {
     return { params: { slug: post.slug } }
   })
-  
+
   return {
     paths,
-    fallback: 'blocking',
+    fallback: true,
   }
 }
 
