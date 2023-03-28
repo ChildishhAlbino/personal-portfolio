@@ -24,7 +24,7 @@ const PostsAggregationPage: NextPage = () => {
         }
     })
     return (
-        <ContentLayout currentPage='POSTS'>
+        <ContentLayout>
             <span>
                 <div className='font-space flex h-full max-h-[100px] w-full items-center bg-base px-[1rem]'>
                     <p className='text-[clamp(2rem,_6vw,_4rem)] font-bold uppercase underline'>
@@ -87,10 +87,10 @@ function Card({ item }: { item: PostAggregation }) {
                                     index < totalKeywords - 1 ? ',' : ''
                                 return (
                                     <i
-                                        className='text-text-darker underline'
+                                        className='cursor-pointer text-text-darker underline'
                                         key={`${keyword}_${index}`}
                                     >
-                                        {keyword}
+                                        #{keyword}
                                         {suffix}
                                     </i>
                                 )

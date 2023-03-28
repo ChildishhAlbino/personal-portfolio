@@ -229,7 +229,7 @@ export async function getStaticProps({
             trpcState: ssg.dehydrate(),
             slug,
         },
-        revalidate: 1,
+        revalidate: 30,
     }
 }
 

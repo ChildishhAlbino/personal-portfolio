@@ -1,5 +1,6 @@
 import { FaGripLines } from 'react-icons/fa'
 import Link from 'next/link'
+import { NavOptions } from '@/types/nav'
 
 const POSITIONS = {
     LEFT: 'LEFT',
@@ -7,14 +8,6 @@ const POSITIONS = {
     CENTER: 'CENTER',
     RIGHT_CENTER: 'RIGHT_CENTER',
     RIGHT: 'RIGHT',
-}
-
-type NavOptions = {
-    LEFT_PORTAL: string
-    POSTS: string
-    ABOUT: string
-    RESUME: string
-    RIGHT_PORTAL: string
 }
 
 const NAV_OPTIONS: NavOptions = {
@@ -93,7 +86,9 @@ const DELAYS = {
 const ANIMATION_TIMING = 'ease-[cubic-bezier(.17,.89,.44,1.06)]'
 
 export type OrbitalNavProps = {
-    currentPage?: keyof NavOptions
+    currentPath?: string
+    setChecked: (b: boolean) => any
+    checked: boolean
 }
 
 function getNavOption(currentPage: keyof NavOptions): Array<keyof NavOptions> {
@@ -139,7 +134,7 @@ function generateNavFromNavOrder(
         } else {
             return (
                 <NavItem
-                    id={`${position}_${lowerCaseOption}`}
+                    id={`${lowerCaseOption}`}
                     key={lowerCaseOption}
                     name={lowerCaseOption}
                     className={className}
@@ -171,18 +166,19 @@ export function NavItem({
     const actualPath = `${path || name}`
     const href = actualPath[0] == '/' ? actualPath : `/${actualPath}`
     return (
-        <div
+        <Link
+            href={href}
             id={id}
             className={`${actualClassName} flex h-16 w-16 items-center justify-center rounded-full ${
                 highlight ? 'bg-light' : 'bg-base'
             }`}
         >
-            <i className='text-center lowercase'>
-                <Link href={href} className='text-sm underline'>
+            <div>
+                <i className='text-center text-sm lowercase underline'>
                     {icon || <i>{name}</i>}
-                </Link>
-            </i>
-        </div>
+                </i>
+            </div>
+        </Link>
     )
 }
 
@@ -190,9 +186,28 @@ NavItem.defaultProps = {
     highlight: false,
 }
 
-export function OrbitalNav({ currentPage }: OrbitalNavProps) {
-    const navOrder =
-        currentPage != null ? getNavOption(currentPage) : NAV_DEFAULT_POSITION
+const POSTS_PATH = '/posts'
+const ABOUT_PATH = '/about'
+const RESUME_PATH = '/resume'
+
+const DEFAULT_PATH_PAGE_MAPPING: { [x: string]: keyof NavOptions } = {
+    [POSTS_PATH]: NAV_OPTIONS.POSTS as keyof NavOptions,
+    [ABOUT_PATH]: NAV_OPTIONS.ABOUT as keyof NavOptions,
+    [RESUME_PATH]: NAV_OPTIONS.RESUME as keyof NavOptions,
+}
+
+export function OrbitalNav({
+    currentPath,
+    setChecked,
+    checked,
+}: OrbitalNavProps) {
+    const currentPage = currentPath
+        ? DEFAULT_PATH_PAGE_MAPPING[currentPath]
+        : undefined
+
+    const navOrder = currentPage
+        ? getNavOption(currentPage)
+        : NAV_DEFAULT_POSITION
 
     const navElements = generateNavFromNavOrder(navOrder, currentPage)
 
@@ -202,6 +217,10 @@ export function OrbitalNav({ currentPage }: OrbitalNavProps) {
             className='group grid grid-cols-1 grid-rows-1 items-end justify-items-center'
         >
             <input
+                onChange={() => {
+                    setChecked(!checked)
+                }}
+                checked={checked}
                 id='nav-bubble-check'
                 type='checkbox'
                 className='peer absolute z-30 col-start-1 row-start-1 h-16 w-16 opacity-0'

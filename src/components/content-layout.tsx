@@ -1,13 +1,7 @@
 import { ReactNode } from 'react'
-import PageFooter from './pageFooter'
-import type { OrbitalNavProps } from '../components/orbital-nav/orbital-nav'
+import { CurrentPageType } from '@/types/nav'
 
-// type Props =
-
-export default function ContentLayout({
-    children,
-    currentPage,
-}: ContentLayoutProps) {
+export default function ContentLayout({ children }: ContentLayoutProps) {
     return (
         <>
             <main
@@ -15,19 +9,16 @@ export default function ContentLayout({
                 className={`mx-auto grid h-full w-full max-w-[clamp(600px,_60vw,_1200px)] grid-cols-1`}
             >
                 {children}
-                <PageFooter navProps={{ currentPage }} />
+                <footer
+                    id='pseudo-footer'
+                    className='mt-12 w-full max-w-[clamp(600px,_60vw,_1200px)] mobile:h-[50px]'
+                />
+                {/* <PageFooter navProps={{ currentPage }} /> */}
             </main>
         </>
     )
 }
 
-type CurrentPageType = OrbitalNavProps['currentPage']
-
 export interface ContentLayoutProps {
     children: ReactNode
-    currentPage: CurrentPageType
-}
-
-ContentLayout.defaultProps = {
-    currentPage: null,
 }
