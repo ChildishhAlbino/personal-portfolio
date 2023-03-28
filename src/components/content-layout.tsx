@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { NavBubble } from './nav-bubble'
 import PageFooter from './pageFooter'
 
 export default function ContentLayout({ children }: ContentLayoutProps) {
