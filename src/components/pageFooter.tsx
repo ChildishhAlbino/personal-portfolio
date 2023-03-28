@@ -28,7 +28,7 @@ function RealFooter() {
   }
 
   const navItemClassNames =
-    'col-start-1 row-start-1 scale-0 transition-transform peer-checked:scale-100 ease-[cubic-bezier(0,.98,.28,1.12)] duration-[500ms]'
+    'col-start-1 row-start-1 scale-0 transition-transform peer-checked:scale-100 ease-[cubic-bezier(.51,.26,0,.77)] duration-[500ms]'
   return (
     <footer
       id='real-footer'
