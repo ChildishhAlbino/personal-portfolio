@@ -1,4 +1,5 @@
 /** @type {import("tailwindcss").Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme')
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -57,7 +58,7 @@ module.exports = {
         },
       }),
       fontFamily: {
-        "sans": ['var(--next-google-font-space)']
+        "sans": ['var(--next-google-font-space)', ...fontFamily.sans]
       },
       colors: {
         "darkest": "#0C0032",
