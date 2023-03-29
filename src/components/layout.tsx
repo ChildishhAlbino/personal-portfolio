@@ -5,13 +5,12 @@ import { useRouter } from 'next/router'
 export default function Layout({ children, className }: LayoutProps) {
     const router = useRouter()
     const [checked, setChecked] = useState(false)
-    const { route } = router
+    const { asPath } = router
+
     const onClick = () => {
         setChecked(false)
     }
-    const checkedClassName = checked
-        ? 'opacity-100 scale-100'
-        : 'opacity-0 scale-0'
+    const checkedClassName = checked ? 'opacity-100 z-[19]' : 'opacity-0 z-[0]'
     return (
         <>
             <span
@@ -28,7 +27,7 @@ export default function Layout({ children, className }: LayoutProps) {
                     navProps={{
                         setChecked,
                         checked,
-                        currentPath: route,
+                        currentPath: asPath,
                     }}
                 />
                 <div
@@ -37,7 +36,7 @@ export default function Layout({ children, className }: LayoutProps) {
                 />
                 <div
                     id='checked-middlelay'
-                    className={`fixed z-[19] h-screen w-screen max-w-full bg-[rgba(0,0,0,0.5)] ${checkedClassName} transition-opacity`}
+                    className={`fixed h-screen w-screen max-w-full bg-[rgba(0,0,0,0.5)] ${checkedClassName} transition-opacity duration-300`}
                 />
             </span>
         </>

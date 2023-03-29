@@ -6,6 +6,7 @@ import { PostAggregation } from '@/types/post'
 import ContentLayout from '@/components/content-layout'
 import { DateTime } from 'luxon'
 import { FlexibleImage } from '@/components/flexible-image'
+import { ContentPageHeader } from '../components/content-page-header'
 
 const PostsAggregationPage: NextPage = () => {
     const { data, isLoading, error, isStale } =
@@ -14,9 +15,9 @@ const PostsAggregationPage: NextPage = () => {
 
     const posts = rawPosts.map((post) => {
         const { publicationDate } = post
-        const newPublicationDate = DateTime.fromISO(
-            publicationDate
-        ).toLocaleString(DateTime.DATE_FULL)
+        const newPublicationDate = DateTime.fromISO(publicationDate)
+            .setLocale('au')
+            .toLocaleString(DateTime.DATE_FULL)
 
         return {
             ...post,
@@ -26,11 +27,9 @@ const PostsAggregationPage: NextPage = () => {
     return (
         <ContentLayout>
             <span>
-                <div className='font-space flex h-full max-h-[100px] w-full items-center bg-base px-[1rem]'>
-                    <p className='text-[clamp(2rem,_6vw,_4rem)] font-bold uppercase underline'>
-                        Posts:
-                    </p>
-                </div>
+                <ContentPageHeader>
+                    <h1>Posts:</h1>
+                </ContentPageHeader>
                 <span className='min-h-[60vh] p-[1rem]'>
                     {isLoading && <Loader size={150} />}
                     {!isLoading && <ListOfPosts posts={posts} />}
@@ -80,7 +79,9 @@ function Card({ item }: { item: PostAggregation }) {
                             {item?.description}
                         </i>
                         <br />
-                        <pre className='text-sm'>{item?.publicationDate}</pre>
+                        <pre className='text-sm'>
+                            {item?.publicationDate} <small>UTC+11</small>
+                        </pre>
                         <span className='flex flex-wrap gap-4 text-sm mobile:mx-8 mobile:justify-center mobile:self-center laptop:mx-0 desktop:self-start'>
                             {topKeywords.map((keyword, index) => {
                                 const suffix =

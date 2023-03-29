@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind screens;
-/* @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
 
 body::-webkit-scrollbar {
     width: 0.4rem;
@@ -20,7 +19,6 @@ body::-webkit-scrollbar-thumb {
 
 :root {
     background-color: theme('colors.darkest');
-    /* overflow-x: hidden; */
 }
 
 html {
@@ -29,4 +27,145 @@ html {
 
 * {
     color: theme('colors.text');
+}
+
+@layer components {
+    .mdx-page-header {
+        @apply bg-base px-4 text-[clamp(2rem,_6vw,_4rem)] font-bold uppercase underline;
+    }
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+    color: theme('colors.text');
+    background: none;
+    font-family: var(--next-google-font-space);
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    border-radius: 0.5rem;
+    font-size: clamp(0.5rem, 1vw + 0.5rem, 1.125rem);
+}
+
+code[class*='language-']::-webkit-scrollbar-thumb,
+pre[class*='language-']::-webkit-scrollbar-thumb {
+    background: theme('colors.base');
+    padding: 1px;
+}
+
+code[class*='language-']::-webkit-scrollbar,
+pre[class*='language-']::-webkit-scrollbar {
+    width: 0.4rem;
+    height: 0.4rem;
+}
+
+code[class*='language-']::-webkit-scrollbar-track,
+pre[class*='language-']::-webkit-scrollbar-track {
+    background: theme('colors.light');
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+    padding: 0.1em;
+    border-radius: 0.3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: theme('colors.text');
+}
+
+.token.punctuation {
+    color: theme('colors.text');
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+    color: theme('colors.light');
+}
+
+.token.function-name {
+    color: theme('colors.blue.400');
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+    color: theme('colors.blue.400');
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+    color: theme('colors.teal.200');
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+    color: theme('colors.fuchsia.600');
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+    color: theme('colors.teal.400');
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+    color: theme('colors.teal.500');
+    font-weight: bold;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+.token.inserted {
+    color: theme('colors.base');
 }
