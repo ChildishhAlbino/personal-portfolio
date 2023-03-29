@@ -37,7 +37,7 @@ export default function Layout({ children, className }: LayoutProps) {
                 />
                 <div
                     id='checked-middlelay'
-                    className={`fixed z-[19] h-screen w-screen max-w-full bg-[rgba(0,0,0,0.5)] opacity-0 ${checkedClassName} transition-opacity`}
+                    className={`fixed z-[19] h-screen w-screen max-w-full bg-[rgba(0,0,0,0.5)] ${checkedClassName} transition-opacity`}
                 />
             </span>
         </>
