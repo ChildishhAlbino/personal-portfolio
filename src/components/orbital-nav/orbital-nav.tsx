@@ -91,23 +91,6 @@ export type OrbitalNavProps = {
     checked: boolean
 }
 
-function getNavOption(currentPage: keyof NavOptions): Array<keyof NavOptions> {
-    const data = NAV_OPTION_CONFIG[currentPage]
-    if (!data) {
-        throw Error('Cannot find...')
-    }
-
-    const { after, previous } = data
-
-    return [
-        NAV_OPTIONS.LEFT_PORTAL as keyof NavOptions,
-        previous,
-        currentPage,
-        after,
-        NAV_OPTIONS.RIGHT_PORTAL as keyof NavOptions,
-    ]
-}
-
 const navItemClassNames = `${ANIMATION_TIMING} col-start-1 drop-shadow-[0px_0px_10px_#000] row-start-1 origin-center opacity-0 scale-0 peer-checked:opacity-100 transition-all peer-checked:scale-100 duration-500`
 
 function generateNavFromNavOrder(
@@ -169,15 +152,13 @@ export function NavItem({
         <Link
             href={href}
             id={id}
-            className={`${actualClassName} flex h-16 w-16 items-center justify-center rounded-full ${
+            className={`${actualClassName}  flex h-16 w-16 items-center justify-center rounded-full ${
                 highlight ? 'bg-light' : 'bg-base'
             }`}
         >
-            <div>
-                <i className='text-center text-sm lowercase underline'>
-                    {icon || <i>{name}</i>}
-                </i>
-            </div>
+            <i className='text-center text-sm lowercase underline'>
+                {icon || <i>{name}</i>}
+            </i>
         </Link>
     )
 }
@@ -228,7 +209,7 @@ export function OrbitalNav({
                 className='peer absolute z-30 col-start-1 row-start-1 h-16 w-16 opacity-0 laptop:cursor-pointer'
             />
             <div
-                className={`absolute z-[29] ${ANIMATION_TIMING} col-start-1 row-start-1 flex h-16 w-16 items-center justify-center rounded-full bg-base transition-transform duration-500 peer-checked:rotate-90 peer-checked:scale-75`}
+                className={`absolute z-[29] drop-shadow-[0px_0px_10px_#000] ${ANIMATION_TIMING} col-start-1 row-start-1 flex h-16 w-16 items-center justify-center rounded-full bg-base transition-transform duration-500 peer-checked:rotate-90 peer-checked:scale-75`}
             >
                 <FaGripLines />
             </div>
