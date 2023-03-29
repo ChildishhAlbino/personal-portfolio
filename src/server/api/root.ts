@@ -8,8 +8,7 @@ import { contentfulRouter } from './routers/contentful'
  * All routers added in /api/routers should be manually added here
  */
 export const appRouter = createTRPCRouter({
-  wonder: exampleRouter,
-  contentful: contentfulRouter,
+    contentful: contentfulRouter,
 })
 
 // export type definition of API
