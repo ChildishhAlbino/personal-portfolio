@@ -6,4 +6,4 @@ A website/blog built in NextJS via `create-t3-app`
 * Tailwind
 * Typescript
 * Vercel
-* Contentful
+* Contentful CMS
