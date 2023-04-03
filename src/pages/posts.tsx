@@ -5,7 +5,6 @@ import { Loader } from '@/components/loader/loader'
 import { PostAggregation } from '@/types/post'
 import PageLayout from '@/components/layouts/page-layout'
 import { DateTime } from 'luxon'
-import { ContentPageHeader } from '../components/content-page-header'
 import PostThumbnail from '@/components/post-thumbnail'
 
 const PostsAggregationPage: NextPage = () => {
@@ -25,11 +24,8 @@ const PostsAggregationPage: NextPage = () => {
         }
     })
     return (
-        <PageLayout>
+        <PageLayout header='Posts:'>
             <span className='flex h-full flex-col gap-y-4'>
-                <ContentPageHeader>
-                    <h1>Posts:</h1>
-                </ContentPageHeader>
                 <span>
                     {isLoading && <Loader size={150} />}
                     {!isLoading && <ListOfPosts posts={posts} />}

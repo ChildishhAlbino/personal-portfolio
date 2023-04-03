@@ -4,12 +4,12 @@ import { createProxySSGHelpers } from '@trpc/react-query/ssg'
 import superjson from 'superjson'
 import { appRouter } from '../server/api/root'
 import { MDXRemote } from 'next-mdx-remote'
-import Image from 'next/image'
 import { FC } from 'react'
-import PageLayout from '@/components/layouts/page-layout'
 import { Loader } from '@/components/loader/loader'
 import { getPages } from '@/server/service/contentful/getPages'
-
+import AllComponents from '@/components'
+import { MarkdownImage } from '@/components/MarkdownImage'
+import Head from 'next/head'
 export default function MdxPage({ slug }: MdxPageProps) {
     const { data, error, isLoading } = api.contentful.getPageBySlug.useQuery({
         slug,
@@ -24,23 +24,18 @@ export default function MdxPage({ slug }: MdxPageProps) {
     }
 
     const {
-        page: { serializedMdx, title },
+        page: { serializedMdx, title, css },
     } = data
-
     return (
         <>
-            <PageLayout>
-                <section
-                    className={
-                        'grid h-full w-full auto-rows-min grid-cols-1 gap-y-4 mobile:justify-items-center'
-                    }
-                >
-                    <PageBody
-                        serializedMdx={serializedMdx}
-                        imageDetails={data.imageDetails}
-                    />
-                </section>
-            </PageLayout>
+            <Head>
+                <title>{`${title} | Childishh Albino`}</title>
+                {/* {css?.url && <link rel='stylesheet' href={css.url} />} */}
+            </Head>
+            <PageBody
+                serializedMdx={serializedMdx}
+                imageDetails={data.imageDetails}
+            />
         </>
     )
 }
@@ -52,36 +47,19 @@ const PageBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
     const components = {
         img: (props: { src: string; alt: string }) => {
             const specificDetails = imageDetails[props.src]
-            const blurSrc = specificDetails.base64
-
-            const { width, height, src } = specificDetails.img
-
-            const loader = () => {
-                return src
-            }
-
             return (
-                <Image
-                    className='drop-shadow-md'
-                    width={width}
-                    height={height}
-                    style={{
-                        margin: 0,
-                    }}
-                    src={props.src}
-                    loader={loader}
-                    blurDataURL={blurSrc}
-                    alt={props.alt}
-                    placeholder='blur'
-                    quality='100'
+                <MarkdownImage
+                    imageDetails={specificDetails}
+                    {...props}
+                    fixedMaxHeight={400}
+                    className='mx-auto'
                 />
             )
         },
+        ...AllComponents,
     }
     const mdx = serializedMdx ? (
-        <span className={'w-[100%]'}>
-            <MDXRemote {...serializedMdx} components={components} />
-        </span>
+        <MDXRemote {...serializedMdx} components={components} />
     ) : (
         <>
             <p>Loading...</p>

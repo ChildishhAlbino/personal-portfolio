@@ -13,6 +13,7 @@ import { getPosts } from '@/server/service/contentful'
 import { Loader } from '@/components/loader/loader'
 import { DateTime } from 'luxon'
 import PostThumbnail from '@/components/post-thumbnail'
+import AllComponents from '@/components'
 
 export default function Post({ slug }: PostPageProps) {
     const { data, error, isLoading, isStale } =
@@ -169,7 +170,9 @@ const PostBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
                 />
             )
         },
+        ...AllComponents,
     }
+
     const mdx = serializedMdx ? (
         <span
             className={

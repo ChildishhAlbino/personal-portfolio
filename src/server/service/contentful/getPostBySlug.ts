@@ -5,6 +5,7 @@ import { inputWrapper } from '../../api/inputWrapper'
 import { getPlaiceholder } from 'plaiceholder'
 import { TRPCError } from '@trpc/server'
 import { getImageDetails } from '@/server/utils/plaiceholder'
+import AllComponents from '@/components'
 
 export async function getPostBySlug({
     input: { slug },
@@ -49,7 +50,7 @@ export async function getPostBySlug({
 
         const promises = [
             findEmbeddedImages(post.body),
-            await serialize(post.body, {
+            serialize(post.body, {
                 mdxOptions: {
                     remarkPlugins,
                     format: 'mdx',
@@ -58,7 +59,6 @@ export async function getPostBySlug({
         ]
 
         const [imageDetails, serializedMdx] = await Promise.all(promises)
-
         console.timeEnd(timeKey)
         const thumbnailWithDetails = {
             ...post.thumbnail,

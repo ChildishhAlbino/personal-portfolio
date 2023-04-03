@@ -6,6 +6,7 @@ import { inputWrapper } from '../../api/inputWrapper'
 import { getPlaiceholder } from 'plaiceholder'
 import { TRPCError } from '@trpc/server'
 import { PageAggregation } from '@/types/page'
+import { getImageDetails } from '@/server/utils/plaiceholder'
 
 export async function getPageBySlug({
     input: { slug },
@@ -17,6 +18,9 @@ export async function getPageBySlug({
           title
           mdx
           slug
+          css {
+            url
+          }
         }
       }
     }`
@@ -105,9 +109,4 @@ type getPageBySlugQueryResponse = {
     pageCollection: {
         items: Array<PageAggregation>
     }
-}
-
-async function getImageDetails(url: string) {
-    const normalized = url.includes('https:') ? url : `https:${url}`
-    return await getPlaiceholder(normalized)
 }
