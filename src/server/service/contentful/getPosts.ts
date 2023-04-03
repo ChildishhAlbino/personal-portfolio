@@ -1,13 +1,14 @@
 import { contentQuery } from './contentQuery'
 import { inputWrapper } from '../../api/inputWrapper'
 import { PostAggregation } from '@/types/post'
+import { getImageDetails } from '@/server/utils/plaiceholder'
 
 export async function getPosts({
-  input: {},
+    input: {},
 }: inputWrapper<getPostsInput>): Promise<{
-  posts: any[]
+    posts: PostAggregation[]
 }> {
-  const query = `query GetPosts($preview: Boolean){
+    const query = `query GetPosts($preview: Boolean){
     postCollection(preview: $preview, order:latestEdit_DESC) {
       items {
         title
@@ -26,20 +27,25 @@ export async function getPosts({
     }
   }`
 
-  try {
-    const queryRes = await contentQuery<
-      getPostsQueryResponse,
-      getPostsQueryVariables
-    >({
-      query,
-    })
-    const posts = queryRes.postCollection.items
-    return {
-      posts,
+    try {
+        const queryRes = await contentQuery<
+            getPostsQueryResponse,
+            getPostsQueryVariables
+        >({
+            query,
+        })
+        const rawPosts = queryRes.postCollection.items
+
+        const posts = await Promise.all(
+            rawPosts.map(getPostWithThumbnailDetails)
+        )
+
+        return {
+            posts,
+        }
+    } catch (e: any) {
+        throw e
     }
-  } catch (e: any) {
-    throw e
-  }
 }
 
 interface getPostsInput {}
@@ -47,7 +53,19 @@ interface getPostsInput {}
 interface getPostsQueryVariables {}
 
 type getPostsQueryResponse = {
-  postCollection: {
-    items: Array<PostAggregation>
-  }
+    postCollection: {
+        items: Array<PostAggregation>
+    }
+}
+async function getPostWithThumbnailDetails(
+    post: PostAggregation
+): Promise<PostAggregation> {
+    const thumbnailWithDetails = {
+        ...post.thumbnail,
+        details: await getImageDetails(post.thumbnail.url),
+    }
+    return {
+        ...post,
+        thumbnail: thumbnailWithDetails,
+    }
 }
