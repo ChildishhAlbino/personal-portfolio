@@ -1,8 +1,8 @@
-import { MouseEvent, ReactNode, useState } from 'react'
-import PageFooter from './pageFooter'
+import { ReactNode, useState } from 'react'
+import PageFooter from '../pageFooter'
 import { useRouter } from 'next/router'
 
-export default function Layout({ children, className }: LayoutProps) {
+export default function RootLayout({ children, className }: LayoutProps) {
     const router = useRouter()
     const [checked, setChecked] = useState(false)
     const { asPath } = router
@@ -36,7 +36,7 @@ export default function Layout({ children, className }: LayoutProps) {
                 />
                 <div
                     id='checked-middlelay'
-                    className={`fixed h-screen w-screen max-w-full bg-[rgba(0,0,0,0.5)] ${checkedClassName} transition-opacity duration-300`}
+                    className={`fixed h-screen w-screen max-w-full bg-[rgba(0,0,0,0.75)] duration-500 ${checkedClassName} transition-opacity`}
                 />
             </span>
         </>

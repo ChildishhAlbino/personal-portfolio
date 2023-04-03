@@ -6,12 +6,14 @@ import { appRouter } from '../../server/api/root'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 import { FC } from 'react'
-import ContentLayout from '@/components/content-layout'
+import PageLayout from '@/components/layouts/page-layout'
 import Portal from '@/components/portal/portal'
 import { NavItem } from '@/components/orbital-nav/orbital-nav'
 import { getPosts } from '@/server/service/contentful'
 import { Loader } from '@/components/loader/loader'
 import { DateTime } from 'luxon'
+import PostThumbnail from '@/components/post-thumbnail'
+import AllComponents from '@/components'
 
 export default function Post({ slug }: PostPageProps) {
     const { data, error, isLoading, isStale } =
@@ -39,7 +41,7 @@ export default function Post({ slug }: PostPageProps) {
 
     return (
         <>
-            <ContentLayout>
+            <PageLayout>
                 <section
                     className={
                         'grid h-full w-full auto-rows-min grid-cols-1 gap-y-4 mobile:justify-items-center'
@@ -63,7 +65,7 @@ export default function Post({ slug }: PostPageProps) {
                 <Portal selector='#right-extra-nav'>
                     <NavItem name='next' path='/' />
                 </Portal>
-            </ContentLayout>
+            </PageLayout>
         </>
     )
 }
@@ -82,29 +84,12 @@ const PostHeader: FC<{
     latestEdit?: string
     thumbnail: ThumbnailProps
 }> = ({ title, description, thumbnail, latestEdit, publicationDate }) => {
-    const { url, width, height, details } = thumbnail
-    const fixedHeight = 300
-    const aspectRatio = width / height
-    const actualWidth = fixedHeight * aspectRatio
+    const thumbnailProps = {
+        ...thumbnail,
+        style: { filter: 'brightness(0.3)' },
+    }
+    const image = thumbnail ? <PostThumbnail {...thumbnailProps} /> : <></>
 
-    const image = thumbnail ? (
-        <Image
-            src={url}
-            width={actualWidth}
-            height={fixedHeight}
-            style={{
-                margin: '0 auto',
-                // fixes the spacing inconsistencies
-                filter: 'brightness(0.5)',
-            }}
-            blurDataURL={details.base64}
-            placeholder='blur'
-            priority={true}
-            alt={'Thumbnail for this post'}
-        />
-    ) : (
-        <></>
-    )
     const datePrefix = latestEdit != publicationDate ? 'Edited:' : 'Posted:'
     const date = DateTime.fromISO(latestEdit || publicationDate).toLocaleString(
         DateTime.DATE_FULL
@@ -114,7 +99,7 @@ const PostHeader: FC<{
             <span className={'relative max-h-[300px] w-full text-center'}>
                 <div
                     className={
-                        'absolute top-0 z-[999] h-full max-h-[900px] w-full text-[clamp(1rem,4.5vw,2.25rem)]'
+                        'absolute top-0 z-50 h-full max-h-[900px] w-full text-[clamp(1rem,4.5vw,2.25rem)]'
                     }
                 >
                     <div
@@ -185,7 +170,9 @@ const PostBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
                 />
             )
         },
+        ...AllComponents,
     }
+
     const mdx = serializedMdx ? (
         <span
             className={
