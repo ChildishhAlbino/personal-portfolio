@@ -13,7 +13,6 @@ export default function ContentLayout({ children }: ContentLayoutProps) {
                     id='pseudo-footer'
                     className='mt-12 w-full max-w-[clamp(600px,_60vw,_1200px)] mobile:h-[50px]'
                 />
-                {/* <PageFooter navProps={{ currentPage }} /> */}
             </main>
         </>
     )
