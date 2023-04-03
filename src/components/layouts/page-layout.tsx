@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
-import { CurrentPageType } from '@/types/nav'
 
-export default function ContentLayout({ children }: ContentLayoutProps) {
+export default function PageLayout({ children }: ContentLayoutProps) {
     return (
         <>
             <main

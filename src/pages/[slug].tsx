@@ -6,7 +6,7 @@ import { appRouter } from '../server/api/root'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 import { FC } from 'react'
-import ContentLayout from '@/components/content-layout'
+import PageLayout from '@/components/layouts/page-layout'
 import { Loader } from '@/components/loader/loader'
 import { getPages } from '@/server/service/contentful/getPages'
 
@@ -29,7 +29,7 @@ export default function MdxPage({ slug }: MdxPageProps) {
 
     return (
         <>
-            <ContentLayout>
+            <PageLayout>
                 <section
                     className={
                         'grid h-full w-full auto-rows-min grid-cols-1 gap-y-4 mobile:justify-items-center'
@@ -40,7 +40,7 @@ export default function MdxPage({ slug }: MdxPageProps) {
                         imageDetails={data.imageDetails}
                     />
                 </section>
-            </ContentLayout>
+            </PageLayout>
         </>
     )
 }

@@ -2,7 +2,7 @@
 import '../styles/globals.css'
 import type { AppType } from 'next/dist/shared/lib/utils'
 import { api } from '../utils/api'
-import Layout from '../components/layout'
+import RootLayout from '../components/layouts/root-layout'
 import Head from 'next/head'
 
 import { Space_Mono } from '@next/font/google'
@@ -18,13 +18,13 @@ const space_mono = Space_Mono({
 const MyApp: AppType = ({ Component, pageProps }) => {
     return (
         <span className={space_mono.variable}>
-            <Layout>
+            <RootLayout>
                 <Head>
                     <title>ChildishhAlbino</title>
                     <link rel='shortcut icon' href='/favicon-32x32.png' />
                 </Head>
                 <Component {...pageProps} />
-            </Layout>
+            </RootLayout>
         </span>
     )
 }

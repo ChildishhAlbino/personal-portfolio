@@ -3,7 +3,7 @@ import { api } from '@/utils/api'
 import Link from 'next/link'
 import { Loader } from '@/components/loader/loader'
 import { PostAggregation } from '@/types/post'
-import ContentLayout from '@/components/content-layout'
+import PageLayout from '@/components/layouts/page-layout'
 import { DateTime } from 'luxon'
 import { ContentPageHeader } from '../components/content-page-header'
 import PostThumbnail from '@/components/post-thumbnail'
@@ -25,7 +25,7 @@ const PostsAggregationPage: NextPage = () => {
         }
     })
     return (
-        <ContentLayout>
+        <PageLayout>
             <span className='flex h-full flex-col gap-y-4'>
                 <ContentPageHeader>
                     <h1>Posts:</h1>
@@ -35,7 +35,7 @@ const PostsAggregationPage: NextPage = () => {
                     {!isLoading && <ListOfPosts posts={posts} />}
                 </span>
             </span>
-        </ContentLayout>
+        </PageLayout>
     )
 }
 
