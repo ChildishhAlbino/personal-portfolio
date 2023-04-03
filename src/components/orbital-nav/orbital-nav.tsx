@@ -191,7 +191,6 @@ export function OrbitalNav({
         currentPage
     )
     const eventHandler = (event: any) => {
-        console.log({ event })
         event.stopPropagation()
         setChecked(!checked)
     }
