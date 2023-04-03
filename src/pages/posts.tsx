@@ -26,11 +26,11 @@ const PostsAggregationPage: NextPage = () => {
     })
     return (
         <ContentLayout>
-            <span>
+            <span className='flex h-full flex-col gap-y-4'>
                 <ContentPageHeader>
                     <h1>Posts:</h1>
                 </ContentPageHeader>
-                <span className='min-h-[60vh] p-[1rem]'>
+                <span>
                     {isLoading && <Loader size={150} />}
                     {!isLoading && <ListOfPosts posts={posts} />}
                 </span>
@@ -67,7 +67,7 @@ function Card({ item }: { item: PostAggregation }) {
                         item.thumbnailAspectRatio as 'SQUARE' | 'RECTANGLE'
                     }
                 />
-                <span>
+                <span className='px-8'>
                     <Link
                         href={`/posts/${item?.slug}`}
                         className='text-[clamp(1rem,_6vw,_2rem)] underline'
@@ -82,7 +82,7 @@ function Card({ item }: { item: PostAggregation }) {
                         <pre className='text-sm'>
                             {item?.publicationDate} <small>UTC+11</small>
                         </pre>
-                        <span className='flex flex-wrap gap-4 text-sm mobile:mx-8 mobile:justify-center mobile:self-center laptop:mx-0 desktop:self-start'>
+                        <span className='flex flex-wrap gap-4 text-sm mobile:justify-center mobile:self-center desktop:self-start'>
                             {topKeywords.map((keyword, index) => {
                                 const suffix =
                                     index < totalKeywords - 1 ? ',' : ''
