@@ -1,4 +1,4 @@
-import { MouseEvent, ReactNode, useState } from 'react'
+import { ReactNode, useState } from 'react'
 import PageFooter from './pageFooter'
 import { useRouter } from 'next/router'
 
@@ -36,7 +36,7 @@ export default function Layout({ children, className }: LayoutProps) {
                 />
                 <div
                     id='checked-middlelay'
-                    className={`fixed h-screen w-screen max-w-full bg-[rgba(0,0,0,0.5)] ${checkedClassName} transition-opacity duration-300`}
+                    className={`fixed h-screen w-screen max-w-full bg-[rgba(0,0,0,0.75)] duration-500 ${checkedClassName} transition-opacity`}
                 />
             </span>
         </>
