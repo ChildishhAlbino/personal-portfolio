@@ -5,7 +5,6 @@ import { Loader } from '@/components/loader/loader'
 import { PostAggregation } from '@/types/post'
 import ContentLayout from '@/components/content-layout'
 import { DateTime } from 'luxon'
-import { FlexibleImage } from '@/components/flexible-image'
 import { ContentPageHeader } from '../components/content-page-header'
 import PostThumbnail from '@/components/post-thumbnail'
 
