@@ -3,9 +3,8 @@ import '../styles/globals.css'
 import type { AppType } from 'next/dist/shared/lib/utils'
 import { api } from '../utils/api'
 import RootLayout from '../components/layouts/root-layout'
-import Head from 'next/head'
-
 import { Space_Mono } from '@next/font/google'
+import Head from 'next/head'
 
 const space_mono = Space_Mono({
     weight: ['400', '700'],
@@ -16,13 +15,15 @@ const space_mono = Space_Mono({
 })
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+    const env = process.env.NODE_ENV
+    const favicon = env === 'production' ? '/favicon.ico' : '/preview.ico'
     return (
         <span className={space_mono.variable}>
+            <Head>
+                <title>ChildishhAlbino</title>
+                <link rel='shortcut icon' href={favicon} />
+            </Head>
             <RootLayout>
-                <Head>
-                    <title>ChildishhAlbino</title>
-                    <link rel='shortcut icon' href='/favicon-32x32.png' />
-                </Head>
                 <Component {...pageProps} />
             </RootLayout>
         </span>
