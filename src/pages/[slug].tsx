@@ -50,8 +50,8 @@ const PageBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
                 <MarkdownImage
                     imageDetails={specificDetails}
                     {...props}
-                    fixedMaxHeight={300}
-                    // className='mx-auto'
+                    fixedMaxHeight={400}
+                    className='mx-auto'
                 />
             )
         },
