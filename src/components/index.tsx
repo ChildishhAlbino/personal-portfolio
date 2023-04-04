@@ -1,5 +1,5 @@
 import LayoutComponents from './layouts'
-import { Letters } from './letters'
+import { Letters } from './spread-letters'
 
 const AllComponents = {
     ...LayoutComponents,
