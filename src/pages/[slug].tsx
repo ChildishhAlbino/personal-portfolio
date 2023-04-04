@@ -8,7 +8,7 @@ import { FC } from 'react'
 import { Loader } from '@/components/loader/loader'
 import { getPages } from '@/server/service/contentful/getPages'
 import AllComponents from '@/components'
-import { MarkdownImage } from '@/components/MarkdownImage'
+import { MarkdownImage } from '@/components/markdown-image'
 import Head from 'next/head'
 export default function MdxPage({ slug }: MdxPageProps) {
     const { data, error, isLoading } = api.contentful.getPageBySlug.useQuery({
@@ -30,7 +30,6 @@ export default function MdxPage({ slug }: MdxPageProps) {
         <>
             <Head>
                 <title>{`${title} | Childishh Albino`}</title>
-                {/* {css?.url && <link rel='stylesheet' href={css.url} />} */}
             </Head>
             <PageBody
                 serializedMdx={serializedMdx}
@@ -51,15 +50,17 @@ const PageBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
                 <MarkdownImage
                     imageDetails={specificDetails}
                     {...props}
-                    fixedMaxHeight={400}
-                    className='mx-auto'
+                    fixedMaxHeight={300}
+                    // className='mx-auto'
                 />
             )
         },
         ...AllComponents,
     }
     const mdx = serializedMdx ? (
-        <MDXRemote {...serializedMdx} components={components} />
+        <span>
+            <MDXRemote {...serializedMdx} components={components} />
+        </span>
     ) : (
         <>
             <p>Loading...</p>

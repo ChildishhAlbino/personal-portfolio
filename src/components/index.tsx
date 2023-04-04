@@ -1,4 +1,4 @@
-import { Letters } from './Letters'
+import { Letters } from './letters'
 import LayoutComponents from './layouts'
 
 const AllComponents = {

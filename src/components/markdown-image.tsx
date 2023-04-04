@@ -17,10 +17,14 @@ export function MarkdownImage({
         return detailsSrc
     }
 
+    const style = {
+        maxHeight: `${fixedMaxHeight}px`,
+    } as any
     return (
         <Image
             width={actualWidth}
             height={fixedMaxHeight}
+            style={style}
             className={`${className} drop-shadow-sm`}
             src={src}
             loader={loader}
