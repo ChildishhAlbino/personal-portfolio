@@ -99,7 +99,7 @@ const PostHeader: FC<{
             <span className={'relative max-h-[300px] w-full text-center'}>
                 <div
                     className={
-                        'absolute top-0 z-50 h-full max-h-[900px] w-full text-[clamp(1rem,4.5vw,2.25rem)]'
+                        'absolute top-0 z-50 h-full max-h-[900px] w-full text-[clamp(1rem,4.5vw,1.5rem)]'
                     }
                 >
                     <div
