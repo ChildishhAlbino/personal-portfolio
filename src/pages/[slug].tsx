@@ -64,7 +64,7 @@ const PageBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
         </span>
     ) : (
         <>
-            <p>Loading...</p>
+            <Loader size={150} />
         </>
     )
     return <>{mdx}</>
