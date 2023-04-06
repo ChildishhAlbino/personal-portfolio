@@ -15,7 +15,7 @@ const space_mono = Space_Mono({
 })
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-    const env = process.env.NODE_ENV
+    const env = process.env.VERCEL_ENV
     const favicon = env === 'production' ? '/favicon.ico' : '/preview.ico'
     return (
         <span className={space_mono.variable}>
