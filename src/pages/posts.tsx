@@ -58,10 +58,10 @@ function Card({ item }: { item: PostAggregation }) {
     }
     return (
         <>
-            <div className='grid w-full border-b-2 border-light border-opacity-30 pb-4 mobile:grid-cols-1 mobile:gap-y-8 mobile:text-center desktop:grid-cols-[2fr,_4fr] desktop:gap-x-[2rem] desktop:text-left'>
+            <div className='grid w-full border-b-2 border-light border-opacity-30 pb-4 mobile:grid-cols-1 mobile:gap-y-8 mobile:text-center desktop:grid-cols-[2fr,_5fr] desktop:gap-x-4 desktop:text-left'>
                 <PostThumbnail {...thumbnailProps} />
 
-                <span className='px-8'>
+                <span className='border-l-text pl-4 desktop:border-l-2'>
                     <Link
                         href={`/posts/${item?.slug}`}
                         className='text-[clamp(1rem,_6vw,_2rem)] text-text underline'

@@ -43,7 +43,7 @@ code[class*='language-'],
 pre[class*='language-'] {
     color: theme('colors.text');
     background: none;
-    font-family: var(--next-google-font-space);
+    font-family: var(--google-font-family);
     text-align: left;
     white-space: pre;
     word-spacing: normal;

@@ -1,14 +1,14 @@
 // src/pages/_app.tsx
-import '../styles/globals.css'
+import '@/styles/globals.css'
 import type { AppType } from 'next/dist/shared/lib/utils'
-import { api } from '../utils/api'
-import RootLayout from '../components/layouts/root-layout'
-import { Space_Mono } from '@next/font/google'
+import { api } from '@/utils/api'
+import RootLayout from '@/components/layouts/root-layout'
+import { JetBrains_Mono, Martian_Mono } from '@next/font/google'
 import Head from 'next/head'
 
-const space_mono = Space_Mono({
-    weight: ['400', '700'],
-    variable: '--next-google-font-space',
+const space_mono = JetBrains_Mono({
+    weight: 'variable',
+    variable: '--google-font-family',
     subsets: ['latin'],
     fallback: ['Courier'],
     display: 'block',
