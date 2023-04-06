@@ -11,7 +11,7 @@ import AllComponents from '@/components'
 import { MarkdownImage } from '@/components/markdown-image'
 import Head from 'next/head'
 export default function MdxPage({ slug }: MdxPageProps) {
-    const { data, error, isLoading } = api.contentful.getPageBySlug.useQuery({
+    const { data, isLoading } = api.contentful.getPageBySlug.useQuery({
         slug,
     })
 
@@ -30,6 +30,7 @@ export default function MdxPage({ slug }: MdxPageProps) {
         <>
             <Head>
                 <title>{`${title} | Childishh Albino`}</title>
+                <style>{css}</style>
             </Head>
             <PageBody
                 serializedMdx={serializedMdx}

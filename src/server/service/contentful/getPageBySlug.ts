@@ -18,9 +18,7 @@ export async function getPageBySlug({
           title
           mdx
           slug
-          css {
-            url
-          }
+          css
         }
       }
     }`
