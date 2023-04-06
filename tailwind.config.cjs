@@ -72,6 +72,15 @@ module.exports = {
       },
       backgroundImage: {
         "dots": "radial-gradient(rgba(25, 0, 97, 0.7) 8%, transparent 2%)"
+      },
+      keyframes: {
+        characteristics_entry: {
+          '0%': { transform: 'translateY(100%)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 100 },
+        }
+      },
+      animation: {
+        characteristics_entry: 'characteristics_entry 1.5s ease-in-out 1 1.2s forwards',
       }
     }
   },
