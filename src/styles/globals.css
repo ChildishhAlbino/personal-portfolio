@@ -29,10 +29,14 @@ html {
     color: theme('colors.text');
 }
 
-@layer components {
-    .mdx-page-header {
-        @apply bg-base px-4 text-[clamp(2rem,_6vw,_4rem)] font-bold uppercase underline;
-    }
+a {
+    color: theme('colors.fuchsia.600');
+    font-weight: bold;
+}
+
+a:hover {
+    color: theme('colors.sky.400');
+    text-decoration: underline;
 }
 
 code[class*='language-'],
@@ -168,4 +172,14 @@ pre[class*='language-'] {
 
 .token.inserted {
     color: theme('colors.base');
+}
+
+#page-grid {
+    display: none;
+}
+
+@layer components {
+    #page-grid ~ #page-content {
+        @apply flex flex-wrap gap-x-4;
+    }
 }

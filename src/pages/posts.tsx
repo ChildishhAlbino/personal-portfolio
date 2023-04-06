@@ -64,7 +64,7 @@ function Card({ item }: { item: PostAggregation }) {
                 <span className='px-8'>
                     <Link
                         href={`/posts/${item?.slug}`}
-                        className='text-[clamp(1rem,_6vw,_2rem)] underline'
+                        className='text-[clamp(1rem,_6vw,_2rem)] text-text underline'
                     >
                         <h1>{item?.title}</h1>
                     </Link>

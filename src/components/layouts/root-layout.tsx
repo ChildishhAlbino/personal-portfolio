@@ -1,12 +1,11 @@
 import { ReactNode, useState } from 'react'
-import PageFooter from '../pageFooter'
+import PageFooter from '../page-footer'
 import { useRouter } from 'next/router'
 
 export default function RootLayout({ children, className }: LayoutProps) {
     const router = useRouter()
     const [checked, setChecked] = useState(false)
     const { asPath } = router
-
     const onClick = () => {
         setChecked(false)
     }

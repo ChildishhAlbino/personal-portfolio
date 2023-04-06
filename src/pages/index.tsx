@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { Letters } from '../components/Letters'
+import { Letters } from '@/components/spread-letters'
 const Home: NextPage = () => {
     return (
         <main className='grid h-full grid-cols-1 grid-rows-3 place-items-center px-[2rem]'>
