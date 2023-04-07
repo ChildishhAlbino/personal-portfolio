@@ -18,15 +18,15 @@ const config = {
    */
   i18n: {
     locales: ["en"],
-    defaultLocale: "en",
+    defaultLocale: "en"
   },
   async rewrites() {
     return [
       {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
-      },
-    ]
+        source: "/sitemap.xml",
+        destination: "/api/sitemap"
+      }
+    ];
   }
 };
 export default config;

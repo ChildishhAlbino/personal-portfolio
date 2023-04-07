@@ -9,7 +9,7 @@ const server = z.object({
   CONTENTFUL_BASE_ENDPOINT: z.string(),
   CONTENTFUL_SPACE_ID: z.string(),
   CONTENTFUL_DELIVERY_TOKEN: z.string(),
-  CONTENTFUL_PREVIEW_ENABLED: z.string(),
+  CONTENTFUL_PREVIEW_ENABLED: z.string()
 });
 
 /**
@@ -17,7 +17,7 @@ const server = z.object({
  * built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 const client = z.object({
-  NEXT_PUBLIC_VERCEL_ENV: z.nullable(z.enum(["production", "preview", "development"])),
+  NEXT_PUBLIC_VERCEL_ENV: z.nullable(z.enum(["production", "preview", "development"]))
 });
 
 /**
@@ -58,7 +58,7 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
   if (parsed.success === false) {
     console.error(
       "❌ Invalid environment variables:",
-      parsed.error.flatten().fieldErrors,
+      parsed.error.flatten().fieldErrors
     );
     throw new Error("Invalid environment variables");
   }
@@ -72,10 +72,10 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
         throw new Error(
           process.env.NODE_ENV === "production"
             ? "❌ Attempted to access a server-side environment variable on the client"
-            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
+            : `❌ Attempted to access server-side environment variable '${prop}' on the client`
         );
       return target[/** @type {keyof typeof target} */ (prop)];
-    },
+    }
   });
 }
 

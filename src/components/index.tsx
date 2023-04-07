@@ -1,9 +1,9 @@
-import LayoutComponents from './layouts'
-import { Letters } from './spread-letters'
+import LayoutComponents from "./layouts";
+import { Letters } from "./spread-letters";
 
 const AllComponents = {
-    ...LayoutComponents,
-    Letters,
-}
+  ...LayoutComponents,
+  Letters
+};
 
-export default AllComponents
+export default AllComponents;
