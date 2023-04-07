@@ -8,7 +8,7 @@ export function Letters({ word, className, mutator }: LettersProps) {
   const [currentWord, setWord] = useState(initialWord);
   useLettersMutator(word, setWord, mutator);
   return (
-    <div className={`flex justify-between ${className || ""}`}>
+    <div id={`letters_${word}`} className={`flex justify-between ${className || ""}`}>
       {currentWord.split("").map((letter, index) => (
         <h1 key={`${letter}_${index}`}>{letter}</h1>
       ))}

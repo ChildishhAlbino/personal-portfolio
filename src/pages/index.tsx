@@ -4,7 +4,7 @@ import { generateRandomWord, generateShiftedWord, Letters, Mutator } from "@/com
 const Home: NextPage = () => {
   return (
     <main className="grid h-full grid-cols-1 grid-rows-3 place-items-center px-8">
-            <span className="row-start-2 w-full max-w-3xl">
+            <span className="row-start-2 w-full max-w-2xl">
                 <Header />
                 <br />
                 <hr />
@@ -36,7 +36,7 @@ function Header() {
   return (
     <div
       id="header-content"
-      className="w-full justify-items-center text-[clamp(3rem,_6vw,_8rem)] font-bold uppercase leading-none"
+      className="w-full justify-items-center text-[clamp(3rem,_5.5vw,_8rem)] font-bold uppercase leading-none"
     >
       <Letters word="connor" {...lettersProps} />
       <Letters word="williams" {...lettersProps} />
