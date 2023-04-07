@@ -3,21 +3,20 @@ import {getPages} from "@/server/service/contentful/getPages";
 import {getPosts} from "@/server/service/contentful";
 import {DateTime} from "luxon";
 
-const BASE_URL = "https://www.childishhalbino.com"
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    const xml = await generateXmlSitemap();
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/xml')
+    // Instructing the Vercel edge to cache the file
+    res.setHeader('Cache-control', 'stale-while-revalidate, s-maxage=3600')
+    res.end(xml)
+}
+
+const BASE_URL: string = "https://www.childishhalbino.com"
 const KNOWN_PAGES = [
     BASE_URL,
     `${BASE_URL}/posts`
 ]
-
-async function fetchDynamicPagesUrlData() {
-    return (await getPages({input: {}})).pages.map(page => `${BASE_URL}/${page.slug}`);
-}
-
-async function fetchPostUrlData() {
-    return (await getPosts({input: {}})).posts.map(post => {
-        return {url: `${BASE_URL}/${post.slug}`, editDate: post.latestEdit}
-    });
-}
 
 async function generateXmlSitemap() {
     const [DYNAMIC_PAGES, POSTS] = await Promise.all([fetchDynamicPagesUrlData(), fetchPostUrlData()])
@@ -31,13 +30,14 @@ async function generateXmlSitemap() {
     </urlset>`;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const xml = await generateXmlSitemap();
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'application/xml')
-    // Instructing the Vercel edge to cache the file
-    res.setHeader('Cache-control', 'stale-while-revalidate, s-maxage=3600')
-    res.end(xml)
+async function fetchDynamicPagesUrlData() {
+    return (await getPages({input: {}})).pages.map(page => `${BASE_URL}/${page.slug}`);
+}
+
+async function fetchPostUrlData() {
+    return (await getPosts({input: {}})).posts.map(post => {
+        return {url: `${BASE_URL}/${post.slug}`, editDate: post.latestEdit}
+    });
 }
 
 function generateXMLForBasePage(url: string){
