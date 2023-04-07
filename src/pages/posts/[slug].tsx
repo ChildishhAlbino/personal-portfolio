@@ -1,8 +1,8 @@
-import { api } from '../../utils/api'
+import { api } from '@/utils/api'
 import { GetStaticPathsResult, GetStaticPropsContext } from 'next'
-import { createProxySSGHelpers } from '@trpc/react-query/ssg'
+import { createServerSideHelpers } from "@trpc/react-query/server"
 import superjson from 'superjson'
-import { appRouter } from '../../server/api/root'
+import { appRouter } from '@/server/api/root'
 import { MDXRemote } from 'next-mdx-remote'
 import Image from 'next/image'
 import { FC } from 'react'
@@ -192,7 +192,7 @@ const PostBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
 export async function getStaticProps({
     params,
 }: GetStaticPropsContext<PostPageProps>) {
-    const ssg = await createProxySSGHelpers({
+    const ssg = await createServerSideHelpers({
         router: appRouter,
         ctx: {},
         transformer: superjson, // optional - adds superjson serialization

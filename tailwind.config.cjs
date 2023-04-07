@@ -80,7 +80,7 @@ module.exports = {
         }
       },
       animation: {
-        characteristics_entry: 'characteristics_entry 1.5s ease-in-out 1 1.2s forwards',
+        characteristics_entry: 'characteristics_entry 1.5s ease-in-out 1 1.5s forwards',
       }
     }
   },
