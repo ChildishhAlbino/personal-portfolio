@@ -11,7 +11,7 @@ const Home: NextPage = () => {
                 <br />
                 <section
                   id="characteristics"
-                  className="animate-characteristics_entry text-center opacity-0 mobile:text-sm laptop:text-base"
+                  className="animate-characteristics_entry text-center opacity-0 mobile:text-sm"
                 >
                     <i>
                         Professionally curious software engineer and problem

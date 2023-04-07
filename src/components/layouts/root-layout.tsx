@@ -31,7 +31,7 @@ export default function RootLayout({ children, className }: LayoutProps) {
                 />
                 <div
                   id="bg-dots"
-                  className={`fixed z-0 h-screen w-screen max-w-full animate-pulse bg-dots bg-[length:5vmin_5vmin]`}
+                  className={`fixed z-0 h-screen w-screen max-w-full animate-pulse bg-grid bg-[length:2rem_2rem]`}
                 />
                 <div
                   id="checked-middlelay"

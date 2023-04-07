@@ -10,7 +10,7 @@ export default function PageLayout({ children, header }: ContentLayoutProps) {
       >
         {header && (
           <div
-            className="mb-4 flex h-fit w-full justify-between items-center bg-gradient-to-r from-light to-indigo-600 rounded-b-md px-4 text-[clamp(2rem,_2.5vw,_4rem)] font-bold uppercase underline">
+            className="mb-4 flex h-fit w-full justify-between items-center bg-gradient-to-r from-light to-indigo-600 rounded-b-md px-4 text-[clamp(2rem,_2vw,_4rem)] font-bold uppercase underline">
             <h1>{header}</h1>
 
             <div className="flex gap-4">
