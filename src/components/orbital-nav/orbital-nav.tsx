@@ -195,7 +195,7 @@ export function OrbitalNav({
         setChecked(!checked)
     }
     return (
-        <span
+        <nav
             id='orbital-nav'
             className='group grid grid-cols-1 grid-rows-1 items-end justify-items-center'
         >
@@ -213,6 +213,6 @@ export function OrbitalNav({
                 <FaGripLines />
             </div>
             {navElements}
-        </span>
+        </nav>
     )
 }
