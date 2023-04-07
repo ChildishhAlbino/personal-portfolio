@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function PageLayout({ children, header }: ContentLayoutProps) {
   return (
@@ -9,8 +10,20 @@ export default function PageLayout({ children, header }: ContentLayoutProps) {
       >
         {header && (
           <div
-            className="mb-4 flex h-fit w-full items-center bg-base px-4 text-[clamp(2rem,_2.5vw,_4rem)] font-bold uppercase underline">
+            className="mb-4 flex h-fit w-full justify-between items-center bg-gradient-to-r from-light to-indigo-600 rounded-b-md px-4 text-[clamp(2rem,_2.5vw,_4rem)] font-bold uppercase underline">
             <h1>{header}</h1>
+
+            <div className="flex gap-4">
+              <a href={"https://twitter.com/ChildishhAlbino"} target="_blank" rel="noreferrer">
+                <FaTwitter className="text-text hover:text-darker" />
+              </a>
+              <a href={"https://github.com/ChildishhAlbino"} target="_blank" rel="noreferrer">
+                <FaGithub className="text-text hover:text-darker" />
+              </a>
+              <a href={"https://www.linkedin.com/in/childishhalbino/"} target="_blank" rel="noreferrer">
+                <FaLinkedin className="text-text hover:text-darker" />
+              </a>
+            </div>
           </div>
         )}
         <section

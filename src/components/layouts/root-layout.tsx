@@ -14,7 +14,7 @@ export default function RootLayout({ children, className }: LayoutProps) {
     <>
             <span
               onClick={onClick}
-              className={`${className || ""} flex justify-center font-sans `}
+              className={`${className || ""} text-text flex justify-center font-sans `}
             >
                 <div
                   id="layout-container"
