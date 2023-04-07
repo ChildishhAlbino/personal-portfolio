@@ -1,10 +1,10 @@
-import PageLayout from '@/components/layouts/page-layout'
+import PageLayout from "@/components/layouts/page-layout";
 
 function NotFoundPage() {
-    return (
-        <>
-            <PageLayout>
-                <span className={'prose prose-xl p-4'}>
+  return (
+    <>
+      <PageLayout>
+                <span className={"prose prose-xl p-4"}>
                     <h1>404</h1>
                     <p>This is not the page you&apos;re looking for! 👋</p>
                     <p>
@@ -12,9 +12,9 @@ function NotFoundPage() {
                         404&apos;d
                     </p>
                 </span>
-            </PageLayout>
-        </>
-    )
+      </PageLayout>
+    </>
+  );
 }
 
-export default NotFoundPage
+export default NotFoundPage;

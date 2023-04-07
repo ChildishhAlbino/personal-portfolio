@@ -1,42 +1,59 @@
-import {useState} from 'react'
-import {useLettersMutator} from "@/hooks/use-letters-mutator";
+import { useState } from "react";
+import { useLettersMutator } from "@/hooks/use-letters-mutator";
 
 export function Letters({ word, className, mutator }: LettersProps) {
-    const [currentWord, setWord] = useState(word)
-    useLettersMutator(word, setWord, mutator)
-    return (
-        <div className={`flex justify-between ${className || ''}`}>
-            {currentWord.split('').map((letter, index) => (
-                <h1 key={`${letter}_${index}`}>{letter}</h1>
-            ))}
-        </div>
-    )
+
+  const initialMutation = mutator?.initialMutation
+  const initialWord = initialMutation ? initialMutation(word, 0) : word
+  const [currentWord, setWord] = useState(initialWord);
+  useLettersMutator(word, setWord, mutator);
+  return (
+    <div id={`letters_${word}`} className={`flex justify-between ${className || ""}`}>
+      {currentWord.split("").map((letter, index) => (
+        <h1 key={`${letter}_${index}`}>{letter}</h1>
+      ))}
+    </div>
+  );
 }
 
 Letters.defaultProps = {
-    mutator: null,
-}
+  mutator: null,
+  initialMutation: null
+};
 
 type LettersProps = {
-    word: string
-    className?: string
-    mutator?: Mutuator
+  word: string
+  className?: string
+  mutator?: Mutator
 }
 
-export type Mutuator = {
-    logic: (s: string, iterations: number) => string,
-    iterates: boolean
+export type Mutator = {
+  mutationLogic: MutationLogic,
+  iterates: boolean,
+  initialMutation?: MutationLogic
 }
 
-const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+type MutationLogic = (s: string, iterations: number) => string
+
+const ALPHABET: string = "abcdefghijklmnopqrstuvwxyz";
 
 export function generateRandomWord(word: string, iterations: number): string {
-    const randomWord = word.split("").map((letter, index) => {
-        const uniqueAlphabet = ALPHABET.replace(letter.toLowerCase(), "");
-        return index < Math.floor(iterations) + 1
-            ? letter
-            : uniqueAlphabet[Math.floor(Math.random() * 25)]
-    })
-    return randomWord.join('')
+  const randomWord = word.split("").map((letter, index) => {
+    const uniqueAlphabet = ALPHABET.replace(letter.toLowerCase(), "");
+    return index < Math.floor(iterations) + 1
+      ? letter
+      : uniqueAlphabet[Math.floor(Math.random() * uniqueAlphabet.length)] as string;
+  });
+  return randomWord.join("");
 }
+
+export function generateShiftedWord(word: string, iterations: number): string {
+  const shiftedWord = word.split("").map((letter, index) => {
+    const uniqueAlphabet = ALPHABET.replace(letter.toLowerCase(), "");
+    const indexOfLetter = ALPHABET.indexOf(letter) as number
+    return (uniqueAlphabet[indexOfLetter + index] || uniqueAlphabet[indexOfLetter - index]) as string
+  });
+  return shiftedWord.join("");
+}
+
 
