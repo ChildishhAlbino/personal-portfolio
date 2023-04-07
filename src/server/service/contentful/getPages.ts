@@ -1,11 +1,11 @@
 import { contentQuery } from './contentQuery'
 import { inputWrapper } from '../../api/inputWrapper'
-import { PageAggregation } from '@/types/page'
+import {Page, PageAggregation} from '@/types/page'
 
 export async function getPages({
     input: {},
 }: inputWrapper<getPagesInput>): Promise<{
-    pages: any[]
+    pages: PageAggregation[]
 }> {
     const query = `query GetPages($preview: Boolean) {
       pageCollection(preview: $preview) {
