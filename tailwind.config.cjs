@@ -57,7 +57,8 @@ module.exports = {
         }
       }),
       fontFamily: {
-        "sans": ["var(--google-font-family)"]
+        "sans": ["var(--google-font-family-noto)"],
+        "hacker": ["var(--google-font-family-jb)"],
       },
       colors: {
         "darkest": "#0C0032",
