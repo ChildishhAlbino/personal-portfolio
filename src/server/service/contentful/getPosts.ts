@@ -20,7 +20,6 @@ export async function getPosts({
           width
           height
         }
-        thumbnailAspectRatio
         keywords
         slug
       }

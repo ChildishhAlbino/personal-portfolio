@@ -12,8 +12,7 @@ export const PostAggregationShape = z.object({
     width: z.number(),
     height: z.number(),
     details: z.any()
-  }),
-  thumbnailAspectRatio: z.string()
+  })
 });
 
 export type PostAggregation = z.infer<typeof PostAggregationShape>
