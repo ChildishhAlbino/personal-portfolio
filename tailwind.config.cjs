@@ -68,10 +68,10 @@ module.exports = {
         "neutral-dark": "#282828",
         "text": "#F5EFFF",
         "text-darker": "#C2CAD0"
-
       },
       backgroundImage: {
-        "dots": "radial-gradient(rgba(25, 0, 97, 0.7) 8%, transparent 2%)"
+        "dots": "radial-gradient(rgba(25, 0, 97, 0.4) 8%, transparent 2%)",
+        "grid": "var(--bg-grid-linear-gradient)"
       },
       keyframes: {
         characteristics_entry: {

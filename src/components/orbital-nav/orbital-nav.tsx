@@ -156,7 +156,7 @@ export function NavItem({
         highlight ? "bg-light" : "bg-base"
       }`}
     >
-      <i className="text-center text-sm lowercase underline">
+      <i className="text-center hover:text-text text-sm lowercase underline">
         {icon || <i>{name}</i>}
       </i>
     </Link>
