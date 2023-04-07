@@ -36,7 +36,7 @@ function Header() {
   return (
     <div
       id="header-content"
-      className="w-full justify-items-center text-[clamp(3rem,_5.5vw,_8rem)] font-bold uppercase leading-none"
+      className="w-full font-hacker justify-items-center text-[clamp(3rem,_5.5vw,_8rem)] font-bold uppercase leading-none"
     >
       <Letters word="connor" {...lettersProps} />
       <Letters word="williams" {...lettersProps} />
