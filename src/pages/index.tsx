@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { generateRandomWord, Letters } from "@/components/spread-letters";
+import { generateRandomWord, generateShiftedWord, Letters, Mutator } from "@/components/spread-letters";
 
 const Home: NextPage = () => {
   return (
@@ -26,7 +26,13 @@ const Home: NextPage = () => {
 export default Home;
 
 function Header() {
-  const lettersProps = { mutator: { mutationLogic: generateRandomWord, iterates: true } };
+  const lettersProps: {mutator: Mutator} = {
+    mutator: {
+      mutationLogic: generateRandomWord,
+      iterates: true,
+      initialMutation: generateShiftedWord
+    }
+  };
   return (
     <div
       id="header-content"

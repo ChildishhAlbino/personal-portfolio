@@ -23,7 +23,6 @@ export function useLettersMutator(word: string, setWord: any, mutator?: Mutator)
               iterations
             );
             setWord(randomWord);
-
             setIterations(
               (previousIterations) =>
                 previousIterations + ITERATION_INCREMENT
