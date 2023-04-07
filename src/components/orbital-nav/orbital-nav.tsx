@@ -152,7 +152,7 @@ export function NavItem({
     <Link
       href={href}
       id={id}
-      className={`${actualClassName}  flex h-16 w-16 items-center justify-center rounded-full ${
+      className={`${actualClassName} text-text flex h-16 w-16 items-center justify-center rounded-full ${
         highlight ? "bg-light" : "bg-base"
       }`}
     >
