@@ -4,14 +4,9 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      "mobile": "280px",
-      // => @media (min-width: 280px) { ... }
-      "mobile-lg": "500px",
-      // => @media (min-width: 500px) { ... }
+      "mobile": "1px",
       "laptop": "1024px",
-      // => @media (min-width: 1024px) { ... }
       "desktop": "1280px"
-      // => @media (min-width: 1280px) { ... }
     },
     extend: {
       gridTemplateColumns: {
@@ -23,9 +18,8 @@ module.exports = {
             color: theme("colors.text"),
             "--tw-prose-headings": theme("colors.text"),
             "--tw-prose-body": theme("colors.text"),
-            "--tw-prose-headings": theme("colors.text"),
             "--tw-prose-lead": theme("colors.text"),
-            "--tw-prose-links": theme("colors.light"),
+            "--tw-prose-links": theme("colors.fuchsia.500"),
             "--tw-prose-bold": theme("colors.text"),
             "--tw-prose-counters": theme("colors.text"),
             "--tw-prose-bullets": theme("colors.text"),
@@ -58,20 +52,22 @@ module.exports = {
         }
       }),
       fontFamily: {
-        "sans": ["var(--google-font-family)"]
+        "sans": ["var(--google-font-family-noto)"],
+        "hacker": ["var(--google-font-family-jb)"],
       },
       colors: {
         "darkest": "#0C0032",
         "darker": "#190061",
         "base": "#240090",
         "light": "#3500D3",
+        "bright": "#4000FF",
         "neutral-dark": "#282828",
         "text": "#F5EFFF",
-        "text-darker": "#C2CAD0"
-
+        "text-darker": "#DBD7E2"
       },
       backgroundImage: {
-        "dots": "radial-gradient(rgba(25, 0, 97, 0.7) 8%, transparent 2%)"
+        "dots": "radial-gradient(rgba(25, 0, 97, 0.4) 8%, transparent 2%)",
+        "grid": "var(--bg-grid-linear-gradient)"
       },
       keyframes: {
         characteristics_entry: {

@@ -1,13 +1,13 @@
-import { contentQuery } from "./contentQuery";
-import { inputWrapper } from "../../api/inputWrapper";
-import { Page, PageAggregation } from "@/types/page";
+import { contentQuery } from './contentQuery'
+import { inputWrapper } from '../../api/inputWrapper'
+import { Page, PageAggregation } from '@/types/page'
 
 export async function getPages({
-                                 input: {}
-                               }: inputWrapper<getPagesInput>): Promise<{
-  pages: PageAggregation[]
+    input: {},
+}: inputWrapper<getPagesInput>): Promise<{
+    pages: PageAggregation[]
 }> {
-  const query = `query GetPages($preview: Boolean) {
+    const query = `query GetPages($preview: Boolean) {
       pageCollection(preview: $preview) {
         total
         items {
@@ -16,32 +16,30 @@ export async function getPages({
           slug
         }
       }
-    }`;
+    }`
 
-  try {
-    const queryRes = await contentQuery<
-      getPageQueryResponse,
-      getPageQueryResponse
-    >({
-      query
-    });
-    const pages = queryRes.pageCollection.items;
-    return {
-      pages
-    };
-  } catch (e: any) {
-    throw e;
-  }
+    try {
+        const queryRes = await contentQuery<
+            getPageQueryResponse,
+            getPageQueryResponse
+        >({
+            query,
+        })
+        const pages = queryRes.pageCollection.items
+        return {
+            pages,
+        }
+    } catch (e: any) {
+        throw e
+    }
 }
 
-interface getPagesInput {
-}
+interface getPagesInput {}
 
-interface getPostsQueryVariables {
-}
+interface getPostsQueryVariables {}
 
 type getPageQueryResponse = {
-  pageCollection: {
-    items: Array<PageAggregation>
-  }
+    pageCollection: {
+        items: Array<PageAggregation>
+    }
 }
