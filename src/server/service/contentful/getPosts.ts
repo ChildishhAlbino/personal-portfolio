@@ -27,6 +27,7 @@ export async function getPosts({
   }`
 
     try {
+        console.time('Getting posts')
         const queryRes = await contentQuery<
             getPostsQueryResponse,
             getPostsQueryVariables
@@ -38,7 +39,7 @@ export async function getPosts({
         const posts = await Promise.all(
             rawPosts.map(getPostWithThumbnailDetails)
         )
-
+        console.timeEnd('Getting posts')
         return {
             posts,
         }
