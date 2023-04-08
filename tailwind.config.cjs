@@ -4,14 +4,9 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      "mobile": "280px",
-      // => @media (min-width: 280px) { ... }
-      "mobile-lg": "500px",
-      // => @media (min-width: 500px) { ... }
+      "mobile": "1px",
       "laptop": "1024px",
-      // => @media (min-width: 1024px) { ... }
       "desktop": "1280px"
-      // => @media (min-width: 1280px) { ... }
     },
     extend: {
       gridTemplateColumns: {
@@ -65,9 +60,10 @@ module.exports = {
         "darker": "#190061",
         "base": "#240090",
         "light": "#3500D3",
+        "bright": "#4000FF",
         "neutral-dark": "#282828",
         "text": "#F5EFFF",
-        "text-darker": "#C2CAD0"
+        "text-darker": "#DBD7E2"
       },
       backgroundImage: {
         "dots": "radial-gradient(rgba(25, 0, 97, 0.4) 8%, transparent 2%)",

@@ -1,14 +1,14 @@
-import { contentQuery } from "./contentQuery";
-import { inputWrapper } from "../../api/inputWrapper";
-import { PostAggregation } from "@/types/post";
-import { getImageDetails } from "@/server/utils/plaiceholder";
+import { contentQuery } from './contentQuery'
+import { inputWrapper } from '../../api/inputWrapper'
+import { PostAggregation } from '@/types/post'
+import { getImageDetails } from '@/server/utils/plaiceholder'
 
 export async function getPosts({
-                                 input: {}
-                               }: inputWrapper<getPostsInput>): Promise<{
-  posts: PostAggregation[]
+    input: {},
+}: inputWrapper<getPostsInput>): Promise<{
+    posts: PostAggregation[]
 }> {
-  const query = `query GetPosts($preview: Boolean){
+    const query = `query GetPosts($preview: Boolean){
     postCollection(preview: $preview, order:latestEdit_DESC) {
       items {
         title
@@ -24,50 +24,48 @@ export async function getPosts({
         slug
       }
     }
-  }`;
+  }`
 
-  try {
-    const queryRes = await contentQuery<
-      getPostsQueryResponse,
-      getPostsQueryVariables
-    >({
-      query
-    });
-    const rawPosts = queryRes.postCollection.items;
+    try {
+        const queryRes = await contentQuery<
+            getPostsQueryResponse,
+            getPostsQueryVariables
+        >({
+            query,
+        })
+        const rawPosts = queryRes.postCollection.items
 
-    const posts = await Promise.all(
-      rawPosts.map(getPostWithThumbnailDetails)
-    );
+        const posts = await Promise.all(
+            rawPosts.map(getPostWithThumbnailDetails)
+        )
 
-    return {
-      posts
-    };
-  } catch (e: any) {
-    throw e;
-  }
+        return {
+            posts,
+        }
+    } catch (e: any) {
+        throw e
+    }
 }
 
-interface getPostsInput {
-}
+interface getPostsInput {}
 
-interface getPostsQueryVariables {
-}
+interface getPostsQueryVariables {}
 
 type getPostsQueryResponse = {
-  postCollection: {
-    items: Array<PostAggregation>
-  }
+    postCollection: {
+        items: Array<PostAggregation>
+    }
 }
 
 async function getPostWithThumbnailDetails(
-  post: PostAggregation
+    post: PostAggregation
 ): Promise<PostAggregation> {
-  const thumbnailWithDetails = {
-    ...post.thumbnail,
-    details: await getImageDetails(post.thumbnail.url)
-  };
-  return {
-    ...post,
-    thumbnail: thumbnailWithDetails
-  };
+    const thumbnailWithDetails = {
+        ...post.thumbnail,
+        details: await getImageDetails(post.thumbnail.url),
+    }
+    return {
+        ...post,
+        thumbnail: thumbnailWithDetails,
+    }
 }

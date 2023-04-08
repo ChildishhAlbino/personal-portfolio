@@ -1,3 +1,3 @@
 export interface inputWrapper<T> {
-  input: T;
+    input: T
 }
