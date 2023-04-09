@@ -18,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps) {
             >
                 <div
                     id='layout-container'
-                    className={`absolute top-0 left-0 z-10 w-screen min-w-entire-website max-w-full`}
+                    className={`absolute h-full top-0 left-0 z-10 w-screen min-w-entire-website max-w-full`}
                 >
                     {children}
                 </div>
