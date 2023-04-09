@@ -9,16 +9,13 @@ module.exports = {
       "desktop": "1280px"
     },
     extend: {
-      gridTemplateColumns: {
-        "blog-post-template": "1fr clamp(600px, 60vw, 1200px) 1fr"
-      },
       fontSize: {
         "hero": "clamp(3rem,5.5vw,8rem)",
-        "res-title-xl": "clamp(1.25rem,4.5vw,6rem)",
-        "res-title-l": "clamp(1.125rem,3.5vw,4rem)",
-        "res-title-md": "clamp(1.125rem,3vw,3rem)",
-        "res-title-sm": "clamp(1rem,2.5vw,2rem)",
-        "res-title-xs": "clamp(0.8rem,2vw,1.5rem)"
+        "res-title-xl": "clamp(2.25rem,4.5vw,6rem)",
+        "res-title-l": "clamp(2.125rem,3.5vw,4rem)",
+        "res-title-md": "clamp(2rem,3vw,3rem)",
+        "res-title-sm": "clamp(1.75rem,2.5vw,2rem)",
+        "res-title-xs": "clamp(1.25rem,2vw,1.5rem)"
       },
       typography: (theme) => ({
         DEFAULT: {
