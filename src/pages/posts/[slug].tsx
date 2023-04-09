@@ -14,7 +14,6 @@ import { Loader } from '@/components/loader/loader'
 import { DateTime } from 'luxon'
 import PostThumbnail from '@/components/post-thumbnail'
 import AllComponents from '@/components'
-import { Letters } from '@/components/spread-letters'
 
 export default function Post({ slug }: PostPageProps) {
     const { data, isLoading } = api.contentful.getPostBySlug.useQuery({ slug })
@@ -103,11 +102,11 @@ const PostHeader: FC<{
                 <div
                     className={'break-word grid mb-4 items-center text-center'}
                 >
-                    <h1 className='w-full text-[clamp(1.25rem,6.5vw,6rem)] self-center font-bold text-white'>
+                    <h1 className='w-full text-res-title-xl self-center font-bold text-white'>
                         {title}
                     </h1>
                     <br />
-                    <i className={'text-white text-[clamp(1rem,2.5vw,2rem)]'}>
+                    <i className={'text-white text-res-title-xs'}>
                         {description}
                     </i>
                     <br />
