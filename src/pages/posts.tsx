@@ -6,12 +6,10 @@ import { PostAggregation } from '@/types/post'
 import PageLayout from '@/components/layouts/page-layout'
 import { DateTime } from 'luxon'
 import PostThumbnail from '@/components/post-thumbnail'
-import { createServerSideHelpers } from '@trpc/react-query/server'
-import { appRouter } from '@/server/api/root'
-import SuperJSON from 'superjson'
 
 const PostsAggregationPage: NextPage = () => {
-    const { data, isLoading } = api.contentful.getPosts.useQuery({})
+    const { data, isLoading, error, isStale } =
+        api.contentful.getPosts.useQuery({})
     const { posts: rawPosts } = data || { posts: [] }
 
     const posts = rawPosts.map((post) => {
@@ -35,21 +33,6 @@ const PostsAggregationPage: NextPage = () => {
             </span>
         </PageLayout>
     )
-}
-
-export async function getServerSideProps() {
-    const helpers = createServerSideHelpers({
-        router: appRouter,
-        ctx: {},
-        transformer: SuperJSON, // optional - adds superjson serialization
-    })
-
-    await helpers.contentful.getPosts.prefetch({})
-    return {
-        props: {
-            trpcState: helpers.dehydrate(),
-        },
-    }
 }
 
 export default PostsAggregationPage
