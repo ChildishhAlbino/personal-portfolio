@@ -41,7 +41,10 @@ async function fetchDynamicPagesUrlData() {
 
 async function fetchPostUrlData() {
     return (await getPosts({ input: {} })).posts.map((post) => {
-        return { url: `${BASE_URL}/${post.slug}`, editDate: post.latestEdit }
+        return {
+            url: `${BASE_URL}/posts/${post.slug}`,
+            editDate: post.latestEdit,
+        }
     })
 }
 
