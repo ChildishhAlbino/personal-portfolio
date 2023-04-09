@@ -14,11 +14,9 @@ module.exports = {
       },
       fontSize: {
         "hero": "clamp(3rem,5.5vw,8rem)",
-        "res-title-xl": "clamp(2.25rem,4.5vw,6rem)",
-        "res-title-l": "clamp(2.125rem,3.5vw,4rem)",
-        "res-title-md": "clamp(2rem,3vw,3rem)",
-        "res-title-sm": "clamp(1.75rem,2.5vw,2rem)",
-        "res-title-xs": "clamp(1.25rem,2vw,1.5rem)"
+        "res-title-l": "clamp(1.6rem, 2.5vw + 1rem, 6rem)",
+        "res-title-md": "clamp(1.4rem, 2vw + 1rem, 4rem)",
+        "res-title-sm": "clamp(1rem, 1.5vw + 1rem, 2rem)"
       },
       typography: (theme) => ({
         DEFAULT: {

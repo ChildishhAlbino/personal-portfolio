@@ -102,13 +102,11 @@ const PostHeader: FC<{
                 <div
                     className={'break-word grid mb-4 items-center text-center'}
                 >
-                    <h1 className='w-full text-res-title-xl self-center font-bold text-white'>
+                    <h1 className='w-full text-res-title-l self-center font-bold text-white'>
                         {title}
                     </h1>
                     <br />
-                    <i className={'text-white text-res-title-xs'}>
-                        {description}
-                    </i>
+                    <i className={'text-white text-sm'}>{description}</i>
                     <br />
                     <small className='text-white'>
                         {datePrefix} {date}
@@ -158,13 +156,13 @@ const PostBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
     }
 
     const mdx = serializedMdx ? (
-        <span
+        <section
             className={
                 'min-w-prose prose py-4 laptop:max-w-[70ch] laptop:prose-lg desktop:max-w-[75ch]'
             }
         >
             <MDXRemote {...serializedMdx} components={components} />
-        </span>
+        </section>
     ) : (
         <>
             <p>Loading...</p>
