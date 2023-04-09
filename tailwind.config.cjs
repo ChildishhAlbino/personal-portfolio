@@ -9,8 +9,14 @@ module.exports = {
       "desktop": "1280px"
     },
     extend: {
-      gridTemplateColumns: {
-        "blog-post-template": "1fr clamp(600px, 60vw, 1200px) 1fr"
+      minWidth: {
+        "entire-website": "320px"
+      },
+      fontSize: {
+        "hero": "clamp(3rem,5.5vw,8rem)",
+        "res-title-l": "clamp(1.6rem, 2.5vw + 1rem, 6rem)",
+        "res-title-md": "clamp(1.4rem, 2vw + 1rem, 4rem)",
+        "res-title-sm": "clamp(1rem, 1.5vw + 1rem, 2rem)"
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -61,7 +67,6 @@ module.exports = {
         "base": "#240090",
         "light": "#3500D3",
         "bright": "#4000FF",
-        "neutral-dark": "#282828",
         "text": "#F5EFFF",
         "text-darker": "#DBD7E2"
       },

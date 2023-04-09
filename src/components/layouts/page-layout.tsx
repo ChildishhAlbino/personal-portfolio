@@ -9,7 +9,7 @@ export default function PageLayout({ children, header }: ContentLayoutProps) {
                 className={`mx-auto min-h-full flex max-w-[clamp(600px,_60vw,_1200px)] flex-col mobile:px-4 laptop:px-0`}
             >
                 {header && (
-                    <header className='flex w-full justify-between items-center text-[clamp(2rem,_2vw,_4rem)] font-bold uppercase border-b-2 border-indigo-600'>
+                    <header className='flex w-full justify-between items-center text-res-title-md font-bold uppercase border-b-2 border-indigo-600'>
                         <h1>{header}</h1>
 
                         <div className='flex gap-4'>

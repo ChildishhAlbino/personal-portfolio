@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react'
 import PageFooter from '../page-footer'
 import { useRouter } from 'next/router'
 
-export default function RootLayout({ children, className }: LayoutProps) {
+export default function RootLayout({ children }: LayoutProps) {
     const router = useRouter()
     const [checked, setChecked] = useState(false)
     const { asPath } = router
@@ -14,13 +14,11 @@ export default function RootLayout({ children, className }: LayoutProps) {
         <>
             <span
                 onClick={onClick}
-                className={`${
-                    className || ''
-                } text-text flex justify-center font-sans `}
+                className={`text-text flex justify-center font-sans`}
             >
                 <div
                     id='layout-container'
-                    className={`absolute top-0 left-0 z-10 h-screen w-screen min-w-[320px] max-w-full`}
+                    className={`absolute h-full top-0 left-0 z-10 w-screen min-w-entire-website max-w-full`}
                 >
                     {children}
                 </div>
@@ -37,7 +35,7 @@ export default function RootLayout({ children, className }: LayoutProps) {
                 />
                 <div
                     id='checked-middlelay'
-                    className={`fixed h-screen w-screen max-w-full bg-black duration-500 ${checkedClassName} transition-opacity`}
+                    className={`fixed h-full w-screen min-w-entire-website max-w-full bg-black duration-500 ${checkedClassName} transition-opacity`}
                 />
             </span>
         </>
@@ -46,5 +44,4 @@ export default function RootLayout({ children, className }: LayoutProps) {
 
 export interface LayoutProps {
     children: ReactNode
-    className?: string
 }
