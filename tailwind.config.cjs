@@ -69,7 +69,6 @@ module.exports = {
         "base": "#240090",
         "light": "#3500D3",
         "bright": "#4000FF",
-        "neutral-dark": "#282828",
         "text": "#F5EFFF",
         "text-darker": "#DBD7E2"
       },
