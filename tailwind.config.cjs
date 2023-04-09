@@ -9,6 +9,9 @@ module.exports = {
       "desktop": "1280px"
     },
     extend: {
+      minWidth: {
+        "entire-website": "320px"
+      },
       fontSize: {
         "hero": "clamp(3rem,5.5vw,8rem)",
         "res-title-xl": "clamp(2.25rem,4.5vw,6rem)",

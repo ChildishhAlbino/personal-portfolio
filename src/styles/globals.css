@@ -40,6 +40,7 @@ body::-webkit-scrollbar-corner {
 }
 
 html {
+    min-width: theme("minWidth.entire-website");
     background-color: theme('colors.darkest');
 }
 
