@@ -90,9 +90,9 @@ const PostHeader: FC<{
     const image = thumbnail ? <PostThumbnail {...thumbnailProps} /> : <></>
 
     const datePrefix = latestEdit != publicationDate ? 'Edited:' : 'Posted:'
-    const date = DateTime.fromISO(latestEdit || publicationDate).toLocaleString(
-        DateTime.DATE_FULL
-    )
+    const date = DateTime.fromISO(latestEdit || publicationDate)
+        .setLocale('au')
+        .toLocaleString(DateTime.DATE_FULL)
     return (
         <>
             <header
