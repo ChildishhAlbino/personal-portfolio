@@ -1,2 +1,4 @@
-export * from '../contentful/getPosts'
-export * from '../contentful/getPostBySlug'
+export * from './getPosts'
+export * from './getPostBySlug'
+export * from './getPages'
+export * from './getPageBySlug'

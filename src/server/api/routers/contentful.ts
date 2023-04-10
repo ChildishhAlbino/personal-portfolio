@@ -1,9 +1,8 @@
 import { createTRPCRouter, publicProcedure } from '../trpc'
 import { z } from 'zod'
-import { getPostBySlug, getPosts } from '../../service/contentful'
+import { getPostBySlug, getPosts, getPageBySlug } from '@service/contentful'
 import { PostAggregationShape, PostShape } from '@/types/post'
 import { PageShape } from '@/types/page'
-import { getPageBySlug } from '@/server/service/contentful/getPageBySlug'
 
 const getPostsInputShape = z.object({})
 const getPostsOutputShape = z.object({
