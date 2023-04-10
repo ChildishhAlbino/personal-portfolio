@@ -15,7 +15,6 @@ export default function PageLayout({ children, header }: ContentLayoutProps) {
                 {header && (
                     <header className='flex w-full justify-between items-center text-res-title-md font-bold uppercase border-b-2 border-indigo-600'>
                         <h1>{header}:</h1>
-
                         <div className='flex gap-4'>
                             <a
                                 href={'https://twitter.com/ChildishhAlbino'}

@@ -25,7 +25,6 @@ const PostsAggregationPage: NextPage = () => {
     })
     const showError = !isLoading && !!error
     const showLoader = !error && isLoading
-    // const showPosts = posts.length > 0
     const showPosts = !showError && !showLoader ? true : false
     return (
         <PageLayout header='Posts'>
