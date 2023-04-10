@@ -40,7 +40,7 @@ export default function Post({ slug }: PostPageProps) {
 
     return (
         <>
-            <PageLayout>
+            <PageLayout title={title}>
                 <section
                     className={
                         'grid h-full w-full grid-cols-1 gap-y-4 mobile:justify-items-center'
@@ -90,9 +90,9 @@ const PostHeader: FC<{
     const image = thumbnail ? <PostThumbnail {...thumbnailProps} /> : <></>
 
     const datePrefix = latestEdit != publicationDate ? 'Edited:' : 'Posted:'
-    const date = DateTime.fromISO(latestEdit || publicationDate).toLocaleString(
-        DateTime.DATE_FULL
-    )
+    const date = DateTime.fromISO(latestEdit || publicationDate)
+        .setLocale('au')
+        .toLocaleString(DateTime.DATE_FULL)
     return (
         <>
             <header

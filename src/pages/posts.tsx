@@ -8,8 +8,7 @@ import { DateTime } from 'luxon'
 import PostThumbnail from '@/components/post-thumbnail'
 
 const PostsAggregationPage: NextPage = () => {
-    const { data, isLoading, error, isStale } =
-        api.contentful.getPosts.useQuery({})
+    const { data, isLoading, error } = api.contentful.getPosts.useQuery({})
     const { posts: rawPosts } = data || { posts: [] }
 
     const posts = rawPosts.map((post) => {
@@ -23,12 +22,16 @@ const PostsAggregationPage: NextPage = () => {
             publicationDate: newPublicationDate,
         }
     })
+    const showError = !isLoading && !!error
+    const showLoader = !error && isLoading
+    const showPosts = !showError && !showLoader ? true : false
     return (
-        <PageLayout header='Posts:'>
+        <PageLayout header='Posts:' title='Posts'>
             <span className='flex h-full flex-col gap-y-4'>
                 <span>
-                    {isLoading && <Loader size={150} />}
-                    {!isLoading && <ListOfPosts posts={posts} />}
+                    {showLoader && <Loader size={150} />}
+                    {showError && <h1> ERROR </h1>}
+                    {showPosts && <ListOfPosts posts={posts} />}
                 </span>
             </span>
         </PageLayout>
@@ -38,6 +41,10 @@ const PostsAggregationPage: NextPage = () => {
 export default PostsAggregationPage
 
 function ListOfPosts({ posts }: { posts: PostAggregation[] }) {
+    if (posts.length === 0) {
+        return <h1>No posts were found...</h1>
+    }
+
     return (
         <div className='flex flex-col gap-y-8'>
             {posts &&

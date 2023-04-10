@@ -21,9 +21,8 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+        "@/*": ["src/*"],
+        "@service/*": ["src/server/service/*"]
     }
   },
   "include": [
