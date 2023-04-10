@@ -2,19 +2,25 @@ import Head from 'next/head'
 import { ReactNode } from 'react'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
-export default function PageLayout({ children, header }: ContentLayoutProps) {
+export default function PageLayout({
+    children,
+    header,
+    title,
+}: ContentLayoutProps) {
     return (
         <>
-            <Head>
-                <title>{`${header} | ChildishhAlbino`}</title>
-            </Head>
+            {(header || title) && (
+                <Head>
+                    <title>{`${title || header} | ChildishhAlbino`}</title>
+                </Head>
+            )}
             <main
                 id='page-container'
                 className={`mx-auto min-h-full flex max-w-[clamp(600px,_60vw,_1200px)] flex-col mobile:px-4 laptop:px-0`}
             >
                 {header && (
                     <header className='flex w-full justify-between items-center text-res-title-md font-bold uppercase border-b-2 border-indigo-600'>
-                        <h1>{header}:</h1>
+                        <h1>{header}</h1>
                         <div className='flex gap-4'>
                             <a
                                 href={'https://twitter.com/ChildishhAlbino'}
@@ -55,9 +61,11 @@ export default function PageLayout({ children, header }: ContentLayoutProps) {
 
 PageLayout.defaultProps = {
     header: null,
+    title: null,
 }
 
 export interface ContentLayoutProps {
     children: ReactNode
     header?: string
+    title?: string
 }

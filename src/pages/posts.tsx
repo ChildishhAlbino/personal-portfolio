@@ -8,8 +8,7 @@ import { DateTime } from 'luxon'
 import PostThumbnail from '@/components/post-thumbnail'
 
 const PostsAggregationPage: NextPage = () => {
-    const { data, isLoading, error, isStale } =
-        api.contentful.getPosts.useQuery({})
+    const { data, isLoading, error } = api.contentful.getPosts.useQuery({})
     const { posts: rawPosts } = data || { posts: [] }
 
     const posts = rawPosts.map((post) => {
@@ -27,7 +26,7 @@ const PostsAggregationPage: NextPage = () => {
     const showLoader = !error && isLoading
     const showPosts = !showError && !showLoader ? true : false
     return (
-        <PageLayout header='Posts'>
+        <PageLayout header='Posts:' title='Posts'>
             <span className='flex h-full flex-col gap-y-4'>
                 <span>
                     {showLoader && <Loader size={150} />}

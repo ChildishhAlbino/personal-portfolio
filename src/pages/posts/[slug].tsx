@@ -40,7 +40,7 @@ export default function Post({ slug }: PostPageProps) {
 
     return (
         <>
-            <PageLayout>
+            <PageLayout title={title}>
                 <section
                     className={
                         'grid h-full w-full grid-cols-1 gap-y-4 mobile:justify-items-center'
