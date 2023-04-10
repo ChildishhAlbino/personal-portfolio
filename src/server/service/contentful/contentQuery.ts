@@ -12,7 +12,6 @@ export async function contentQuery<K, T>({
     const isPreviewEnabled = Boolean(
         JSON.parse(CONTENTFUL_PREVIEW_ENABLED || 'false')
     )
-    console.log('NEW REQUEST')
     const res = await fetch(
         `${CONTENTFUL_BASE_ENDPOINT}content/v1/spaces/${CONTENTFUL_SPACE_ID}/environments/master`,
         {
@@ -33,7 +32,6 @@ export async function contentQuery<K, T>({
     if (!!json.errors) {
         throw Error(`Error with query... ${json.errors[0].message}`)
     }
-    console.log('END REQUEST')
     return json.data
 }
 
