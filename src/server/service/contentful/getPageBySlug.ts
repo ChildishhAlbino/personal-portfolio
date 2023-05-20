@@ -3,10 +3,13 @@ import { serialize } from 'next-mdx-remote/serialize'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import remarkPrism from 'remark-prism'
 import { inputWrapper } from '../../api/inputWrapper'
-import { getPlaiceholder } from 'plaiceholder'
 import { TRPCError } from '@trpc/server'
 import { PageAggregation } from '@/types/page'
 import { getImageDetails } from '@/server/utils/plaiceholder'
+import {
+    remarkDefinitionList,
+    defListHastHandlers,
+} from 'remark-definition-list'
 
 export async function getPageBySlug({
     input: { slug },
@@ -39,6 +42,7 @@ export async function getPageBySlug({
         }
         const remarkPlugins = [
             remarkUnwrapImages,
+            remarkDefinitionList,
             [
                 remarkPrism,
                 {
@@ -56,6 +60,11 @@ export async function getPageBySlug({
                 mdxOptions: {
                     remarkPlugins,
                     format: 'mdx',
+                    remarkRehypeOptions: {
+                        handlers: {
+                            ...defListHastHandlers,
+                        },
+                    },
                 },
             }),
         ]
