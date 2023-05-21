@@ -26,7 +26,7 @@ const PostsAggregationPage: NextPage = () => {
     const showLoader = !error && isLoading
     const showPosts = !showError && !showLoader ? true : false
     return (
-        <PageLayout header='Posts:' title='Posts'>
+        <PageLayout header='Posts:' title='Posts' description={"A page for all my posts."}>
             <span className='flex h-full flex-col gap-y-4'>
                 <span>
                     {showLoader && <Loader size={150} />}
