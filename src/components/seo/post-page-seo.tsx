@@ -34,7 +34,7 @@ export function PostSEO({ thumbnail, description, title, keywords, publicationDa
         },
         images: [
             {
-                url: `https:${url}`,
+                url: url,
                 alt: 'Thumbnail for this post.',
                 width,
                 height
