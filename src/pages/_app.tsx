@@ -36,6 +36,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
             <DefaultSeo
                 titleTemplate={"%s | ChildishhAlbino"}
                 defaultTitle={"ChildishhAlbino"}
+                description={"Professionally curious software engineer"}
                 openGraph={{
                     type: 'website',
                     locale: 'en_AU',
