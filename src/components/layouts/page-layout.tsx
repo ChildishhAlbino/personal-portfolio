@@ -7,13 +7,14 @@ export default function PageLayout({
     children,
     header,
     title,
-}: ContentLayoutProps) {
+    description
+}: PageLayoutProps) {
     const pageHeaderContent = title || header
     return (
         <>
             <NextSeo
                 title={pageHeaderContent}
-                description="A page that contains all of my posts."
+                description={description}
             />
             {(pageHeaderContent) && (
                 <Head>
@@ -68,10 +69,12 @@ export default function PageLayout({
 PageLayout.defaultProps = {
     header: null,
     title: null,
+    description: ""
 }
 
-export interface ContentLayoutProps {
+export interface PageLayoutProps {
     children: ReactNode
     header?: string
     title?: string
+    description: string
 }
