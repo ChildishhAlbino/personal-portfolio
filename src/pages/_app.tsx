@@ -31,23 +31,33 @@ const MyApp: AppType = ({ Component, pageProps }) => {
             ? '/favicon.ico'
             : '/preview.ico'
     const url = env.NEXT_PUBLIC_BASE_URL
+    const openGraph = {
+        type: 'website',
+        locale: 'en_AU',
+        url: url,
+        siteName: 'ChildishhAlbino',
+        images: [
+            {
+                url: `${url}/seo-default-img.jpg`,
+                width: 700,
+                height: 700,
+                alt: 'Profile Photo',
+            },
+        ],
+    }
+    const twitter = {
+        handle: '@childishhalbino',
+        site: url,
+        cardType: 'summary_large_image',
+    }
     return (
         <span className={`${jbMono.variable} ${notoSans.variable}`}>
             <DefaultSeo
-                titleTemplate={"%s | ChildishhAlbino"}
-                defaultTitle={"ChildishhAlbino"}
-                description={"Professionally curious software engineer"}
-                openGraph={{
-                    type: 'website',
-                    locale: 'en_AU',
-                    url: url,
-                    siteName: 'ChildishhAlbino',
-                }}
-                twitter={{
-                    handle: '@childishhalbino',
-                    site: url,
-                    cardType: 'summary_large_image',
-                }} />
+                titleTemplate={'%s | ChildishhAlbino'}
+                defaultTitle={'ChildishhAlbino'}
+                description={'Professionally curious software engineer'}
+                openGraph={openGraph}
+                twitter={twitter} />
             <Head>
                 <title>ChildishhAlbino</title>
                 <link rel='shortcut icon' href={favicon} />
