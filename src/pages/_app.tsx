@@ -38,7 +38,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         siteName: 'ChildishhAlbino',
         images: [
             {
-                url: `${url}/seo-default-img.jpg`,
+                url: `${url}/seo-default-image.jpg`,
                 width: 3000,
                 height: 3000,
                 alt: 'Profile Photo',
