@@ -39,8 +39,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         images: [
             {
                 url: `${url}/seo-default-image.jpg`,
-                width: 750,
-                height: 3000,
+                width: 1200,
+                height: 630,
                 alt: 'Profile Photo',
             },
         ],

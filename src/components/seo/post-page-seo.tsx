@@ -34,10 +34,10 @@ export function PostSEO({ thumbnail, description, title, keywords, publicationDa
         },
         images: [
             {
-                url: url,
+                url: `${url}?h=630&w=1200`,
                 alt: 'Thumbnail for this post.',
-                width,
-                height
+                width: 1200,
+                height: 630
             }
         ]
     }
