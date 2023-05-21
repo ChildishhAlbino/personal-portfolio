@@ -9,7 +9,7 @@ const server = z.object({
     CONTENTFUL_BASE_ENDPOINT: z.string(),
     CONTENTFUL_SPACE_ID: z.string(),
     CONTENTFUL_DELIVERY_TOKEN: z.string(),
-    CONTENTFUL_PREVIEW_ENABLED: z.string(),
+    CONTENTFUL_PREVIEW_ENABLED: z.string()
 })
 
 /**
@@ -20,6 +20,7 @@ const client = z.object({
     NEXT_PUBLIC_VERCEL_ENV: z.nullable(
         z.enum(['production', 'preview', 'development'])
     ),
+    NEXT_PUBLIC_BASE_URL: z.string()
 })
 
 /**
@@ -35,6 +36,7 @@ const processEnv = {
     CONTENTFUL_PREVIEW_ENABLED: process.env.CONTENTFUL_PREVIEW_ENABLED,
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL
 }
 
 // Don't touch the part below

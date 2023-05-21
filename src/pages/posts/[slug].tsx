@@ -14,6 +14,7 @@ import { Loader } from '@/components/loader/loader'
 import { DateTime } from 'luxon'
 import PostThumbnail from '@/components/post-thumbnail'
 import AllComponents from '@/components'
+import { PostSEO } from '@/components/seo/post-page-seo'
 
 export default function Post({ slug }: PostPageProps) {
     const { data, isLoading } = api.contentful.getPostBySlug.useQuery({ slug })
@@ -37,10 +38,18 @@ export default function Post({ slug }: PostPageProps) {
             keywords,
         },
     } = data
-
+    
     return (
         <>
             <PageLayout title={title}>
+                <PostSEO
+                    keywords={keywords}
+                    title={title}
+                    description={description}
+                    thumbnail={thumbnail}
+                    latestEdit={latestEdit}
+                    publicationDate={publicationDate}
+                />
                 <section
                     className={
                         'grid h-full w-full grid-cols-1 gap-y-4 mobile:justify-items-center'
