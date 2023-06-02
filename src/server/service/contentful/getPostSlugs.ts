@@ -8,7 +8,8 @@ export async function getPostSlugs({
 }: inputWrapper<getPostSlugInput>): Promise<{
     slugs: SlugAggregation[]
 }> {
-    console.time("getPostsSlugs took:")
+    const timestamp = new Date().getTime()
+    console.time(`${timestamp}:: getPostsSlugs took:`)
     const query = `query GetPosts($preview: Boolean){
     postCollection(preview: $preview, order:latestEdit_DESC) {
       items {
@@ -25,12 +26,12 @@ export async function getPostSlugs({
             query,
         })
         const slugs = queryRes.postCollection.items
-        console.timeEnd("getPostsSlugs took:")
+        console.timeEnd(`${timestamp}:: getPostsSlugs took:`)
         return {
             slugs: slugs,
         }
     } catch (e: any) {
-        console.timeEnd("getPostsSlugs took:")
+        console.timeEnd(`${timestamp}:: getPostsSlugs took:`)
         throw e
     }
 }

@@ -37,10 +37,6 @@ const PostsAggregationPage: NextPage = () => {
 export default PostsAggregationPage
 
 function DynamicPostAggregationList({ slugs }: { slugs: SlugAggregation[] }) {
-    if (slugs.length === 0) {
-        return <h1>No posts were found...</h1>
-    }
-
     return (
         <div className='flex flex-col gap-y-8'>
             {slugs &&

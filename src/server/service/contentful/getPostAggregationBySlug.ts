@@ -9,8 +9,8 @@ import AllComponents from '@/components'
 import { PostAggregation } from '@/types/post'
 
 export async function getPostAggregationBySlug({
-                                                   input: { slug },
-                                               }: inputWrapper<getPostAggregationBySlugInput>) {
+   input: { slug },
+}: inputWrapper<getPostAggregationBySlugInput>) {
     const query = `query GetPosts($preview: Boolean, $slug: String!) {
     postCollection(where: { slug: $slug }, preview: $preview, limit: 1) {
       items {
@@ -45,10 +45,6 @@ export async function getPostAggregationBySlug({
             throw Error(`No post for slug '${slug} was found...`)
         }
 
-        const timeKey = `${new Date().getTime()}: Serializing "${slug}" took`
-        console.time(timeKey)
-
-        console.timeEnd(timeKey)
         const thumbnailWithDetails = {
             ...post.thumbnail,
             details: await getImageDetails(post.thumbnail.url),
