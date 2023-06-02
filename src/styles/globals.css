@@ -203,3 +203,48 @@ pre[class*='language-'] {
 .debug-box {
     border: 4px solid red;
 }
+
+@layer base {
+    :root {
+        --background: theme('colors.darker');
+        --foreground: theme('colors.darker');
+
+        --muted: theme('colors.darker');
+        --muted-foreground: theme('colors.darker');
+
+        --popover: theme('colors.darker');
+        --popover-foreground: theme('colors.darker');
+
+        --card:theme('colors.darker');
+        --card-foreground: theme('colors.darker');
+
+        --border:theme('colors.darker');
+        --input: theme('colors.darker');
+
+        --primary: theme('colors.darker');
+        --primary-foreground: theme('colors.darker');
+
+        --secondary: theme('colors.darker');
+        --secondary-foreground: theme('colors.darker');
+
+        --accent: theme('colors.darker');
+        --accent-foreground: theme('colors.darker');
+
+        --destructive: theme('colors.darker');
+        --destructive-foreground: theme('colors.darker');
+
+        --ring: theme('colors.darker');
+
+        --radius: theme('colors.darker');
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}

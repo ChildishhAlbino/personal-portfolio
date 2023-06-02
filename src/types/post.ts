@@ -1,12 +1,5 @@
 import { z } from 'zod'
 
-
-export const SlugAggregationShape = z.object({
-    slug: z.string()
-})
-
-export type SlugAggregation = z.infer<typeof SlugAggregationShape>
-
 export const PostAggregationShape = z.object({
     title: z.string(),
     slug: z.string(),

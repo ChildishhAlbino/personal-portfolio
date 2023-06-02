@@ -1,8 +1,16 @@
 /** @type {import("tailwindcss").Config} */
 const { fontFamily } = require("tailwindcss/defaultTheme");
 module.exports = {
+  // darkMode: ["class"],
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     screens: {
       "mobile": "1px",
       "laptop": "1024px",
@@ -68,7 +76,45 @@ module.exports = {
         "light": "#3500D3",
         "bright": "#4000FF",
         "text": "#F5EFFF",
-        "text-darker": "#DBD7E2"
+        "text-darker": "#DBD7E2",
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+        },
+        destructive: {
+          DEFAULT: "var(--destructive)",
+          foreground: "var(--destructive-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+        },
+        popover: {
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
+        },
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       backgroundImage: {
         "dots": "radial-gradient(rgba(25, 0, 97, 0.4) 8%, transparent 2%)",
@@ -78,14 +124,25 @@ module.exports = {
         characteristics_entry: {
           "0%": { transform: "translateY(100%)", opacity: 0 },
           "100%": { transform: "translateY(0)", opacity: 100 }
-        }
+        },
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
       },
       animation: {
-        characteristics_entry: "characteristics_entry 1.5s ease-in-out 1 1.5s forwards"
+        characteristics_entry: "characteristics_entry 1.5s ease-in-out 1 1.5s forwards",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       }
     }
   },
   plugins: [
-    require("@tailwindcss/typography")
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate")
   ]
 };

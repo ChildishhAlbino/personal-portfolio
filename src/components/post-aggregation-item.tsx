@@ -2,6 +2,8 @@ import { PostAggregation } from '@/types/post'
 import PostThumbnail from '@/components/post-thumbnail'
 import Link from 'next/link'
 
+import { Skeleton } from '@/components/ui/skeleton'
+
 export function PostAggregationItem({ item }: { item: PostAggregation }) {
     const topKeywords = item.keywords.slice(0, 5)
     const totalKeywords = topKeywords.length
@@ -43,6 +45,24 @@ export function PostAggregationItem({ item }: { item: PostAggregation }) {
                                 )
                             })}
                         </span>
+                    </div>
+                </span>
+            </div>
+        </>
+    )
+}
+
+export function LoadingPostAggregationItem() {
+    return (
+        <>
+            <div
+                className='grid w-full border-b-2 border-light border-opacity-30 pb-4 mobile:grid-cols-1 mobile:gap-y-4 mobile:text-center desktop:grid-cols-[2fr,_5fr] desktop:gap-x-4 desktop:text-left'>
+                <Skeleton className={'h-80 mx-4'} />
+                <span>
+                   <Skeleton className={'mx-12 mb-2 h-8'} />
+                    <div className='flex flex-col gap-1'>
+                        <Skeleton className={'mx-4 mx-16 h-4'} />
+                        <Skeleton className={'mx-4 mx-24 h-4'} />
                     </div>
                 </span>
             </div>
