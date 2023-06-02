@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { api } from '@/utils/api'
 import PageLayout from '@/components/layouts/page-layout'
 import { DateTime } from 'luxon'
-import { Skeleton } from '@/components/ui/skeleton'
+
 import { PostAggregation } from '@/types/post'
 import { LoadingPostAggregationItem, PostAggregationItem } from '@/components/post-aggregation-item'
 
@@ -21,6 +21,8 @@ function formatPostsForComponent(rawPosts: any[]) {
 }
 
 const PostsAggregationPage: NextPage = () => {
+    const slugQuery = api.contentful.getPostSlugs.useQuery({})
+    console.log({slugQuery})
     const postQuery = api.contentful.getPosts.useQuery({})
 
     const { data, isLoading: postQueryIsLoading, error } = postQuery
