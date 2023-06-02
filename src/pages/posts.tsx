@@ -30,6 +30,7 @@ const PostsAggregationPage: NextPage = () => {
     const posts = formatPostsForComponent(rawPosts)
     const showError = !postQueryIsLoading && !!error
     const showLoader = postQueryIsLoading && !error
+    // const showLoader = true
     const showPosts = !showError && !showLoader
 
     return (

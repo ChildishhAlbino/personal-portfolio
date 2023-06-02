@@ -56,14 +56,12 @@ export function LoadingPostAggregationItem() {
     return (
         <>
             <div
-                className='grid w-full border-b-2 border-light border-opacity-30 pb-4 mobile:grid-cols-1 mobile:gap-y-4 mobile:text-center desktop:grid-cols-[2fr,_5fr] desktop:gap-x-4 desktop:text-left'>
-                <Skeleton className={'h-80 mx-4'} />
-                <span>
-                   <Skeleton className={'mx-12 mb-2 h-8'} />
-                    <div className='flex flex-col gap-1'>
-                        <Skeleton className={'mx-4 mx-16 h-4'} />
-                        <Skeleton className={'mx-4 mx-24 h-4'} />
-                    </div>
+                className='grid w-full border-b-2 border-light border-opacity-30 pb-4 mobile:grid-cols-1 mobile:gap-y-4 desktop:grid-cols-[2fr,_5fr] desktop:gap-x-4'>
+                <Skeleton className={'h-40 w-full aspect-video max-h-40'} />
+                <span className={"flex w-full flex-col gap-y-2 mobile:items-center desktop:items-start"}>
+                   <Skeleton className={'mb-2 h-8 w-64'} />
+                    <Skeleton className={'w-52 h-4'} />
+                    <Skeleton className={'w-40 h-4'} />
                 </span>
             </div>
         </>
