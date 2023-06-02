@@ -1,10 +1,42 @@
-import { PostAggregation } from '@/types/post'
+import { PostAggregation, SlugAggregation } from '@/types/post'
 import PostThumbnail from '@/components/post-thumbnail'
 import Link from 'next/link'
 
 import { Skeleton } from '@/components/ui/skeleton'
+import { api } from '@/utils/api'
+import { DateTime } from 'luxon'
 
-export function PostAggregationItem({ item }: { item: PostAggregation }) {
+function formatPublicationDate(post: PostAggregation){
+    const { publicationDate } = post
+    const newPublicationDate = DateTime.fromISO(publicationDate)
+        .setLocale('au')
+        .toLocaleString(DateTime.DATE_FULL)
+
+    return {
+        ...post,
+        publicationDate: newPublicationDate,
+    }
+}
+
+export function DynamicPostAggregationItem({ slug }: { slug: SlugAggregation }) {
+
+    const postQuery = api.contentful.getPostAggregationBySlug.useQuery({slug: slug.slug})
+
+    const { data, isLoading, error } = postQuery
+
+    if (isLoading) {
+        return <LoadingPostAggregationItem/>
+    }
+
+    if(!data || error){
+        throw error || Error("Whoops!")
+    }
+
+    const [rawPost] = data.posts
+    if(!rawPost){
+        throw Error("Somehow no posts were returned...")
+    }
+    const item = formatPublicationDate(rawPost)
     const topKeywords = item.keywords.slice(0, 5)
     const totalKeywords = topKeywords.length
     const thumbnailProps = {
