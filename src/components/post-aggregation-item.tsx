@@ -89,7 +89,8 @@ export function LoadingPostAggregationItem() {
         <>
             <div
                 className='grid w-full border-b-2 border-light border-opacity-30 pb-4 mobile:grid-cols-1 mobile:gap-y-4 desktop:grid-cols-[2fr,_5fr] desktop:gap-x-4'>
-                <Skeleton className={'h-40 w-full aspect-video max-h-40'} />
+                <Skeleton className={'h-72 w-full aspect-video max-h-72'} />
+                <br/>
                 <span className={"flex w-full flex-col gap-y-2 mobile:items-center desktop:items-start"}>
                    <Skeleton className={'mb-2 h-8 w-64'} />
                     <Skeleton className={'w-52 h-4'} />

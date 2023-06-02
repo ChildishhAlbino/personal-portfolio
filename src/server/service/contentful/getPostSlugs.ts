@@ -25,7 +25,6 @@ export async function getPostSlugs({
             query,
         })
         const slugs = queryRes.postCollection.items
-        console.log({ slugs })
         console.timeEnd("getPostsSlugs took:")
         return {
             slugs: slugs,
