@@ -8,6 +8,7 @@ export async function getPosts({
 }: inputWrapper<getPostsInput>): Promise<{
     posts: PostAggregation[]
 }> {
+    console.time("getPosts took:")
     const query = `query GetPosts($preview: Boolean){
     postCollection(preview: $preview, order:latestEdit_DESC) {
       items {
@@ -38,10 +39,12 @@ export async function getPosts({
         const posts = await Promise.all(
             rawPosts.map(getPostWithThumbnailDetails)
         )
+        console.timeEnd("getPosts took:")
         return {
             posts,
         }
     } catch (e: any) {
+        console.timeEnd("getPosts took:")
         throw e
     }
 }
