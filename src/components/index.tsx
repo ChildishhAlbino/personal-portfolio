@@ -1,9 +1,28 @@
 import LayoutComponents from './layouts'
 import { Letters } from './spread-letters'
 
-const AllComponents = {
+export function mergeWithDefaultHtmlOverrides(components: object) {
+    return {
+        ...components,
+        code: (props: any) => {
+            const children = props.children
+            return <span className={'not-prose'}>
+                <code {...props.children.props}>{children}</code>
+            </span>
+        },
+        pre: (props: any) => {
+            const children = props.children
+            const classNames = `${children.props.className} not-prose`
+            const realProps = {
+                ...children.props,
+                className: classNames,
+            }
+            return <pre {...realProps}>{children}</pre>
+        },
+    }
+}
+
+export default {
     ...LayoutComponents,
     Letters,
 }
-
-export default AllComponents

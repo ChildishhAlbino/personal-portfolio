@@ -6,6 +6,8 @@ import { getPlaiceholder } from 'plaiceholder'
 import { TRPCError } from '@trpc/server'
 import { getImageDetails } from '@/server/utils/plaiceholder'
 import AllComponents from '@/components'
+import remarkPrism from 'remark-prism'
+import { serializeMdx } from '@/server/utils/mdx'
 
 export async function getPostBySlug({
     input: { slug },
@@ -43,19 +45,14 @@ export async function getPostBySlug({
         if (!post) {
             throw Error(`No post for slug '${slug} was found...`)
         }
-        const remarkPlugins = [remarkUnwrapImages]
+        const remarkPlugins = [remarkUnwrapImages, remarkPrism]
 
         const timeKey = `${new Date().getTime()}: Serializing "${slug}" took`
         console.time(timeKey)
 
         const promises = [
             findEmbeddedImages(post.body),
-            serialize(post.body, {
-                mdxOptions: {
-                    remarkPlugins,
-                    format: 'mdx',
-                },
-            }),
+            serializeMdx(post.body),
         ]
 
         const [imageDetails, serializedMdx] = await Promise.all(promises)
