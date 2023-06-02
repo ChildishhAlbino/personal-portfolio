@@ -7,7 +7,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import { FC } from 'react'
 import { Loader } from '@/components/loader/loader'
 import { getPages } from '@/server/service/contentful/getPages'
-import AllComponents from '@/components'
+import AllComponents, { mergeWithDefaultHtmlOverrides } from '@/components'
 import { MarkdownImage } from '@/components/markdown-image'
 import Head from 'next/head'
 
@@ -60,7 +60,7 @@ const PageBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
         ...AllComponents,
     }
     const mdx = serializedMdx ? (
-        <MDXRemote {...serializedMdx} components={components} />
+        <MDXRemote {...serializedMdx} components={mergeWithDefaultHtmlOverrides(components)} />
     ) : (
         <>
             <Loader size={150} />

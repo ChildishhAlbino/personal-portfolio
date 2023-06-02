@@ -10,6 +10,7 @@ import {
     remarkDefinitionList,
     defListHastHandlers,
 } from 'remark-definition-list'
+import { serializeMdx } from '@/server/utils/mdx'
 
 export async function getPageBySlug({
     input: { slug },
@@ -40,33 +41,13 @@ export async function getPageBySlug({
         if (!page) {
             throw Error(`No page for slug '${slug} was found...`)
         }
-        const remarkPlugins = [
-            remarkUnwrapImages,
-            remarkDefinitionList,
-            [
-                remarkPrism,
-                {
-                    classPrefix: 'language-',
-                },
-            ],
-        ] as any
 
         const timeKey = `${new Date().getTime()}: Serializing "${slug}" took`
         console.time(timeKey)
 
         const promises = [
             findEmbeddedImages(page.mdx),
-            await serialize(page.mdx, {
-                mdxOptions: {
-                    remarkPlugins,
-                    format: 'mdx',
-                    remarkRehypeOptions: {
-                        handlers: {
-                            ...defListHastHandlers,
-                        },
-                    },
-                },
-            }),
+            serializeMdx(page.mdx)
         ]
 
         const [imageDetails, serializedMdx] = await Promise.all(promises)

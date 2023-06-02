@@ -13,7 +13,7 @@ import { getPosts } from '@/server/service/contentful'
 import { Loader } from '@/components/loader/loader'
 import { DateTime } from 'luxon'
 import PostThumbnail from '@/components/post-thumbnail'
-import AllComponents from '@/components'
+import AllComponents, { mergeWithDefaultHtmlOverrides } from '@/components'
 import { PostSEO } from '@/components/seo/post-page-seo'
 
 export default function Post({ slug }: PostPageProps) {
@@ -38,7 +38,7 @@ export default function Post({ slug }: PostPageProps) {
             keywords,
         },
     } = data
-    
+
     return (
         <>
             <PageLayout title={title}>
@@ -129,10 +129,13 @@ const PostHeader: FC<{
     )
 }
 
-const PostBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
-    serializedMdx,
-    imageDetails,
-}: any) => {
+type PostBodyType = { serializedMdx: any; imageDetails: object }
+const PostBody: FC<PostBodyType> = (
+    {
+        serializedMdx,
+        imageDetails,
+    }: any,
+) => {
     const components = {
         img: (props: { src: string; alt: string }) => {
             const specificDetails = imageDetails[props.src]
@@ -164,13 +167,14 @@ const PostBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
         ...AllComponents,
     }
 
+
     const mdx = serializedMdx ? (
         <section
             className={
                 'min-w-prose prose py-4 laptop:max-w-[70ch] laptop:prose-lg desktop:max-w-[75ch]'
             }
         >
-            <MDXRemote {...serializedMdx} components={components} />
+            <MDXRemote {...serializedMdx} components={mergeWithDefaultHtmlOverrides(components)} />
         </section>
     ) : (
         <>
@@ -181,8 +185,8 @@ const PostBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
 }
 
 export async function getStaticProps({
-    params,
-}: GetStaticPropsContext<PostPageProps>) {
+                                         params,
+                                     }: GetStaticPropsContext<PostPageProps>) {
     const ssg = await createServerSideHelpers({
         router: appRouter,
         ctx: {},
