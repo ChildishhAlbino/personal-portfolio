@@ -6,9 +6,11 @@ export function mergeWithDefaultHtmlOverrides(components: object) {
         ...components,
         code: (props: any) => {
             const children = props.children
-            return <span className={'not-prose'}>
-                <code {...props.children.props}>{children}</code>
-            </span>
+            return (
+                <span className={'not-prose'}>
+                    <code {...props.children.props}>{children}</code>
+                </span>
+            )
         },
         pre: (props: any) => {
             const children = props.children
@@ -22,7 +24,9 @@ export function mergeWithDefaultHtmlOverrides(components: object) {
     }
 }
 
-export default {
+const components = {
     ...LayoutComponents,
     Letters,
 }
+
+export default components
