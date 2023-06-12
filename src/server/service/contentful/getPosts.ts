@@ -2,6 +2,7 @@ import { contentQuery } from './contentQuery'
 import { inputWrapper } from '../../api/inputWrapper'
 import { PostAggregation } from '@/types/post'
 import { getImageDetails } from '@/server/utils/plaiceholder'
+import { DateTime } from 'luxon'
 
 export async function getPosts({
     input: {},
@@ -34,11 +35,19 @@ export async function getPosts({
         >({
             query,
         })
-        const rawPosts = queryRes.postCollection.items
+        const rawPosts = queryRes.postCollection.items.map(post => {
+            return {
+                ...post,
+                publicationDate: DateTime.fromISO(post.publicationDate)
+                    .setLocale('en-AU')
+                    .toLocaleString(DateTime.DATETIME_FULL, { locale: "en-AU" })
+            }
+        })
 
         const posts = await Promise.all(
             rawPosts.map(getPostWithThumbnailDetails)
         )
+
         console.timeEnd("getPosts took:")
         return {
             posts,
