@@ -18,8 +18,8 @@ const config = {
    * @see https://github.com/vercel/next.js/issues/41980
    */
   i18n: {
-    locales: ["en-AU"],
-    defaultLocale: "en-AU"
+    locales: ["en"],
+    defaultLocale: "en"
   },
   async rewrites() {
     return [
