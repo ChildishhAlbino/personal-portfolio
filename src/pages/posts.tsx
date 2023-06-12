@@ -4,8 +4,9 @@ import PageLayout from '@/components/layouts/page-layout'
 import { createServerSideHelpers } from '@trpc/react-query/server'
 import superjson from 'superjson'
 import { appRouter } from '@/server/api/root'
-import { PostAggregation } from '@/types/post'
+import { PostAggregation, SlugAggregation } from '@/types/post'
 import {
+    LoadingPostAggregationItem,
     PostAggregationItem,
 } from '@/components/post-aggregation-item'
 

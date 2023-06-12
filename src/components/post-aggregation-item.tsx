@@ -34,7 +34,7 @@ export function PostAggregationItem({ post }: { post: PostAggregation }) {
                         <i className='break-words'>{post?.description}</i>
                         <br />
                         <pre className='text-sm'>
-                            {post.publicationDate}
+                            {formatPublicationDateInline(post.publicationDate)}
                         </pre>
                         <span
                             className='flex flex-wrap gap-4 text-sm mobile:justify-center mobile:self-center desktop:self-start'>
