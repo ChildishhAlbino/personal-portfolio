@@ -100,7 +100,7 @@ const PostHeader: FC<{
 
     const datePrefix = latestEdit != publicationDate ? 'Edited:' : 'Posted:'
     const date = DateTime.fromISO(latestEdit || publicationDate)
-        .setLocale('au')
+        .setLocale('en-AU')
         .toLocaleString(DateTime.DATE_FULL)
     return (
         <>

@@ -4,31 +4,41 @@ import PageLayout from '@/components/layouts/page-layout'
 import { createServerSideHelpers } from '@trpc/react-query/server'
 import superjson from 'superjson'
 import { appRouter } from '@/server/api/root'
-import { SlugAggregation } from '@/types/post'
+import { PostAggregation, SlugAggregation } from '@/types/post'
 import {
     DynamicPostAggregationItem,
     LoadingPostAggregationItem,
+    PostAggregationItem,
 } from '@/components/post-aggregation-item'
 
-
 const PostsAggregationPage: NextPage = () => {
-    const slugQuery = api.contentful.getPostSlugs.useQuery({})
+    // const slugQuery = api.contentful.getPostSlugs.useQuery({})
 
-    const { data, isLoading, error } = slugQuery
+    // const { data, isLoading, error } = slugQuery
+
+    // const { slugs } = data || { slugs: [] }
+
+    const postsQuery = api.contentful.getPosts.useQuery({})
+
+    const { data, isLoading, error } = postsQuery
     
-    const { slugs } = data || { slugs: [] }
-
+    const { posts } = data || { posts: [] }
     const showError = !isLoading && !!error
     const showLoader = isLoading && !error
     const showPosts = !showError && !showLoader
 
     return (
-        <PageLayout header='Posts:' title='Posts' description={"A page for all my posts."}>
+        <PageLayout
+            header='Posts:'
+            title='Posts'
+            description={'A page for all my posts.'}
+        >
             <span className='flex h-full flex-col gap-y-4'>
                 <span>
-                    {showLoader && <LoadingPostAggregationList/>}
+                    {showLoader && <LoadingPostAggregationList />}
                     {showError && <h1> ERROR </h1>}
-                    {showPosts && <DynamicPostAggregationList slugs={slugs} />}
+                    {/* {showPosts && <DynamicPostAggregationList slugs={slugs} />} */}
+                    {showPosts && <PostAggregationList posts={posts} />}
                 </span>
             </span>
         </PageLayout>
@@ -42,27 +52,40 @@ function DynamicPostAggregationList({ slugs }: { slugs: SlugAggregation[] }) {
         <div className='flex flex-col gap-y-8'>
             {slugs &&
                 slugs.map((item) => {
-                    return <DynamicPostAggregationItem slug={item} key={item.slug} />
+                    return (
+                        <DynamicPostAggregationItem
+                            slug={item}
+                            key={item.slug}
+                        />
+                    )
                 })}
         </div>
     )
 }
 
+function PostAggregationList({ posts }: { posts: PostAggregation[] }) {
+    return (
+        <div className='flex flex-col gap-y-8'>
+            {posts &&
+                posts.map((post) => {
+                    return <PostAggregationItem post={post} key={post.slug} />
+                })}
+        </div>
+    )
+}
 
 function LoadingPostAggregationList() {
     const items = Array(12).fill(0)
     return (
         <div className='flex flex-col gap-y-8'>
-            { items.map((item, index) => {
+            {items.map((_, index) => {
                 return <LoadingPostAggregationItem key={index} />
             })}
         </div>
     )
 }
 
-
 type PostsPageProps = {}
-
 
 export async function getStaticProps({}: GetStaticPropsContext<PostsPageProps>) {
     const ssg = await createServerSideHelpers({
@@ -72,7 +95,7 @@ export async function getStaticProps({}: GetStaticPropsContext<PostsPageProps>) 
     })
 
     try {
-        await ssg.contentful.getPostSlugs.fetch({})
+        await ssg.contentful.getPosts.fetch({})
     } catch (e: any) {
         const cause = e.cause
         if (cause.message.includes('No page for slug')) {
