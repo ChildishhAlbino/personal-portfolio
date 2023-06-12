@@ -7,7 +7,7 @@ import { DateTime } from 'luxon'
 function formatPublicationDateInline(publicationDate: string) {
     return DateTime.fromISO(publicationDate)
         .setLocale('en-AU')
-        .toLocaleString(DateTime.DATETIME_FULL)
+        .toLocaleString(DateTime.DATETIME_FULL, { locale: "en-AU" })
 }
 
 export function PostAggregationItem({ post }: { post: PostAggregation }) {
