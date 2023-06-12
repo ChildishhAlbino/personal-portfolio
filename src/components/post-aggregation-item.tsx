@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { DateTime } from 'luxon'
 
 function formatPublicationDateInline(publicationDate: string) {
-    return DateTime.fromISO(publicationDate)
+    return DateTime.fromISO(publicationDate, { locale: "en-AU" })
         .setLocale('en-AU')
         .toLocaleString(DateTime.DATETIME_FULL, { locale: "en-AU" })
 }
