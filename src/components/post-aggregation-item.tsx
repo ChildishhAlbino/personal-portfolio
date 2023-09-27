@@ -1,8 +1,9 @@
-import { PostAggregation, SlugAggregation } from '@/types/post'
+import { PostAggregation } from '@/types/post'
 import PostThumbnail from '@/components/post-thumbnail'
 import Link from 'next/link'
 import { Skeleton } from '@/components/ui/skeleton'
 import { DateTime } from 'luxon'
+import { LuScrollText } from 'react-icons/lu'
 
 function formatPublicationDateInline(publicationDate: string) {
     return DateTime.fromISO(publicationDate, { locale: "en-AU" })
@@ -10,19 +11,28 @@ function formatPublicationDateInline(publicationDate: string) {
         .toLocaleString(DateTime.DATETIME_FULL, { locale: "en-AU" })
 }
 
+function getThumbnail(thumbnail: { url: string, width: number, height: number, details?: any } | null) {
+    if (thumbnail !== null) {
+        const thumbnailProps = {
+            ...thumbnail!!,
+            fixedMaxHeight: 800,
+        }
+        return (<PostThumbnail {...thumbnailProps} />)
+    } else {
+        return <LuScrollText size={200} className='justify-self-center' />
+    }
+}
+
 export function PostAggregationItem({ post }: { post: PostAggregation }) {
+    const { thumbnail } = post
     const topKeywords = post.keywords.slice(0, 5)
     const totalKeywords = topKeywords.length
-    const thumbnailProps = {
-        ...post.thumbnail,
-        fixedMaxHeight: 800,
-    }
-
+    const optionalThumbail = getThumbnail(thumbnail)
     return (
         <>
             <div
                 className='grid w-full border-b-2 border-light border-opacity-30 pb-4 mobile:grid-cols-1 mobile:gap-y-8 mobile:text-center desktop:grid-cols-[2fr,_5fr] desktop:gap-x-4 desktop:text-left'>
-                <PostThumbnail {...thumbnailProps} />
+                {optionalThumbail}
                 <span>
                     <Link
                         href={`/posts/${post?.slug}`}

@@ -7,7 +7,7 @@ type PostSEOProps = {
     keywords: string[],
     title: string,
     description: string,
-    thumbnail: ThumbnailProps,
+    thumbnail: ThumbnailProps | null,
     latestEdit: string,
     publicationDate: string,
 }
@@ -18,10 +18,24 @@ type ThumbnailProps = {
     height: number
 }
 
+function getThumbnailSeoDetails(thumbnail: ThumbnailProps | null) {
+    if (!thumbnail) {
+        return []
+    }
+    const { url } = thumbnail
+    const thumbnailSeoDetails = {
+        url: `${url}?h=630&w=1200`,
+        alt: 'Thumbnail for this post.',
+        width: 1200,
+        height: 630
+    }
+    return [thumbnailSeoDetails]
+}
+
 export function PostSEO({ thumbnail, description, title, keywords, publicationDate, latestEdit }: PostSEOProps) {
     const router = useRouter()
     const keywordsAsString = keywords.join(", ")
-    const { url, width, height } = thumbnail
+
     const openGraph: OpenGraph = {
         title: title,
         description: description,
@@ -32,14 +46,7 @@ export function PostSEO({ thumbnail, description, title, keywords, publicationDa
             modifiedTime: latestEdit,
             tags: keywords
         },
-        images: [
-            {
-                url: `${url}?h=630&w=1200`,
-                alt: 'Thumbnail for this post.',
-                width: 1200,
-                height: 630
-            }
-        ]
+        images: getThumbnailSeoDetails(thumbnail)
     }
     return <NextSeo
         additionalMetaTags={[{ name: 'keywords', content: `${keywordsAsString}` }]}
