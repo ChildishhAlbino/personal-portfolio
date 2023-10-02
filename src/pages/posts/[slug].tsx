@@ -90,13 +90,13 @@ const PostHeader: FC<{
     description?: string
     publicationDate: string
     latestEdit?: string
-    thumbnail: ThumbnailProps
+    thumbnail: ThumbnailProps | null
 }> = ({ title, description, thumbnail, latestEdit, publicationDate }) => {
     const thumbnailProps = {
         ...thumbnail,
         fixedHeight: 600,
     }
-    const image = thumbnail ? <PostThumbnail {...thumbnailProps} /> : <></>
+    const image = thumbnail != null ? <PostThumbnail {...thumbnailProps as ThumbnailProps} /> : <></>
 
     const datePrefix = latestEdit != publicationDate ? 'Edited:' : 'Posted:'
     const date = DateTime.fromISO(latestEdit || publicationDate)

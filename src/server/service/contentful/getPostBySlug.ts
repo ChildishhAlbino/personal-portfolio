@@ -1,13 +1,10 @@
 import { contentQuery } from './contentQuery'
-import { serialize } from 'next-mdx-remote/serialize'
-import remarkUnwrapImages from 'remark-unwrap-images'
 import { inputWrapper } from '../../api/inputWrapper'
-import { getPlaiceholder } from 'plaiceholder'
 import { TRPCError } from '@trpc/server'
 import { getImageDetails } from '@/server/utils/plaiceholder'
-import AllComponents from '@/components'
-import remarkPrism from 'remark-prism'
+
 import { serializeMdx } from '@/server/utils/mdx'
+import { getPostWithThumbnailDetails } from '@/server/utils/thumbnailUtils'
 
 export async function getPostBySlug({
     input: { slug },
@@ -45,7 +42,6 @@ export async function getPostBySlug({
         if (!post) {
             throw Error(`No post for slug '${slug} was found...`)
         }
-        const remarkPlugins = [remarkUnwrapImages, remarkPrism]
 
         const timeKey = `${new Date().getTime()}: Serializing "${slug}" took`
         console.time(timeKey)
@@ -57,15 +53,11 @@ export async function getPostBySlug({
 
         const [imageDetails, serializedMdx] = await Promise.all(promises)
         console.timeEnd(timeKey)
-        const thumbnailWithDetails = {
-            ...post.thumbnail,
-            details: await getImageDetails(post.thumbnail.url),
-        }
+        const postWithThumbnailDetails = await getPostWithThumbnailDetails(post)
         return {
             post: {
-                ...post,
+                ...postWithThumbnailDetails,
                 serializedMdx,
-                thumbnail: thumbnailWithDetails,
             },
             imageDetails,
         }

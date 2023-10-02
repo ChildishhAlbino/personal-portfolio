@@ -13,12 +13,14 @@ export const PostAggregationShape = z.object({
     publicationDate: z.string(),
     latestEdit: z.string(),
     keywords: z.string().array(),
-    thumbnail: z.object({
-        url: z.string(),
-        width: z.number(),
-        height: z.number(),
-        details: z.any(),
-    }),
+    thumbnail: z
+        .object({
+            url: z.string(),
+            width: z.number(),
+            height: z.number(),
+            details: z.any(),
+        })
+        .nullable(),
 })
 
 export type PostAggregation = z.infer<typeof PostAggregationShape>
@@ -31,12 +33,14 @@ export const PostShape = z.object({
     latestEdit: z.string(),
     keywords: z.string().array(),
     serializedMdx: z.any(),
-    thumbnail: z.object({
-        url: z.string(),
-        width: z.number(),
-        height: z.number(),
-        details: z.any(),
-    }),
+    thumbnail: z
+        .object({
+            url: z.string(),
+            width: z.number(),
+            height: z.number(),
+            details: z.any(),
+        })
+        .nullable(),
 })
 
 export type Post = z.infer<typeof PostShape>
