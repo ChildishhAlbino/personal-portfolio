@@ -59,7 +59,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
                 twitter={twitter}
             />
             <Head>
-                <title>ChildishhAlbino</title>
+                {/* <title>Connor Williams</title> */}
                 <link rel='shortcut icon' href={favicon} />
             </Head>
             <RootLayout>
