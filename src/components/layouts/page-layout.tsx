@@ -1,24 +1,21 @@
 import Head from 'next/head'
 import { ReactNode } from 'react'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import { NextSeo } from 'next-seo';
+import { NextSeo } from 'next-seo'
 
 export default function PageLayout({
     children,
     header,
     title,
-    description
+    description,
 }: PageLayoutProps) {
     const pageHeaderContent = title || header
     return (
         <>
-            <NextSeo
-                title={pageHeaderContent}
-                description={description}
-            />
-            {(pageHeaderContent) && (
+            <NextSeo title={pageHeaderContent} description={description} />
+            {pageHeaderContent && (
                 <Head>
-                    <title>{`${pageHeaderContent} | ChildishhAlbino`}</title>
+                    <title>{`${pageHeaderContent} | Connor Williams`}</title>
                 </Head>
             )}
             <main
@@ -69,7 +66,7 @@ export default function PageLayout({
 PageLayout.defaultProps = {
     header: null,
     title: null,
-    description: ""
+    description: '',
 }
 
 export interface PageLayoutProps {
