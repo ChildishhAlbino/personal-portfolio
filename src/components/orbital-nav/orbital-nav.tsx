@@ -137,7 +137,14 @@ interface NavItemProps {
     highlight: boolean
 }
 
-export function NavItem({ name, path, className, icon, id, highlight }: NavItemProps) {
+export function NavItem({
+    name,
+    path,
+    className,
+    icon,
+    id,
+    highlight,
+}: NavItemProps) {
     const actualClassName = className || ''
     const actualPath = `${path || name}`
     const href = actualPath[0] == '/' ? actualPath : `/${actualPath}`
@@ -170,7 +177,11 @@ const DEFAULT_PATH_PAGE_MAPPING: { [x: string]: keyof NavOptions } = {
     [RESUME_PATH]: NAV_OPTIONS.RESUME as keyof NavOptions,
 }
 
-export function OrbitalNav({ currentPath, setChecked, checked }: OrbitalNavProps) {
+export function OrbitalNav({
+    currentPath,
+    setChecked,
+    checked,
+}: OrbitalNavProps) {
     const currentPage = currentPath
         ? DEFAULT_PATH_PAGE_MAPPING[currentPath]
         : undefined

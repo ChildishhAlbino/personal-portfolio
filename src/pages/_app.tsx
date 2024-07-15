@@ -16,7 +16,6 @@ const jbMono = JetBrains_Mono({
     display: 'block',
 })
 
-
 const notoSans = Noto_Sans({
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
     variable: '--google-font-family-noto',
@@ -35,7 +34,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         type: 'website',
         locale: 'en_AU',
         url: url,
-        siteName: 'ChildishhAlbino',
+        siteName: 'connorwilliams.dev',
         images: [
             {
                 url: `${url}/seo-default-image.jpg`,
@@ -53,11 +52,12 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     return (
         <span className={`${jbMono.variable} ${notoSans.variable}`}>
             <DefaultSeo
-                titleTemplate={'%s | ChildishhAlbino'}
-                defaultTitle={'ChildishhAlbino'}
+                titleTemplate={'%s | Connor Williams'}
+                defaultTitle={'Connor Williams'}
                 description={'Professionally curious software engineer'}
                 openGraph={openGraph}
-                twitter={twitter} />
+                twitter={twitter}
+            />
             <Head>
                 <title>ChildishhAlbino</title>
                 <link rel='shortcut icon' href={favicon} />
