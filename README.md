@@ -1,6 +1,6 @@
 # [connorwilliams.dev](https://www.connorwilliams.dev)
 
-A website/blog built in NextJS via `create-t3-app`
+A personal portfolio website built in NextJS via `create-t3-app`
 
 * NextJS
 * Tailwind
