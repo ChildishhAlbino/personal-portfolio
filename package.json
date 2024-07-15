@@ -1,6 +1,6 @@
 {
-  "name": "childishhalbino.com",
-  "version": "6.0.0",
+  "name": "personal-portfolio",
+  "version": "6.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

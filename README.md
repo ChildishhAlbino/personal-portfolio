@@ -1,4 +1,4 @@
-# childishhalbino.com
+# [connorwilliams.dev](https://www.connorwilliams.dev)
 
 A website/blog built in NextJS via `create-t3-app`
 
