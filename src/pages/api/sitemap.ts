@@ -15,7 +15,7 @@ export default async function handler(
     res.end(xml)
 }
 
-const BASE_URL: string = 'https://www.childishhalbino.com'
+const BASE_URL: string = 'https://www.connorwilliams.dev'
 const KNOWN_PAGES = [BASE_URL, `${BASE_URL}/posts`]
 
 async function generateXmlSitemap() {
