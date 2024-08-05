@@ -59,7 +59,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
                 twitter={twitter}
             />
             <Head>
-                {/* <title>Connor Williams</title> */}
+                {/*TODO: ENV VAR THIS LATER*/}
+                <link rel="canonical" href="https://www.connorwilliams.dev/" />
                 <link rel='shortcut icon' href={favicon} />
             </Head>
             <RootLayout>
