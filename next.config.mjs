@@ -9,7 +9,10 @@ const env = await import("./src/env.mjs")
 const config = {
   reactStrictMode: true,
   images: {
-    domains: ["images.ctfassets.net"]
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "images.ctfassets.net"
+    }]
   },
   /**
    * If you have the "experimental: { appDir: true }" setting enabled, then you
