@@ -3,7 +3,7 @@ import '@/styles/globals.css'
 import type { AppType } from 'next/dist/shared/lib/utils'
 import { api } from '@/utils/api'
 import RootLayout from '@/components/layouts/root-layout'
-import { JetBrains_Mono, Noto_Sans } from '@next/font/google'
+import { JetBrains_Mono, Noto_Sans } from "next/font/google"
 import Head from 'next/head'
 import { env } from '@/env.mjs'
 import { DefaultSeo } from 'next-seo'
