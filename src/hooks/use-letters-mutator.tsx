@@ -31,5 +31,5 @@ export function useLettersMutator(
                 }
             }
         }
-    }, [iterations])
+    }, [iterations, mutator, setWord, word])
 }

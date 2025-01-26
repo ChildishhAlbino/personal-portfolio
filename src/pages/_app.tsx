@@ -3,22 +3,23 @@ import '@/styles/globals.css'
 import type { AppType } from 'next/dist/shared/lib/utils'
 import { api } from '@/utils/api'
 import RootLayout from '@/components/layouts/root-layout'
-import { JetBrains_Mono, Noto_Sans } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 import Head from 'next/head'
 import { env } from '@/env.mjs'
 import { DefaultSeo } from 'next-seo'
 
-const jbMono = JetBrains_Mono({
-    weight: 'variable',
-    variable: '--google-font-family-jb',
+const geistFont = Geist({
+    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+    variable: '--google-font-family-geist',
     subsets: ['latin'],
     fallback: ['Courier'],
     display: 'block',
 })
 
-const notoSans = Noto_Sans({
-    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-    variable: '--google-font-family-noto',
+
+const geistMonoFont = Geist_Mono({
+    weight: 'variable',
+    variable: '--google-font-family-geist-mono',
     subsets: ['latin'],
     fallback: ['Courier'],
     display: 'block',
@@ -50,7 +51,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         cardType: 'summary_large_image',
     }
     return (
-        <span className={`${jbMono.variable} ${notoSans.variable}`}>
+        <span className={`${jbMono.variable} ${geistMonoFont.variable} ${geistFont.variable}`}>
             <DefaultSeo
                 titleTemplate={'%s | Connor Williams'}
                 defaultTitle={'Connor Williams'}

@@ -66,8 +66,8 @@ module.exports = {
         }
       }),
       fontFamily: {
-        "sans": ["var(--google-font-family-noto)"],
-        "hacker": ["var(--google-font-family-jb)"],
+        "sans": ["var(--google-font-family-geist)"],
+        "hacker": ["var(--google-font-family-geist-mono)"],
       },
       colors: {
         "darkest": "#0C0032",
