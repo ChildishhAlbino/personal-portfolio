@@ -51,7 +51,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         cardType: 'summary_large_image',
     }
     return (
-        <span className={`${jbMono.variable} ${geistMonoFont.variable} ${geistFont.variable}`}>
+        <span className={`${geistMonoFont.variable} ${geistFont.variable}`}>
             <DefaultSeo
                 titleTemplate={'%s | Connor Williams'}
                 defaultTitle={'Connor Williams'}
