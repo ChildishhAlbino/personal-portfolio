@@ -26,16 +26,16 @@ importers:
         version: 4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@trpc/client':
         specifier: ^10.45.2
-        version: 10.45.2(@trpc/server@10.45.2)
+        version: 10.45.2(@trpc/server@10.45.3)
       '@trpc/next':
         specifier: ^10.45.2
-        version: 10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/server@10.45.2)(next@15.5.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+        version: 10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/react-query@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/server@10.45.3)(next@15.5.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@trpc/react-query':
         specifier: ^10.45.2
-        version: 10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+        version: 10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@trpc/server':
-        specifier: ^10.45.2
-        version: 10.45.2
+        specifier: ^10.45.3
+        version: 10.45.3
       '@types/luxon':
         specifier: ^3.7.1
         version: 3.7.1
@@ -511,8 +511,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@trpc/server@10.45.2':
-    resolution: {integrity: sha512-wOrSThNNE4HUnuhJG6PfDRp4L2009KDVxsd+2VYH8ro6o/7/jwYZ8Uu5j+VaW+mOmc8EHerHzGcdbGNQSAUPgg==}
+  '@trpc/server@10.45.3':
+    resolution: {integrity: sha512-CVZM42FdGwqYQxV7vSRwb//AF8REfV60S/fUnwx7xqCnnSDus0FW/UuAOW4eQJ30RQlOPy4MYU8B3dbTAx85Ew==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -1030,9 +1030,6 @@ packages:
 
   caniuse-lite@1.0.30001759:
     resolution: {integrity: sha512-Pzfx9fOKoKvevQf8oCXoyNRQ5QyxJj+3O0Rqx2V5oxT61KGx8+n6hV/IUyJeifUci2clnmmKVpvtiqRzgiWjSw==}
-
-  caniuse-lite@1.0.30001707:
-    resolution: {integrity: sha512-3qtRjw/HQSMlDWf+X79N206fepf4SOOU6SQLMaq/0KkZLmSjPxAkBOQQ+FxbHKfHmYLZFfdWsO3KA90ceHPSnw==}
 
   caseless@0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
@@ -2537,6 +2534,7 @@ packages:
   next@15.5.7:
     resolution: {integrity: sha512-+t2/0jIJ48kUpGKkdlhgkv+zPTEOoXyr60qXe68eB/pl3CMJaLeIGjzp5D6Oqt25hCBiBTt8wEeeAzfJvUKnPQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/security-update-2025-12-11 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -3103,11 +3101,6 @@ packages:
 
   semver@7.7.3:
     resolution: {integrity: sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==}
-    engines: {node: '>=10'}
-    hasBin: true
-
-  semver@7.7.1:
-    resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -3952,29 +3945,29 @@ snapshots:
 
   '@tootallnate/once@1.1.2': {}
 
-  '@trpc/client@10.45.2(@trpc/server@10.45.2)':
+  '@trpc/client@10.45.2(@trpc/server@10.45.3)':
     dependencies:
-      '@trpc/server': 10.45.2
+      '@trpc/server': 10.45.3
 
-  '@trpc/next@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/react-query@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/server@10.45.2)(next@15.5.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
+  '@trpc/next@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/react-query@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/server@10.45.3)(next@15.5.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@tanstack/react-query': 4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      '@trpc/client': 10.45.2(@trpc/server@10.45.2)
-      '@trpc/react-query': 10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      '@trpc/server': 10.45.2
+      '@trpc/client': 10.45.2(@trpc/server@10.45.3)
+      '@trpc/react-query': 10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@trpc/server': 10.45.3
       next: 15.5.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
 
-  '@trpc/react-query@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
+  '@trpc/react-query@10.45.2(@tanstack/react-query@4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@trpc/client@10.45.2(@trpc/server@10.45.3))(@trpc/server@10.45.3)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@tanstack/react-query': 4.42.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      '@trpc/client': 10.45.2(@trpc/server@10.45.2)
-      '@trpc/server': 10.45.2
+      '@trpc/client': 10.45.2(@trpc/server@10.45.3)
+      '@trpc/server': 10.45.3
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
 
-  '@trpc/server@10.45.2': {}
+  '@trpc/server@10.45.3': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -4487,8 +4480,6 @@ snapshots:
   camelcase@3.0.0: {}
 
   caniuse-lite@1.0.30001759: {}
-
-  caniuse-lite@1.0.30001707: {}
 
   caseless@0.12.0: {}
 
@@ -7102,8 +7093,6 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.3: {}
-
-  semver@7.7.1: {}
 
   set-blocking@2.0.0: {}
 
