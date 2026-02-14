@@ -27,6 +27,7 @@ export default function MdxPage({ slug }: MdxPageProps) {
     const {
         page: { serializedMdx, title, css },
     } = data
+    
     return (
         <>
             <Head>
@@ -59,8 +60,9 @@ const PageBody: FC<{ serializedMdx: any; imageDetails: object }> = ({
         },
         ...AllComponents,
     }
+    const mergedComponents = mergeWithDefaultHtmlOverrides(components)
     const mdx = serializedMdx ? (
-        <MDXRemote {...serializedMdx} components={mergeWithDefaultHtmlOverrides(components)} />
+        <MDXRemote {...serializedMdx} components={mergedComponents} />
     ) : (
         <>
             <Loader size={150} />

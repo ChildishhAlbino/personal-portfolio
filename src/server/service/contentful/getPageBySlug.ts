@@ -1,15 +1,9 @@
 import { contentQuery } from './contentQuery'
-import { serialize } from 'next-mdx-remote/serialize'
-import remarkUnwrapImages from 'remark-unwrap-images'
-import remarkPrism from 'remark-prism'
+
 import { inputWrapper } from '../../api/inputWrapper'
 import { TRPCError } from '@trpc/server'
 import { PageAggregation } from '@/types/page'
 import { getImageDetails } from '@/server/utils/plaiceholder'
-import {
-    remarkDefinitionList,
-    defListHastHandlers,
-} from 'remark-definition-list'
 import { serializeMdx } from '@/server/utils/mdx'
 
 export async function getPageBySlug({
