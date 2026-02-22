@@ -160,6 +160,9 @@ export default defineConfig({
       }
     },
 		build: {
+			      watch: {
+        ignored: ['**/.obsidian/**', '**/_bases/**', '**/bases/**', '**/_home/**', '**/home/**', '**/_base/**', '**/base/**']
+      },
 			rollupOptions: {
 				onwarn(warning, warn) {
 					// temporarily suppress this warning
