@@ -1,6 +1,6 @@
 ---
 title: new-post
-published: 2026-02-22
+published: 2026-02-12
 tags:
   - Example
 category: ""
