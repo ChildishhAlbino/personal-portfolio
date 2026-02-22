@@ -15,7 +15,7 @@
               "type": "bases",
               "state": {
                 "file": "_bases/Home.base",
-                "viewName": "Vault CMS Guide"
+                "viewName": "Posts"
               },
               "pinned": true,
               "icon": "lucide-home",
@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "1c80e07d4dea4086",
+            "id": "948ba2c631c5f509",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/1st-post/index.md",
+                "file": "posts/new-post/index.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
@@ -157,14 +157,15 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "1c80e07d4dea4086",
+  "active": "948ba2c631c5f509",
   "lastOpenFiles": [
-    "posts/Untitled.md",
+    "posts/new-post",
+    "_bases/Home.base",
+    "posts/new-post/index.md",
+    "posts/1st-post/index.md",
     "_GUIDE.md",
     "spec/Untitled.md",
-    "posts/1st-post/index.md",
     "posts/1st-post",
-    "_bases/Home.base",
     "posts/draft.md",
     "posts/expressive-code.md",
     "posts/markdown.md",

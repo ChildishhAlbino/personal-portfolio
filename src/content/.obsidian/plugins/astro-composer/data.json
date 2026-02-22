@@ -1,5 +1,5 @@
 {
-  "defaultTemplate": "---\ntitle: \"{{title}}\"\npublished: \"\"\ntags: []\ncategory: \"\"\ndraft: true\ndescription: \"\"\nimage: \"\"\nupdated: \"\"\n---\n",
+  "defaultTemplate": "---\ntitle: \"{{title}}\"\npublished: \"{{date}}\"\ntags: []\ncategory: \"\"\ndraft: true\ndescription: \"\"\nimage: \"\"\nupdated: \"{{date}}\"\n---\n",
   "autoInsertProperties": true,
   "dateFormat": "YYYY-MM-DD",
   "enableCopyHeadingLink": true,
@@ -19,13 +19,14 @@
       "name": "Posts",
       "folder": "posts",
       "linkBasePath": "/posts/",
-      "template": "---\ntitle: \"{{title}}\"\npublished: \"\"\ntags: []\ncategory: \"\"\ndraft: true\ndescription: \"\"\nimage: \"\"\nupdated: \"\"\n---\n",
+      "template": "---\ntitle: \"{{title}}\"\npublished: \"{{date}}\"\ntags: []\ncategory: \"\"\ndraft: true\ndescription: \"\"\nimage: \"\"\nupdated: \"{{date}}\"\n---\n",
       "enabled": true,
       "creationMode": "folder",
       "indexFileName": "index",
       "ignoreSubfolders": false,
       "enableUnderscorePrefix": false,
-      "collapsed": true
+      "collapsed": false,
+      "modifiedDateField": "updated"
     },
     {
       "id": "content-type-1771761477227-4imrtm564",
@@ -38,7 +39,7 @@
       "indexFileName": "index",
       "ignoreSubfolders": false,
       "enableUnderscorePrefix": false,
-      "collapsed": false
+      "collapsed": true
     }
   ],
   "migrationCompleted": true,

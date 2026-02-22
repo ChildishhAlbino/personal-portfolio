@@ -31,7 +31,7 @@
       "draftLogic": "true-draft",
       "hasDraftStatus": true,
       "imageProperty": "image",
-      "template": "---\ntitle: \"{{title}}\"\npublished: \"\"\ntags: []\ncategory: \"\"\ndraft: true\ndescription: \"\"\nimage: \"\"\nupdated: \"\"\n---\n"
+      "template": "---\ntitle: \"{{title}}\"\npublished: \"{{date}}\"\ntags: []\ncategory: \"\"\ndraft: true\ndescription: \"\"\nimage: \"\"\nupdated: \"{{date}}\"\n---\n"
     },
     "content-type-1771761477227-4imrtm564": {
       "hasDraftStatus": false,
