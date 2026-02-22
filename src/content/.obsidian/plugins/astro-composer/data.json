@@ -1,5 +1,5 @@
 {
-  "defaultTemplate": "---\ntitle: \"{{title}}\"\ndate: {{date}}\ndescription: \"\"\ntags: []\nimage: \"\"\nimageAlt: \"\"\nimageOG: false\nhideCoverImage: false\nhideTOC: false\ntargetKeyword: \"\"\ndraft: true\n---",
+  "defaultTemplate": "---\ntitle: \"{{title}}\"\npublished: \"\"\ntags: []\ncategory: \"\"\ndraft: true\ndescription: \"\"\nimage: \"\"\nupdated: \"\"\n---\n",
   "autoInsertProperties": true,
   "dateFormat": "YYYY-MM-DD",
   "enableCopyHeadingLink": true,
@@ -24,7 +24,8 @@
       "creationMode": "folder",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false
+      "enableUnderscorePrefix": false,
+      "collapsed": true
     },
     {
       "id": "content-type-1771761477227-4imrtm564",
@@ -36,7 +37,8 @@
       "creationMode": "file",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false
+      "enableUnderscorePrefix": false,
+      "collapsed": false
     }
   ],
   "migrationCompleted": true,
@@ -47,7 +49,7 @@
   },
   "showMdxFilesInExplorer": false,
   "processBackgroundFileChanges": true,
-  "syncDraftDate": false,
+  "syncDraftDate": true,
   "draftProperty": "",
   "draftLogic": "true-is-draft",
   "publishDateField": "",

@@ -3,15 +3,6 @@
   "configFilePath": "E:\\Documents\\GitHub\\personal-portfolio\\src\\config.ts",
   "contentTypes": [
     {
-      "id": "content-type-1771761477227-hs7laaaj1",
-      "name": "Posts",
-      "folder": "posts",
-      "fileOrganization": "folder",
-      "enabled": true,
-      "indexFileName": "index",
-      "linkBasePath": "/posts/"
-    },
-    {
       "id": "content-type-1771761477227-4imrtm564",
       "name": "Pages",
       "folder": "spec",
@@ -19,6 +10,15 @@
       "enabled": true,
       "indexFileName": "index",
       "linkBasePath": "/"
+    },
+    {
+      "id": "content-type-1771761477227-hs7laaaj1",
+      "name": "Posts",
+      "folder": "posts",
+      "fileOrganization": "folder",
+      "enabled": true,
+      "indexFileName": "index",
+      "linkBasePath": "/posts/"
     }
   ],
   "frontmatterProperties": {
@@ -243,5 +243,6 @@
   },
   "runWizardOnStartup": false,
   "wizardCompleted": true,
-  "enableMdxSupport": false
+  "enableMdxSupport": false,
+  "defaultContentTypeId": "content-type-1771761477227-hs7laaaj1"
 }
