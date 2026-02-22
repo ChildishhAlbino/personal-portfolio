@@ -3,10 +3,15 @@ title: new-post
 published: 2026-02-12
 tags:
   - Example
-category: ""
-draft: true
+category: Blog
+draft: false
 description: ""
 image: ""
-updated: 2026-02-05
+updated: 2026-02-22
+date: 2026-02-22
 ---
-# Test 1
+# This is a test post...
+
+
+::github{repo="ChildishhAlbino/personal-portfolio"}
+
