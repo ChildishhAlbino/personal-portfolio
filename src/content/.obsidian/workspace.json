@@ -26,13 +26,14 @@
             "id": "948ba2c631c5f509",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "split-diff-view",
               "state": {
-                "file": "_bases/Home.base",
-                "viewName": "Posts"
+                "aFile": "src/content/_bases/Home.base",
+                "bFile": "src/content/_bases/Home.base",
+                "aRef": ""
               },
-              "icon": "lucide-home",
-              "title": "Home"
+              "icon": "diff",
+              "title": "Diff: Home.base  (Working Tree)"
             }
           }
         ],
@@ -90,6 +91,22 @@
             }
           }
         ]
+      },
+      {
+        "id": "e2564210e673dc74",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cd3403872a9c4328",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -124,21 +141,20 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_bases/Home.base",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Home"
+              "title": "Outline"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -158,8 +174,8 @@
   "active": "948ba2c631c5f509",
   "lastOpenFiles": [
     "posts/new-post/index.md",
-    "posts/new-post",
     "_bases/Home.base",
+    "posts/new-post",
     "posts/1st-post/index.md",
     "_GUIDE.md",
     "spec/Untitled.md",
