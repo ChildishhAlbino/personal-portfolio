@@ -123,6 +123,13 @@
       "commandId": "obsidian-git:push",
       "mode": "any",
       "sticky": "right"
+    },
+    {
+      "id": "plugin-obsidian-git-status;1",
+      "name": "Checking repository status...",
+      "type": "existing",
+      "hidden": false,
+      "mdOnly": false
     }
   ],
   "explorerCommands": [],
