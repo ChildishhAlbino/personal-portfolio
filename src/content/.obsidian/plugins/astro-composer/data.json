@@ -24,9 +24,7 @@
       "creationMode": "folder",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false,
-      "collapsed": false,
-      "modifiedDateField": "updated"
+      "enableUnderscorePrefix": false
     },
     {
       "id": "content-type-1771761477227-4imrtm564",
@@ -38,8 +36,7 @@
       "creationMode": "file",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false,
-      "collapsed": true
+      "enableUnderscorePrefix": false
     }
   ],
   "migrationCompleted": true,
@@ -50,7 +47,7 @@
   },
   "showMdxFilesInExplorer": false,
   "processBackgroundFileChanges": true,
-  "syncDraftDate": true,
+  "syncDraftDate": false,
   "draftProperty": "",
   "draftLogic": "true-is-draft",
   "publishDateField": "",

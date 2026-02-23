@@ -154,6 +154,7 @@ export default defineConfig({
 		],
 	},
 	vite: {
+    assetsInclude: ['**/*.base', '**/*.home', '**/*.base'],
     server: {
       watch: {
         ignored: ['**/.obsidian/**', '**/_bases/**', '**/bases/**', '**/_home/**', '**/home/**', '**/_base/**', '**/base/**']

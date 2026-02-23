@@ -1,6 +1,6 @@
 {
   "showInlineTitle": false,
-  "promptDelete": false,
+  "promptDelete": true,
   "showIndentGuide": false,
   "attachmentFolderPath": "./",
   "userIgnoreFilters": null,

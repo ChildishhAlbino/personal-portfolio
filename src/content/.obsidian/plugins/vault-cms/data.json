@@ -42,7 +42,7 @@
   "preset": "vanilla",
   "presetName": "",
   "presetsRepo": "davidvkimball/vault-cms-presets",
-  "enableEditingToolbar": true,
+  "enableEditingToolbar": false,
   "enableExtendedFileTypes": true,
   "enabledPlugins": [
     "astro-composer",
