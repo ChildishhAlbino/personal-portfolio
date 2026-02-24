@@ -3,7 +3,7 @@ title: Example post 2
 published: 2026-02-24
 tags: []
 category: Thoughts
-draft: true
+draft: false
 description: A bunch of thoughts
 image: ""
 updated: 2026-02-24
