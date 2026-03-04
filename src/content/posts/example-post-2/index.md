@@ -12,3 +12,5 @@ updated: 2026-02-24
 I wrote this on my phone. 
 
 I'm testing obsidian git... 
+
+Ahhhhh
