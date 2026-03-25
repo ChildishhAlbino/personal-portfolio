@@ -1,6 +1,6 @@
 {
-  "projectRoot": "E:\\Documents\\GitHub\\personal-portfolio",
-  "configFilePath": "E:\\Documents\\GitHub\\personal-portfolio\\src\\config.ts",
+  "projectRoot": "../..",
+  "configFilePath": "../config.ts",
   "contentTypes": [
     {
       "id": "content-type-1771761477227-4imrtm564",
@@ -241,6 +241,7 @@
     "branchName": "main",
     "autoConfigureObsidianGit": true
   },
+  "resolvePublicImages": false,
   "runWizardOnStartup": false,
   "wizardCompleted": true,
   "enableMdxSupport": false,
